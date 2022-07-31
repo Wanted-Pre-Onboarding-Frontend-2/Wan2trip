@@ -7,7 +7,7 @@ import tw from "tailwind-styled-components";
 const BookedList = () => {
   return (
     <Layout>
-      <div>홈</div>
+      <div>예약 목록</div>
     </Layout>
   );
 };
