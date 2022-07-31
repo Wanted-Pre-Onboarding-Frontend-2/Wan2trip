@@ -1,0 +1,16 @@
+[
+  {
+    "id": "62d21314",
+    "name": "pika",
+    "email": "lee@naver.com",
+    "phone": "01012345678",
+    "isScheduled": true
+  },
+  {
+    "id": "62d2342341314",
+    "name": "pikapika",
+    "email": "lee@naver.com",
+    "phone": "01012345678",
+    "isScheduled": false
+  }
+]

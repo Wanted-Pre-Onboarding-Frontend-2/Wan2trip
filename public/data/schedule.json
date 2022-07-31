@@ -1,0 +1,117 @@
+{
+  "card" : {  
+    "monday": 
+    [  
+    {
+      "id": "sdfsd123dfer",
+      "tutor": "pika",
+      "week": "monday",
+      "date" : "2022-07-27T10:00:10.171Z",
+    "time": ["10:00", "10:40", "am"]},
+    {
+      "id": "sdfsd123123fsdfer",
+      "tutor": "pika",
+      "week": "monday",
+      "date" : "2022-07-27T11:00:10.171Z",
+    "time": ["11:00", "11:40", "am"]}
+  ],
+  "tuesday": 
+  [ {
+    "id": "sdfsd344fsdfer",
+    "tutor": "pika",
+    "week": "tuesday",
+    "date" : "2022-07-27T09:20:10.171Z",
+  "time": ["09:20", "10:00", "am"]},
+  {
+    "id": "sdfsdfsdf324234er",
+    "tutor": "pika",
+    "week": "tuesday",
+    "date" : "2022-07-27T10:20:10.171Z",
+  "time": ["10:20", "11:00", "am"]}
+],
+"wednesday": 
+[  {
+  "id": "sdfsdf2213sdfer",
+  "tutor": "pika",
+  "week": "wednesday",
+  "date" : "2022-07-27T09:00:10.171Z",
+"time": ["09:00", "09:40", "am"]},
+{
+  "id": "sdfs123d132fsdfer",
+  "tutor": "pika",
+  "week": "wednesday",
+  "date" : "2022-07-27T10:20:10.171Z",
+"time": ["10:20", "11:00", "am"]},
+{
+  "id": "s123dfs123dfsdfer",
+  "tutor": "pika",
+  "week": "wednesday",
+  "date" : "2022-07-27T11:00:10.171Z",
+"time": ["11:00", "11:40", "am"]}
+],
+"thursday": 
+[  
+  {
+    "id": "sd1231fsdf3sd123fer",
+    "tutor": "pika",
+    "week": "thursday",
+    "date" : "2022-07-27T12:20:10.171Z",
+  "time": ["12:20", "01:00", "am"]}
+],
+"friday": 
+[  
+  {
+    "id": "sd123fsdfs123dfer",
+    "tutor": "pika",
+    "week": "friday",
+    "date" : "2022-07-27T17:20:10.171Z",
+  "time": ["05:20", "06:00", "pm"]},
+  {
+    "index" : "2",
+    "id": "sd12313fsd123fsdfer",
+    "tutor": "pika",
+    "week": "friday",
+    "date" : "2022-07-27T18:20:10.171Z",
+  "time": ["06:20", "07:00", "pm"]}
+],
+"saturday": 
+[ 
+{
+  "id": "sdf213123sdfsdfe123r",
+  "tutor": "pika",
+  "week": "saturday",
+  "date" : "2022-07-27T10:20:10.171Z",
+"time": ["10:20", "11:00", "am"]},
+{
+  "id": "sdfs123dfsd12313fer",
+  "tutor": "pika",
+  "week": "saturday",
+  "date" : "2022-07-27T12:00:10.171Z",
+"time": ["12:00", "12:40", "am"]},
+{
+  "id": "sd123fsd1123fsdfer",
+  "tutor": "pika",
+  "week": "saturday",
+  "date" : "2022-07-27T15:20:10.171Z",
+"time": ["03:00", "03:40", "pm"]},
+{
+  "id": "sdf123s123df123123sdfer",
+  "tutor": "pika",
+  "week": "saturday",
+  "date" : "2022-07-27T20:00:10.171Z",
+"time": ["08:00", "08:40", "pm"]}
+],
+"sunday": 
+[ 
+  {
+    "id": "sd1231233fsdf123sdfer",
+    "tutor": "pika",
+    "week": "sunday",
+    "date" : "2022-07-27T09:00:10.171Z",
+  "time": ["09:00", "09:40", "am"]}
+]
+  }
+}
+
+    
+      

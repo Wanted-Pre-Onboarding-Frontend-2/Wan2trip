@@ -1,0 +1,113 @@
+{
+  "name": "want",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "@storybook/addon-postcss": "^3.0.0-alpha.1",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "@tanstack/react-query": "^4.0.10",
+    "@tanstack/react-query-devtools": "^4.0.10",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/json-server": "^0.14.4",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-router-dom": "^5.3.3",
+    "autoprefixer": "^10.4.8",
+    "axios": "^0.27.2",
+    "json-server": "^0.17.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss-nesting": "^10.1.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "recoil": "^0.7.4",
+    "tailwind-styled-components": "^2.1.8",
+    "tailwindcss": "^3.1.7",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "build-storybook": "build-storybook -s public",
+    "build:tailwind": "postcss src/tailwind.css -o src/tailwind.generated.css",
+    "watch:tailwind": "postcss -w src/tailwind.css -o src/tailwind.generated.css",
+    "start": "react-scripts start",
+    "dev": "run-p watch:tailwind start",
+    "prebuild": "npm run build:tailwind",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "server": "json-server --watch ./public/data/index.js --port 8000"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/jest": "^0.0.10",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/node-logger": "^6.5.9",
+    "@storybook/preset-create-react-app": "^4.1.2",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-storybook": "^0.6.1",
+    "postcss": "8.1.9",
+    "postcss-loader": "4.1.0",
+    "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "webpack": "^5.74.0"
+  },
+  "resolutions": {
+    "postcss": "8"
+  }
+}
