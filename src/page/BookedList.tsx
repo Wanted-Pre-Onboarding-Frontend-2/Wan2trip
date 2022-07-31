@@ -7,7 +7,8 @@ import tw from "tailwind-styled-components";
 const BookedList = () => {
   return (
     <Layout>
-      <div>예약 목록</div>
+      <Header />
+      <div>예약된거 확인하는 페이지</div>
     </Layout>
   );
 };

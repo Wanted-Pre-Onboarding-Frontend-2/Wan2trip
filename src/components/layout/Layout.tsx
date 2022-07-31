@@ -1,25 +1,17 @@
 import React from "react";
 import { LayoutProps } from "../../types/types";
 import tw from "tailwind-styled-components";
-import SearchBar from "./SearchBar";
+
 import Header from "./Header";
-import BackHeader from "./BackHeader";
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <GlobalLayout>
-      <Header />
-      <BackHeader />
-      <SearchBar />
-      <Inside>{children}</Inside>
-    </GlobalLayout>
-  );
+  return <GlobalLayout>{children}</GlobalLayout>;
 };
 
 export default Layout;
 
 const GlobalLayout = tw.div`
-bg-gray-100 w-full h-auto min-h-screen max-w-5xl mx-auto 
+bg-gray-100 w-full h-auto min-h-screen max-w-5xl mx-auto bg-sky-200
 `;
 
 const Inside = tw.div`

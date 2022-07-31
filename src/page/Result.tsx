@@ -3,10 +3,15 @@ import SearchBar from "../components/layout/SearchBar";
 import Layout from "../components/layout/Layout";
 import tw from "tailwind-styled-components";
 import Card from "../common/Card";
+import Header from "../components/layout/Header";
 
 const Result = () => {
   return (
     <Layout>
+      <Header />
+      <div className="-mt-10">
+        <SearchBar />
+      </div>
       <div className="flex bg-white">
         <div className="flex-col w-1/3">
           <div className="w-72 flex flex-col justify-center items-center h-16 rounded text-center text-base font-medium border-slate-300 border bg-zinc-200">

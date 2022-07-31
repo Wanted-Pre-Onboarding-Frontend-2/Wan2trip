@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 // import { ReactComponent as Logo } from "../../static/image/Logo.svg";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props: any) => {
   return (
     <EngSkyHeader>
       <div className="ml-10">로고</div>
