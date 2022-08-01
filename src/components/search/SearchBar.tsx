@@ -8,6 +8,7 @@ import axios from "axios";
 
 const SearchBar = () => {
   const [searchValue, setSearchInput] = useState("");
+  const [removeVisible, setRemoveVisible] = useState(false);
 
   // 검색 임시 api
   const getSearch = async (keyword: string) => {
@@ -24,16 +25,18 @@ const SearchBar = () => {
   ) => {
     console.log(event.target.value);
     setSearchInput(event.target.value);
+
+    if (event.target.value !== "") {
+      setRemoveVisible(true);
+    } else {
+      setRemoveVisible(false);
+    }
   };
 
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(getSearch(searchValue));
   };
-
-  // useEffect(() => {
-  //   console.log(peopleNum);
-  // }, []);
 
   return (
     <form action="" onSubmit={onSubmitHandler}>
@@ -42,6 +45,7 @@ const SearchBar = () => {
           <SearchInput
             value={searchValue}
             onChangeHandler={onChangeSearchHandler}
+            remove={removeVisible}
           />
           <CalendarInput />
           <GuestInput />

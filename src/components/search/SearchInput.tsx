@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import tw from "tailwind-styled-components";
 import { ReactComponent as SearchBlackIcon } from "../../static/image/SearchBlack.svg";
 import { ReactComponent as CancelIcon } from "../../static/image/Cancel.svg";
 
 interface SearchProps {
   value: string;
+  remove: boolean;
   onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput = ({ value, onChangeHandler }: SearchProps) => {
+const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const onRemoveValue = () => {
+    if (searchRef.current) searchRef.current.value = "";
+  };
+
   return (
     <>
       <SearchInputBox>
@@ -27,13 +34,17 @@ const SearchInput = ({ value, onChangeHandler }: SearchProps) => {
             className="flex-1 h-full pl-2 focus:outline-none border-0"
             onChange={onChangeHandler}
             value={value}
+            ref={searchRef}
           />
-          <button
-            type="button"
-            className="flex justify-center items-center absolute top-5 right-4 w-5 h-5"
-          >
-            <CancelIcon className=" w-4 h-4 text-tahiti" />
-          </button>
+          {remove && (
+            <button
+              type="button"
+              className="flex justify-center items-center absolute top-5 right-4 w-5 h-5"
+              onClick={onRemoveValue}
+            >
+              <CancelIcon className=" w-4 h-4 text-tahiti" />
+            </button>
+          )}
         </div>
       </SearchInputBox>
     </>
