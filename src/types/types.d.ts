@@ -11,8 +11,20 @@ declare module "react-query/devtools";
 declare module "react-uuid";
 declare module "react-use";
 
+interface Hotel {
+  hotel_name: string;
+  occupancy: {
+    base: 2;
+    max: 2 | 3 | 4 | 5 | 6;
+  };
+  rating: number;
+  price: number;
+  review: number;
+  image: "https://source.unsplash.com/random";
+}
+
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-export { LayoutProps };
+export { Hotel, LayoutProps };

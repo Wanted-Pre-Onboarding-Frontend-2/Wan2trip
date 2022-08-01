@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "../components/layout/Header";
-import SearchBar from "../components/layout/SearchBar";
+import SearchBar from "../components/search/SearchBar";
 import BackHeader from "../components/layout/BackHeader";
 import Layout from "../components/layout/Layout";
 import tw from "tailwind-styled-components";
 import "./home.css";
 import Card from "../common/Card";
 import { Link } from "react-router-dom";
+import HotelList from "../components/HotelList";
 const Home = () => {
   return (
     <Layout>
@@ -19,6 +20,7 @@ const Home = () => {
         {/* <Card />
         <Card />
         <Card /> */}
+        {/* <HotelList /> */}
       </div>
       asds 모든 기본 세팅은 Layout하나만 불러오면 되게
       <a className="aa">
