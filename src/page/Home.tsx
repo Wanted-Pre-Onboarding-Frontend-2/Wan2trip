@@ -20,7 +20,7 @@ const Home = () => {
         {/* <Card />
         <Card />
         <Card /> */}
-        {/* <HotelList /> */}
+        <HotelList />
       </div>
       asds 모든 기본 세팅은 Layout하나만 불러오면 되게
       <a className="aa">
