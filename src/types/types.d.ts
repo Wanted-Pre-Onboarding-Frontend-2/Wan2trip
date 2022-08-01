@@ -9,7 +9,7 @@ declare module "*.woff";
 declare module "postcss-nesting";
 declare module "react-query";
 declare module "react-query/devtools";
-
+declare module "react-uuid";
 interface LayoutProps {
   children: React.ReactNode;
 }

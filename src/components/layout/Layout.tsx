@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
 export default Layout;
 
 const GlobalLayout = tw.div`
-bg-gray-100 w-full h-auto min-h-screen max-w-5xl mx-auto bg-sky-200
+ w-full h-auto min-h-screen max-w-5xl mx-auto 
 `;
 
 const Inside = tw.div`
