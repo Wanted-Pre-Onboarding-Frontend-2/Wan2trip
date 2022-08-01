@@ -10,7 +10,6 @@ type Props = {
   renderAhead?: number;
 };
 
-// TODO: Padding 추가
 const VirtualScroll = ({
   Item,
   itemList,
