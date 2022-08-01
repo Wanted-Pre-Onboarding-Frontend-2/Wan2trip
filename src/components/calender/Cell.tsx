@@ -1,9 +1,10 @@
 import React from "react";
 import { DayState, pickDateState } from "../../store/global";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { setDate, format, getDay, isBefore, isSameMonth } from "date-fns";
+import { useRecoilState } from "recoil";
+import { setDate, format, isBefore, isSameMonth } from "date-fns";
 import tw from "tailwind-styled-components";
 import { useHighlightDate } from "../../hooks/useHighlightDate";
+
 type CellType = {
   value: Date | number;
   month: Date;
@@ -19,13 +20,12 @@ interface Cells {
 }
 
 const Cell = (props: CellType) => {
-  // console.log(props.value);
   const [pick, setPick] = useRecoilState(pickDateState);
   const { dateFilter } = useHighlightDate();
-  // console.log(dateFilter(props.value));
-
+  // console.log(pick.startDate?.toString() === props.value?.toString());
   const fixedToday = format(new Date(), "yyyy-MM-dd");
   const date = format(props.value, "d");
+
   const dateHighlights = () => {
     if (pick.startDate === null) {
       if (isBefore(props.value, new Date())) {
@@ -48,7 +48,7 @@ const Cell = (props: CellType) => {
       <EachCell
         className={
           fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 max-w-full cursor-pointer bg-blue-400"
+            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-full"
             : "w-14 h-14 max-w-full cursor-pointer"
         }
         thisdate={props.value}
@@ -69,9 +69,20 @@ export default Cell;
 
 const EachCell = tw.div<Cells>`
 w-full
-${(props: Cells) => props.startpicked === props.thisdate && "bg-indigo-600"}
-  ${(props: Cells) => props.endpicked === props.thisdate && "bg-indigo-600"}
-    ${(props: Cells) => props.highlights === 1 && "bg-indigo-500"}
-    ${(props: Cells) => props.issame === 0 && "text-gray-400"}
-    ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
+${(props: Cells) =>
+  props.startpicked?.toString() === props.thisdate?.toString() &&
+  props.highlights === 1
+    ? "rounded-l-full"
+    : props.startpicked?.toString() === props.thisdate?.toString() &&
+      "rounded-full outline-4 outline-dashed outline-gray-400"}
+${(props: Cells) =>
+  props.endpicked?.toString() === props.thisdate?.toString() &&
+  props.highlights === 1
+    ? "rounded-r-full"
+    : props.endpicked?.toString() === props.thisdate?.toString() &&
+      "rounded-full outline-gray-400"}
+
+${(props: Cells) => props.highlights === 1 && "bg-main"}
+${(props: Cells) => props.issame === 0 && "text-gray-400"}
+${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
 `;
