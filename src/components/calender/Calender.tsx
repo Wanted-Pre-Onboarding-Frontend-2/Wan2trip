@@ -5,6 +5,7 @@ import { getMonth, add, getDay, getYear } from "date-fns";
 import { DayState } from "../../store/global";
 import { useRecoilState } from "recoil";
 import { months, daysShort } from "../../static/constant/calenderValues";
+import CalenderHeader from "./CalenderHeader";
 
 import Table from "./Table";
 export const Calender = () => {
@@ -21,19 +22,16 @@ export const Calender = () => {
       <button type="button" onClick={() => setToday(add(today, { months: 1 }))}>
         다음달
       </button>
-      <button>
-        {getYear(today)} {months[getMonth(today)]}
+      <button type="button" onClick={() => setToday(new Date())}>
+        이번달
       </button>
 
       <div className="text-center mx-auto w-full">
-        <div className="flex w-full mx-auto justify-center gap-7">
-          {daysShort.map((day, i) => (
-            <div key={uid(i)}>
-              <div>{day}</div>
-            </div>
-          ))}
-        </div>
-        <Table />
+        <CalenderHeader today={today} />
+        <Table today={today} />
+
+        <CalenderHeader today={add(today, { months: 1 })} />
+        <Table today={add(today, { months: 1 })} />
       </div>
     </div>
   );
