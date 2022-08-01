@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/layout/Header";
-import SearchBar from "../components/layout/SearchBar";
+import SearchBar from "../components/search/SearchBar";
 import BackHeader from "../components/layout/BackHeader";
 import Layout from "../components/layout/Layout";
 import tw from "tailwind-styled-components";
