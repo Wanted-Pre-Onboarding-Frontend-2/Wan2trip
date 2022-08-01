@@ -48,8 +48,8 @@ const Cell = (props: CellType) => {
       <EachCell
         className={
           fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 cursor-pointer bg-blue-400"
-            : "w-14 h-14 cursor-pointer"
+            ? "w-14 h-14 max-w-full cursor-pointer bg-blue-400"
+            : "w-14 h-14 max-w-full cursor-pointer"
         }
         thisdate={props.value}
         highlights={dateFilter(props.value) ? 1 : 0}
@@ -68,6 +68,7 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
+w-full
 ${(props: Cells) => props.startpicked === props.thisdate && "bg-indigo-600"}
   ${(props: Cells) => props.endpicked === props.thisdate && "bg-indigo-600"}
     ${(props: Cells) => props.highlights === 1 && "bg-indigo-500"}

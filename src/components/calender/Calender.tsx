@@ -46,7 +46,7 @@ export const Calender = () => {
           오늘 : {format(new Date(), "yyyy년 M월 d일")}
         </button>
       </div>
-      <div className="text-center mx-auto w-full flex flex-col  md:flex-row justify-between max-w-4xl flex-wrap pb-24">
+      <div className="text-center mx-auto w-full flex flex-col  ip:flex-row ip:justify-between max-w-4xl flex-wrap pb-24">
         {date.map((day) => (
           <div key={uid(day)} ref={setLastElement}>
             <CalenderHeader today={day} />
