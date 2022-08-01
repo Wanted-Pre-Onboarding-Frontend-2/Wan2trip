@@ -333,6 +333,7 @@ const Result = () => {
       <VirtualScroll
         Item={Card}
         itemList={DUMMY_DATA} // fetch한 length로 변경할 예정
+        itemCount={DUMMY_DATA.length}
         itemHeight={300}
         columnGap={10}
       />
