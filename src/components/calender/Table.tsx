@@ -4,18 +4,20 @@ import { generateCalendar } from "../../hooks/getMonth";
 import { DayState } from "../../store/global";
 import { useRecoilState } from "recoil";
 import Cell from "./Cell";
-// type TableType = {
-//   className: string;
-// };
 
-const Table = () => {
-  const [today, setToday] = useRecoilState(DayState);
+type TableType = {
+  today: Date;
+};
+
+const Table = (props: TableType) => {
+  // const [today, setToday] = useRecoilState(DayState);
+
   return (
     <>
-      {generateCalendar(today).map((date, i) => (
+      {generateCalendar(props.today).map((date, i) => (
         <div key={i} className="flex justify-center items-center">
           {date.map((day, i) => {
-            return <Cell key={uid(i)} value={day} />;
+            return <Cell key={uid(i)} value={day} month={props.today} />;
           })}
         </div>
       ))}
