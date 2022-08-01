@@ -15,11 +15,7 @@ const Table = () => {
       {generateCalendar(today).map((date, i) => (
         <div key={i} className="flex justify-center items-center">
           {date.map((day, i) => {
-            return (
-              <Cell key={uid(i)} className="w-14 h-14" value={day}>
-                {day}
-              </Cell>
-            );
+            return <Cell key={uid(i)} value={day} />;
           })}
         </div>
       ))}

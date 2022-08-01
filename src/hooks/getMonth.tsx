@@ -17,6 +17,7 @@ export const generateCalendar = (firstDateOfMonth: Date): number[][] => {
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
   const endDate = endOfWeek(monthEnd);
+  const a = format(monthStart, "yyyy-MM");
   const [aa, setAa] = React.useState<string>();
 
   const getDay = (date: Date) => {
@@ -29,7 +30,7 @@ export const generateCalendar = (firstDateOfMonth: Date): number[][] => {
     const startArray: any = [];
     const toStart = eachDayOfInterval({ start: startDate, end: date });
     toStart.forEach((day) => {
-      startArray.push(parseInt(format(day, "d")));
+      startArray.push(day);
     });
     return startArray;
   };
@@ -38,12 +39,12 @@ export const generateCalendar = (firstDateOfMonth: Date): number[][] => {
     const endArray: any = [];
     const toStart = eachDayOfInterval({ start: monthEnd, end: endDate });
     toStart.forEach((day) => {
-      endArray.push(parseInt(format(day, "d")));
+      endArray.push(day);
     });
     return endArray;
   };
   // console.log(getDay(monthStart));
-  const calendar: number[][] = [[]];
+  const calendar: any[][] = [[]];
   for (
     let i = 0;
     i < (getDay(monthStart) === 7 ? 0 : getDay(monthStart));
@@ -53,7 +54,9 @@ export const generateCalendar = (firstDateOfMonth: Date): number[][] => {
   }
 
   while (isSameMonth(monthStart, firstDateOfMonth)) {
-    calendar[calendar.length - 1].push(monthStart.getDate());
+    calendar[calendar.length - 1].push(
+      new Date(`${a}-${monthStart.getDate()}`)
+    );
 
     if (getDay(monthStart) % 7 === 6) {
       calendar.push([]);
