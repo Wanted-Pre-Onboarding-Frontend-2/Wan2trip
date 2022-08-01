@@ -15,6 +15,7 @@ interface Cells {
   endpicked: Date;
   highlights: number;
   issame: number;
+  isbefore: number;
 }
 
 const Cell = (props: CellType) => {
@@ -55,6 +56,7 @@ const Cell = (props: CellType) => {
         startpicked={pick.startDate}
         endpicked={pick.endDate}
         issame={isSameMonth(props.value, props.month) ? 1 : 0}
+        isbefore={isBefore(props.value, new Date()) ? 1 : 0}
         onClick={() => dateHighlights()}
       >
         {date}
@@ -70,4 +72,5 @@ ${(props: Cells) => props.startpicked === props.thisdate && "bg-indigo-600"}
   ${(props: Cells) => props.endpicked === props.thisdate && "bg-indigo-600"}
     ${(props: Cells) => props.highlights === 1 && "bg-indigo-500"}
     ${(props: Cells) => props.issame === 0 && "text-gray-400"}
+    ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
 `;
