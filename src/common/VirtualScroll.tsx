@@ -35,7 +35,7 @@ const VirtualScroll = ({
   // issue: 스크롤 내린 다음 새로고침 시 y축이 살아있어 empty box 생성
   // TODO: => scroll to top시키거나 scroll restoration(얘는 이슈 해결 못할 수 있음) 하기
 
-  const containerHeight = (itemHeight + columnGap) * itemCount + columnGap * 2;
+  const containerHeight = (itemHeight + columnGap) * itemCount;
 
   const startIndex = Math.max(
     Math.floor(offsetY / (itemHeight + columnGap)) - renderAhead,
