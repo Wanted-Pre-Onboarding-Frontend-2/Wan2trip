@@ -5,15 +5,15 @@ export const DayState = atom({
   default: new Date(),
 });
 
-export const weekdayArray = atom({
-  key: "weekdayArray",
-  default: [""],
+export const dateArray = atom<Date[]>({
+  key: "dateArray",
+  default: [],
 });
 
-export const timeState = atom({
-  key: "timeState",
+export const pickDateState = atom<any>({
+  key: "pickDateState",
   default: {
-    time: 0,
-    startTime: 0,
+    startDate: null,
+    endDate: null,
   },
 });
