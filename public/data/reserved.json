@@ -1,0 +1,16 @@
+{
+  "reserved": [
+    {
+      "hotel_name": "에코랜드 호텔",
+      "occupancy": {
+        "base": 2,
+        "max": 3
+      },
+      "image": "https://source.unsplash.com/random",
+      "address": "중구 동호로 249 서울특별시",
+      "price": 320337,
+      "review": 1807,
+      "rating": 1
+    }
+  ]
+}
