@@ -8,6 +8,7 @@ module.exports = {
     screens: {
       sm: "640px",
       md: "768px",
+      ip: "820px",
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
@@ -132,6 +133,7 @@ module.exports = {
     backgroundColor: ({ theme }) => theme("colors"),
     backgroundImage: {
       none: "none",
+      map: "url('./static/image/map.jpg')",
       "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
       "gradient-to-tr":
         "linear-gradient(to top right, var(--tw-gradient-stops))",

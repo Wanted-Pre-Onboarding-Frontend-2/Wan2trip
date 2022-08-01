@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { add } from "date-fns";
 
 export const DayState = atom({
   key: "cutTime",
@@ -7,7 +8,12 @@ export const DayState = atom({
 
 export const dateArray = atom<Date[]>({
   key: "dateArray",
-  default: [],
+  default: [
+    new Date(),
+    add(new Date(), { months: 1 }),
+    add(new Date(), { months: 2 }),
+    add(new Date(), { months: 3 }),
+  ],
 });
 
 export const pickDateState = atom<any>({
