@@ -1,71 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/layout/SearchBar";
 import Layout from "../components/layout/Layout";
-import tw from "tailwind-styled-components";
+// import tw from "tailwind-styled-components";
 import Card from "../common/Card";
 import Header from "../components/layout/Header";
+import Tag from "../components/result/Tag";
+import Checkbox from "../components/result/Checkbox";
+import { ReactComponent as Location } from "../static/image/Location.svg";
+import { ReactComponent as DownArrow } from "../static/image/DownArrow.svg";
+import { ReactComponent as LeftArrow } from "../static/image/LeftArrow.svg";
 
 const Result = () => {
+  const [isMapActive, setIsMapActive] = useState(true);
   return (
     <Layout>
       <Header />
       <div className="-mt-10">
         <SearchBar />
       </div>
-      <div className="flex bg-white">
-        <div className="flex-col w-1/3">
-          <div className="w-72 flex flex-col justify-center items-center h-16 rounded text-center text-base font-medium border-slate-300 border bg-zinc-200">
-            지도보기
+      <div className="flex p-10 bg-white">
+        <div className="flex-col w-5/12">
+          <div
+            className="flex h-16 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
+            onClick={() => {
+              setIsMapActive(!isMapActive);
+            }}
+          >
+            {isMapActive ? (
+              <div className="flex items-center justify-center w-full h-full bg-map">
+                <Location />
+                지도보기
+              </div>
+            ) : (
+              <div className="flex items-center justify-center w-full h-full ">
+                <LeftArrow />
+                목록으로 돌아가기
+              </div>
+            )}
           </div>
-          <div className="text-lg font-medium my-6">관련태그</div>
-          <ul className="flex flex-wrap m-0 p-0">
-            <li className="w-36 h-12 rounded-3xl text-slate-300 border-slate-300 border flex flex-col justify-center items-center cursor-pointer">
-              #비지니스
-            </li>
-            <li>#쇼핑</li>
-            <li>#가족</li>
-            <li>#럭셔리</li>
-            <li>#스파</li>
-            <li>#반려동물</li>
-            <li>#시티</li>
-            <li>#골프</li>
-            <li>#친환경</li>
-            <li>#카지노</li>
-            <li>#자연</li>
-            <li>#커플</li>
-            <li>#스키</li>
-            <li>#고급/럭셔리</li>
-            <li>#부티크</li>
-            <li>#가족</li>
-            <li>#단체/MT/워크샵</li>
-            <li>#로맨틱</li>
-            <li>#풀빌라</li>
-            <li>#한옥</li>
-            <li>#레지던스</li>
-            <li>#부티크</li>
-            <li>#어드벤처</li>
-            <li>#애견펜션</li>
-            <li>#와이너리</li>
-          </ul>
+          <Tag />
+          <div className="my-6 text-lg font-medium">가격 범위</div>
+          <div className="pb-10 border-b-2 border-slate-200">
+            <input
+              type="range"
+              id="price"
+              name="price"
+              min="0"
+              max="99999999"
+              defaultValue="Initial value"
+              step="10"
+              className="accent-[#FF375C] w-10/12"
+            />
+          </div>
+          <Checkbox title="등급" />
+          <Checkbox title="리뷰 평가" />
         </div>
-        <div className="w-2/3 border-black px-50">
-          <div className="mb-18 rounded shadow-md h-24 divide-y divide-slate-200 bg-white">
-            <div className="h-14 flex items-center pl-5 font-medium	">
+        <div className="w-9/12 border-black px-50">
+          <div className="h-24 bg-white divide-y rounded shadow-md mb-18 divide-slate-200">
+            <div className="flex items-center pl-5 font-medium h-14 ">
               1,691개 호텔 중 예약가능 호텔 419개
             </div>
-            <ul className="flex h-8 items-center justify-evenly m-0 p-0">
-              <li className="hover:text-[#FF375C] cursor-pointer">인기순</li>
-              <li>가격</li>
-              <li>등급</li>
-              <li>할인우선순</li>
-              <li>평가순</li>
+            <ul className="flex items-center h-8 p-0 m-0 text-sm justify-evenly">
+              <li className="w-1/5 hover:text-[#FF375C] cursor-pointer flex justify-center border-r-2 border-slate-300">
+                인기순
+              </li>
+              <li className="flex justify-center w-1/5">
+                가격
+                <DownArrow />
+              </li>
+              <li className="flex justify-center w-1/5">
+                등급
+                <DownArrow />
+              </li>
+              <li className="flex justify-center w-1/5">할인우선순</li>
+              <li className="flex justify-center w-1/5">평가순</li>
             </ul>
           </div>
-          <div className="flex flex-col max-w-3xl mx-auto justify-center items-center pt-10 gap-10">
-            <Card />
-            <Card />
-            <Card />
-          </div>
+          {isMapActive ? (
+            <div className="">
+              <div className="flex flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+                <Card />
+                <Card />
+                <Card />
+              </div>
+            </div>
+          ) : (
+            <div className="">지도API?</div>
+          )}
         </div>
       </div>
     </Layout>
