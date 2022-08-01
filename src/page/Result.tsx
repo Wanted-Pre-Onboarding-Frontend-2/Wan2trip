@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import SearchBar from "../components/layout/SearchBar";
 import Layout from "../components/layout/Layout";
