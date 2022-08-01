@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   @apply bg-gray-100;

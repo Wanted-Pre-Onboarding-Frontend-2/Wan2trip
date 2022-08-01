@@ -4,6 +4,7 @@ import Home from "../page/Home";
 import Result from "../page/Result";
 import BookedList from "../page/BookedList";
 import { RecoilRoot } from "recoil";
+import Calender from "page/Calendar";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
           })}
           <Route path="/result" element={<Result />} />
           <Route path="/booked" element={<BookedList />} />
+          <Route path="/cal" element={<Calender />} />
         </Routes>
       </RecoilRoot>
     </BrowserRouter>
