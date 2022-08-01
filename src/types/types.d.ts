@@ -1,5 +1,4 @@
 import React from "react";
-import { ScheduleList } from "../../types/schedule";
 
 declare module "*.jpg";
 declare module "*.png";
@@ -10,6 +9,8 @@ declare module "postcss-nesting";
 declare module "react-query";
 declare module "react-query/devtools";
 declare module "react-uuid";
+declare module "react-use";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
