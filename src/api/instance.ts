@@ -4,7 +4,7 @@ import axios from "axios";
 //   "eyJhbGciOiJIUzI1NiJ9.YWFhQGFhYS5jb20.xn-h9ZJf-8YRLlfZ6fou2sHi9r6VQoep5Y0J27W2bCk";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:8000",
 });
 
 // const token = localStorage.getItem('token');

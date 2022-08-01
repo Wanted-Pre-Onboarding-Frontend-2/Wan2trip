@@ -8,7 +8,7 @@ type ButtonType = {
 };
 
 const Button = (props: ButtonType) => {
-  const init = `bg-engall-blue w-[13.75rem] h-[3.125rem] 
+  const init = `bg-blue-200 w-[13.75rem] h-[3.125rem] 
     rounded-md shadow-md font-[1.25rem] text-white font-karla font-semibold
     disabled:bg-gray-200`;
 
