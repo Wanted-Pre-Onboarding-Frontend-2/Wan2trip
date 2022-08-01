@@ -132,6 +132,7 @@ module.exports = {
     backgroundColor: ({ theme }) => theme("colors"),
     backgroundImage: {
       none: "none",
+      map: "url('./static/image/map.jpg')",
       "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
       "gradient-to-tr":
         "linear-gradient(to top right, var(--tw-gradient-stops))",
