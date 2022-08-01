@@ -1,8 +1,6 @@
 import React from "react";
 import { uid } from "react-uid";
 import { generateCalendar } from "../../hooks/getMonth";
-import { DayState } from "../../store/global";
-import { useRecoilState } from "recoil";
 import Cell from "./Cell";
 
 type TableType = {
@@ -10,8 +8,6 @@ type TableType = {
 };
 
 const Table = (props: TableType) => {
-  // const [today, setToday] = useRecoilState(DayState);
-
   return (
     <>
       {generateCalendar(props.today).map((date, i) => (
