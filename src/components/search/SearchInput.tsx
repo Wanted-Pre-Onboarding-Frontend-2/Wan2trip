@@ -11,6 +11,7 @@ interface SearchProps {
 
 const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
   const searchRef = useRef<HTMLInputElement>(null);
+  const [open, setOpen] = useState(false);
 
   const onRemoveValue = () => {
     if (searchRef.current) searchRef.current.value = "";
@@ -46,6 +47,21 @@ const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
             </button>
           )}
         </div>
+        {open && (
+          <SearchListBox>
+            <ul className="overflow-x-hidden overflow-y-auto max-h-56">
+              <li className="p-2 hover:bg-slate-200 cursor-pointer">
+                Search List
+              </li>
+              <li className="p-2 hover:bg-slate-200 cursor-pointer">
+                Search List
+              </li>
+              <li className="p-2 hover:bg-slate-200 cursor-pointer">
+                Search List
+              </li>
+            </ul>
+          </SearchListBox>
+        )}
       </SearchInputBox>
     </>
   );
@@ -56,3 +72,6 @@ export default SearchInput;
 const SearchInputBox = tw.div`
 w-1/3 relative h-full bg-white border-r border-solid border-gray-300 rounded-l-md
 `;
+
+const SearchListBox = tw.div`
+absolute top-18 left-0 p-4 w-80 bg-white shadow-lg rounded`;
