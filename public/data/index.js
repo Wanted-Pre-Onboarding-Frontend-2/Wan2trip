@@ -1,11 +1,9 @@
-const schedule = require("./schedule");
-const hotel = require("./hotel");
-const users = require("./user");
+const hotels = require('./hotels');
+const reserved = require('./reserved');
 
 const combinedRoutes = {
-  schedule: schedule.card,
-  hotel,
-  users,
+  hotels: hotels.hotels,
+  reserved: reserved.reserved,
 };
 
 module.exports = () => combinedRoutes;
