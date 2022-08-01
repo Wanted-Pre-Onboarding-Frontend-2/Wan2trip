@@ -37,6 +37,8 @@ const GuestInput = () => {
           setChildrenNum(childrenNum - 1);
         }
         break;
+      default:
+        break;
     }
   };
 
