@@ -5,9 +5,13 @@ import SearchInput from "./SearchInput";
 import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
 import axios from "axios";
+import { SearchData } from "../../store/search";
+import { useRecoilState } from "recoil";
 
 const SearchBar = () => {
   const [searchValue, setSearchInput] = useState("");
+  const [removeVisible, setRemoveVisible] = useState(false);
+  const [searchData, setSearchData] = useRecoilState(SearchData);
 
   // 검색 임시 api
   const getSearch = async (keyword: string) => {
@@ -15,7 +19,7 @@ const SearchBar = () => {
       const response = await axios.get(
         `http://localhost:8000/hotels?q=${keyword}`
       );
-      console.log(response.data);
+      return response.data;
     } catch {}
   };
 
@@ -24,16 +28,18 @@ const SearchBar = () => {
   ) => {
     console.log(event.target.value);
     setSearchInput(event.target.value);
+
+    if (event.target.value !== "") {
+      setRemoveVisible(true);
+    } else {
+      setRemoveVisible(false);
+    }
   };
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(getSearch(searchValue));
+    setSearchData(await getSearch(searchValue));
   };
-
-  // useEffect(() => {
-  //   console.log(peopleNum);
-  // }, []);
 
   return (
     <form action="" onSubmit={onSubmitHandler}>
@@ -42,6 +48,7 @@ const SearchBar = () => {
           <SearchInput
             value={searchValue}
             onChangeHandler={onChangeSearchHandler}
+            remove={removeVisible}
           />
           <CalendarInput />
           <GuestInput />

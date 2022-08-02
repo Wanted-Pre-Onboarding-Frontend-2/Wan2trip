@@ -1,12 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import tw from "tailwind-styled-components";
 import UserBlackIcon from "../../static/image/User.svg";
 import GuestCounter from "./GuestCounter";
 import { useRecoilState } from "recoil";
 import { AdultNumber, ChildrenNumber } from "store/search";
-import { useEffect } from "@storybook/addons";
-
-interface GuestProps {}
 
 const maxPeople = 8;
 
@@ -18,7 +15,15 @@ const GuestInput = () => {
   const guestRef = useRef<any>();
 
   const onClickOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setOpen(!open);
+    setOpen(true);
+  };
+
+  const onClickClose: any = (event: React.MouseEvent<HTMLElement>) => {
+    if (guestRef.current && !guestRef.current.contains(event.target)) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
   };
 
   const onClickCounter = (counter: string, people: string) => {
@@ -42,8 +47,15 @@ const GuestInput = () => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("click", onClickClose);
+    return () => {
+      window.addEventListener("click", onClickClose);
+    };
+  }, []);
+
   return (
-    <GuestBox>
+    <GuestBox ref={guestRef}>
       <img src={UserBlackIcon} className="ml-4 w-6 h-6" alt="" />
       <div
         className="flex flex-row item-center pl-4 w-1/2 h-full"
@@ -56,7 +68,7 @@ const GuestInput = () => {
         </div>
       </div>
       {open && (
-        <GuestNumberBox ref={guestRef}>
+        <GuestNumberBox>
           <div className="pt-4">
             <strong className="block pb-2 border-b">인원</strong>
             <div className="pb-6">
