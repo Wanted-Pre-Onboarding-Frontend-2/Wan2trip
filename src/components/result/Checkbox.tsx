@@ -17,7 +17,7 @@ const Checkbox = (props: string | any) => {
   return (
     <>
       <div className="my-6 text-lg font-medium">{props.title}</div>
-      <div className="flex flex-col pb-10 border-b-2 justify-self-start border-slate-200">
+      <div className="flex flex-col pb-10 border-b-2 justify-self-start border-slate-200 last:border-b-0">
         {isGrade.map((value, index) => (
           <label className="w-21" key={index}>
             <input

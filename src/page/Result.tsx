@@ -378,7 +378,7 @@ const Result = () => {
           </div>
           {isMapActive ? (
             <div className="">
-              <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+              <div className="flex flex-col justify-center max-w-3xl gap-10 pt-10 mx-auto">
                 <VirtualScroll
                   Item={Card}
                   itemList={DUMMY_DATA} // fetch한 data로 변경할 예정
