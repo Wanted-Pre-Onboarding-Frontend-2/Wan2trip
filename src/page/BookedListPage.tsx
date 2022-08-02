@@ -2,15 +2,17 @@ import React from "react";
 import Header from "../components/layout/Header";
 import SearchBar from "../components/search/SearchBar";
 import Layout from "../components/layout/Layout";
+import BookedList from "../components/bookedList/BookedList";
+
 // import tw from "tailwind-styled-components";
 
-const BookedList = () => {
+const BookedListPage = () => {
   return (
     <Layout>
       <Header />
-      <div>예약된거 확인하는 페이지</div>
+      <BookedList />
     </Layout>
   );
 };
 
-export default BookedList;
+export default BookedListPage;
