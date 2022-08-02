@@ -4,8 +4,10 @@
       "hotel_name": "에코랜드 호텔",
       "occupancy": {
         "base": 2,
-        "max": 3
+        "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 4,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 320337,
@@ -16,8 +18,10 @@
       "hotel_name": "파르나스 호텔 제주",
       "occupancy": {
         "base": 2,
-        "max": 2
+        "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 2,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 120077,
@@ -28,8 +32,10 @@
       "hotel_name": "고창 웰파크시티 힐링카운티",
       "occupancy": {
         "base": 2,
-        "max": 2
+        "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 2,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 536383,
@@ -40,8 +46,10 @@
       "hotel_name": "사우 베이 리조트",
       "occupancy": {
         "base": 2,
-        "max": 2
+        "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 2,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 378996,
@@ -54,6 +62,8 @@
         "base": 2,
         "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 4,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 560194,
@@ -64,8 +74,10 @@
       "hotel_name": "Heron's Nest by Sea Scape Properties",
       "occupancy": {
         "base": 2,
-        "max": 2
+        "max": 4
       },
+      "occupancyBase": 2,
+      "occupancyMax": 2,
       "image": "https://source.unsplash.com/random",
       "address": "중구 동호로 249 서울특별시",
       "price": 535431,

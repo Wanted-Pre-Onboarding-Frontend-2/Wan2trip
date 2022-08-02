@@ -9,7 +9,7 @@ import App from "App";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      suspense: true,
+      suspense: false,
       staleTime: 1000 * 60,
     },
   },

@@ -10,6 +10,11 @@ export const ChildrenNumber = atom({
   default: 0,
 });
 
+export const PeopleNumber = atom({
+  key: "PeopleNumber",
+  default: 0,
+});
+
 export const SearchData = atom({
   key: "SearchData",
   default: [],
