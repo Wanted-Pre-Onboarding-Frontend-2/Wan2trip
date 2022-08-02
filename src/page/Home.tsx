@@ -14,7 +14,7 @@ const Home = () => {
       <Header />
       <SearchBar />
       <BackHeader />
-      <div className="flex flex-col max-w-3xl mx-auto justify-center items-center pt-10 gap-10 mt-24">
+      <div className="flex flex-col items-center justify-center w-full gap-10 pt-10 mx-auto mt-24">
         <Link to="/booked">예약페이지</Link>
         <Link to="/result">검색결과페이지</Link>
         {/* <Card />

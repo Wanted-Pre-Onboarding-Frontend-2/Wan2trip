@@ -6,16 +6,16 @@ import { eachDayOfInterval, isSameDay } from "date-fns";
 export const useHighlightDate = () => {
   const pick = useRecoilValue(pickDateState);
   // console.log(pick.startDate);
-  const dd: any =
+  const highlightedArray: any =
     pick.startDate !== null && pick.endDate !== null
       ? eachDayOfInterval({ start: pick.startDate, end: pick.endDate })
       : "";
 
   const dateFilter = (date: any) => {
     let a = false;
-    if (dd) {
-      for (let i = 0; i < dd.length; i++) {
-        if (isSameDay(dd[i], date)) {
+    if (highlightedArray) {
+      for (let i = 0; i < highlightedArray.length; i++) {
+        if (isSameDay(highlightedArray[i], date)) {
           a = true;
           break;
         }
@@ -23,5 +23,5 @@ export const useHighlightDate = () => {
       return a;
     }
   };
-  return { dd, dateFilter };
+  return { highlightedArray, dateFilter };
 };

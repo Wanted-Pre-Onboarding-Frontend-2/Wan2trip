@@ -1,14 +1,19 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 // import { ReactComponent as Logo } from "../../static/image/Logo.svg";
+import Back from "../../static/image/background.jpg";
 import { Link } from "react-router-dom";
 
 const BackHeader = () => {
-  return <EngSkyHeader></EngSkyHeader>;
+  return (
+    <EngSkyHeader>
+      <img src={Back} alt="" />
+    </EngSkyHeader>
+  );
 };
 
 export default BackHeader;
 
 const EngSkyHeader = tw.div`
-absolute h-80 w-full bg-gray-300 top-0 max-w-5xl flex items-end
+absolute h-1/2 w-full bg-gray-300 top-0 left-0 flex items-end
 `;

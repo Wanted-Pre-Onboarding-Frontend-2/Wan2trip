@@ -4,11 +4,13 @@ import { ReactComponent as CalendarIcon } from "../../static/image/Calendar.svg"
 import { Modal } from "../../common/Modal";
 import { useModal } from "../../hooks/useModal";
 import { Calender } from "../calender/Calender";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { format, add } from "date-fns";
 import { pickDateState } from "../../store/global";
+import { useHighlightDate } from "../../hooks/useHighlightDate";
 const CalendarInput = () => {
   const [pick, setPick] = useRecoilState(pickDateState);
+  const { highlightedArray } = useHighlightDate();
   const { isShown, toggle } = useModal();
   const content = <Calender />;
   return (
@@ -26,7 +28,9 @@ const CalendarInput = () => {
             </strong>
           </div>
         </div>
-        <span className="block w-10 text-sm text-slate-400">1박</span>
+        <span className="block w-10 text-sm text-slate-400">
+          {highlightedArray.length > 1 ? highlightedArray.length - 1 : 0}박
+        </span>
         <div className="flex flex-row justify-end item-center px-3 w-1/2 h-full">
           <div className="self-center">
             <span className="block text-xs text-slate-400">체크아웃</span>
@@ -41,7 +45,12 @@ const CalendarInput = () => {
           </div>
         </div>
       </CalendarBox>
-      <Modal isShown={isShown} hide={toggle} modalContent={content} />
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={content}
+        headerText={`${format(new Date(), "yyyy년 M월 d일")} 예약 현황`}
+      />
     </>
   );
 };

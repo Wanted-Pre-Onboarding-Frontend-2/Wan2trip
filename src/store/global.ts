@@ -23,3 +23,8 @@ export const pickDateState = atom<any>({
     endDate: null,
   },
 });
+
+export const ModalState = atom({
+  key: "ModalState",
+  default: false,
+});

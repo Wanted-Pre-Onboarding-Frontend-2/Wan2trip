@@ -25,7 +25,7 @@ const Sort = () => {
           ) : (
             <li
               key={index}
-              className="w-1/5 hover:text-[#FF375C] cursor-pointer flex justify-center border-r-2 border-slate-300"
+              className="w-1/5 hover:text-[#FF375C] cursor-pointer flex justify-center border-r-2 border-slate-300 last:border-r-0"
             >
               {value}
             </li>

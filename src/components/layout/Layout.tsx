@@ -1,19 +1,36 @@
 import React from "react";
 import { LayoutProps } from "../../types/types";
 import tw from "tailwind-styled-components";
-
-import Header from "./Header";
+import { useModal } from "../../hooks/useModal";
+import BackHeader from "./BackHeader";
+import { Link, useLocation } from "react-router-dom";
+import { moveToTop } from "../../hooks/moveToTop";
+type Modal = {
+  isshown: number;
+};
 
 const Layout = ({ children }: LayoutProps) => {
-  return <GlobalLayout>{children}</GlobalLayout>;
+  const { isShown, toggle } = useModal();
+  const location = useLocation();
+  // console.log(isShown);
+  return (
+    <>
+      {location.pathname === "/" ? <BackHeader /> : ""}
+      <MoveToTop onClick={moveToTop}>top</MoveToTop>
+      <GlobalLayout isshown={isShown ? 1 : 0}>{children}</GlobalLayout>
+    </>
+  );
 };
 
 export default Layout;
 
-const GlobalLayout = tw.div`
+const GlobalLayout = tw.div<Modal>`
  w-full h-auto min-h-screen max-w-5xl mx-auto 
+ ${(props: Modal) =>
+   props.isshown === 1 && "h-full fixed top-0 left-0 right-0 mx-auto"}
+ ${(props: Modal) => props.isshown === 0 && "h-auto min-h-screen"}
 `;
 
-const Inside = tw.div`
-mt-16 w-full bg-sky-200 h-screen
+const MoveToTop = tw.button`
+fixed bottom-5 right-5
 `;
