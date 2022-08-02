@@ -2,7 +2,7 @@ interface Hotel {
   hotel_name: string;
   occupancy: {
     base: number;
-    max: 2 | 3 | 4 | 5 | 6;
+    max: number;
   };
   image: string;
   address: string;
