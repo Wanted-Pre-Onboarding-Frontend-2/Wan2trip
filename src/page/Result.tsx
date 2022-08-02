@@ -7,8 +7,8 @@ import Card from "../common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import Tag from "../components/result/Tag";
 import Checkbox from "../components/result/Checkbox";
+import Sort from "../components/result/Sort";
 import { ReactComponent as Location } from "../static/image/Location.svg";
-import { ReactComponent as DownArrow } from "../static/image/DownArrow.svg";
 import { ReactComponent as LeftArrow } from "../static/image/LeftArrow.svg";
 
 // TODO: fetch 데이터로 변경
@@ -335,14 +335,6 @@ const Result = () => {
       <div className="-mt-10">
         <SearchBar />
       </div>
-      <div>검색 결과 페이지</div>
-      <VirtualScroll
-        Item={Card}
-        itemList={DUMMY_DATA} // fetch한 data로 변경할 예정
-        itemCount={DUMMY_DATA.length}
-        itemHeight={300}
-        columnGap={10}
-      />
       <div className="flex p-10 bg-white">
         <div className="flex-col w-5/12">
           <div
@@ -381,32 +373,19 @@ const Result = () => {
           <Checkbox title="리뷰 평가" />
         </div>
         <div className="w-9/12 border-black px-50">
-          <div className="h-24 bg-white divide-y rounded shadow-md mb-18 divide-slate-200">
-            <div className="flex items-center pl-5 font-medium h-14 ">
-              1,691개 호텔 중 예약가능 호텔 419개
-            </div>
-            <ul className="flex items-center h-8 p-0 m-0 text-sm justify-evenly">
-              <li className="w-1/5 hover:text-[#FF375C] cursor-pointer flex justify-center border-r-2 border-slate-300">
-                인기순
-              </li>
-              <li className="flex justify-center w-1/5">
-                가격
-                <DownArrow />
-              </li>
-              <li className="flex justify-center w-1/5">
-                등급
-                <DownArrow />
-              </li>
-              <li className="flex justify-center w-1/5">할인우선순</li>
-              <li className="flex justify-center w-1/5">평가순</li>
-            </ul>
+          <div className="relative h-24 bg-white divide-y rounded shadow-md divide-slate-200">
+            <Sort />
           </div>
           {isMapActive ? (
             <div className="">
               <div className="flex flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
-                <Card />
-                <Card />
-                <Card />
+                    <VirtualScroll
+                     Item={Card}
+                     itemList={DUMMY_DATA} // fetch한 data로 변경할 예정
+                     itemCount={DUMMY_DATA.length}
+                     itemHeight={300}
+                     columnGap={10}
+                   />
               </div>
             </div>
           ) : (
@@ -417,5 +396,4 @@ const Result = () => {
     </Layout>
   );
 };
-
 export default Result;

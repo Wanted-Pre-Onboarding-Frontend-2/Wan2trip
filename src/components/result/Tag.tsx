@@ -32,32 +32,20 @@ const Tag = () => {
   return (
     <>
       <div className="my-6 text-lg font-medium">관련태그</div>
-      {/* <ul className="flex flex-wrap w-full p-0 pb-10 m-0 font-semibold border-b-2 text-slate-300 border-slate-200">
+      <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
         {tags.map((tag, index) => (
-          <li
-            key={index}
-            className={`${
-              isTagActive ? "" : "text-[#FF375C] border-[#FF375C] bg-[#FEEEF1]"
-            } w-36 h-12 rounded-3xl border-slate-300 border flex flex-col justify-center items-center cursor-pointer m-1`}
-            onClick={() => {
-              setIsTagActive(!isTagActive);
-            }}
-          >
-            {tag}
-          </li>
-        ))}
-      </ul> */}
-      <div className="flex flex-wrap w-full p-0 pb-10 m-0 font-semibold border-b-2 text-slate-300 border-slate-200">
-        <input type="checkbox" className="sr-only peer" id="tagActive" />
-        {tags.map((tag, index) => (
-          <label
-            key={index}
-            htmlFor="tagActive"
-            className="peer-checked:border-[#FF375C] peer-checked:text-[#FF375C] peer-checked:bg-[#FEEEF1]
-             w-36 h-12 rounded-3xl border-slate-300 border flex flex-col justify-center items-center cursor-pointer m-1"
-          >
-            {tag}
-          </label>
+          <>
+            <div key={index}>
+              <input type="checkbox" className="hidden" id="tagActive" />
+              <label
+                htmlFor="tagActive"
+                className="checked:border-[#FF375C] checked:text-[#FF375C] checked:bg-[#FEEEF1] 
+                flex flex-col items-center justify-center h-12 m-1 border cursor-pointer w-[8.75rem] rounded-3xl border-slate-300"
+              >
+                {tag}
+              </label>
+            </div>
+          </>
         ))}
       </div>
     </>
