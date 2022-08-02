@@ -15,5 +15,5 @@ const BackHeader = () => {
 export default BackHeader;
 
 const EngSkyHeader = tw.div`
-absolute h-80 w-full bg-gray-300 top-0 max-w-5xl flex items-end
+absolute h-1/2 w-full bg-gray-300 top-0 left-0 flex items-end
 `;

@@ -2,6 +2,8 @@ import React from "react";
 import tw from "tailwind-styled-components";
 // import { ReactComponent as Logo } from "../../static/image/Logo.svg";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "../../static/image/logo.png";
+import LogoDark from "../../static/image/logoDark.png";
 
 type HeaderType = {
   location: number;
@@ -12,7 +14,11 @@ const Header = (props: any) => {
   return (
     <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
       <StyledLink to="/" className="ml-10">
-        Wan2trip
+        {location.pathname === "/" ? (
+          <img src={Logo} alt="" />
+        ) : (
+          <img src={LogoDark} alt="" />
+        )}
       </StyledLink>
       <div>
         <StyledLink to="/booked" className="mr-10">
