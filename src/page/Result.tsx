@@ -338,7 +338,8 @@ const Result = () => {
       <div>검색 결과 페이지</div>
       <VirtualScroll
         Item={Card}
-        itemList={DUMMY_DATA} // fetch한 length로 변경할 예정
+        itemList={DUMMY_DATA} // fetch한 data로 변경할 예정
+        itemCount={DUMMY_DATA.length}
         itemHeight={300}
         columnGap={10}
       />
