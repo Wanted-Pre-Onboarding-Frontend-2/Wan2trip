@@ -7,14 +7,16 @@ export const useObserver = (
   pageNum: number,
   setPageNum: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  const [date, setDate] = useRecoilState(dateArray);
+  const [lastElement, setLastElement] = React.useState<
+    HTMLElement | null | undefined
+  >(null);
   const observer = React.useRef(
     new IntersectionObserver((entries) => {
       const first = entries[0];
-      if (first.isIntersecting) {
+      if (first.isIntersecting && pageNum < 12) {
         setPageNum((no: number) => no + 1);
       }
     })
   );
-  return observer;
+  return { observer, lastElement, setLastElement };
 };
