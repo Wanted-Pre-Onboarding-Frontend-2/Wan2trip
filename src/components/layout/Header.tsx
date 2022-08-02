@@ -1,11 +1,16 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 // import { ReactComponent as Logo } from "../../static/image/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+type HeaderType = {
+  location: number;
+};
 
 const Header = (props: any) => {
+  const location = useLocation();
   return (
-    <EngSkyHeader>
+    <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
       <StyledLink to="/" className="ml-10">
         Wan2trip
       </StyledLink>
@@ -23,10 +28,12 @@ const Header = (props: any) => {
 
 export default Header;
 
-const EngSkyHeader = tw.header`
-bg-sky-400 h-16 flex justify-between items-center relative z-20
+const EngSkyHeader = tw.header<HeaderType>`
+h-16 flex justify-between items-center relative z-20 
+${(props: HeaderType) =>
+  props.location === 1 ? "text-white" : "text-gray-600"}
 `;
 
 const StyledLink = tw(Link)`
-text-white
+
 `;

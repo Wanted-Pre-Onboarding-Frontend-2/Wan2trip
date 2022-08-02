@@ -41,7 +41,12 @@ const CalendarInput = () => {
           </div>
         </div>
       </CalendarBox>
-      <Modal isShown={isShown} hide={toggle} modalContent={content} />
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={content}
+        headerText={`${format(new Date(), "yyyy년 M월 d일")} 예약 현황`}
+      />
     </>
   );
 };
