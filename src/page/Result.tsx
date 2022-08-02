@@ -379,12 +379,13 @@ const Result = () => {
           {isMapActive ? (
             <div className="">
               <div className="flex flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
-                <VirtualScroll
-                  Item={Card}
-                  itemList={DUMMY_DATA} // fetch한 length로 변경할 예정
-                  itemHeight={300}
-                  columnGap={10}
-                />
+                    <VirtualScroll
+                     Item={Card}
+                     itemList={DUMMY_DATA} // fetch한 data로 변경할 예정
+                     itemCount={DUMMY_DATA.length}
+                     itemHeight={300}
+                     columnGap={10}
+                   />
               </div>
             </div>
           ) : (

@@ -13,10 +13,10 @@ const Card = ({ item }: { item: Hotel }) => {
         className="w-full bg-red-300"
         style={{
           height: "300px",
-          padding: "10px",
+          margin: "10px",
         }}
       >
-        {JSON.stringify(item)}
+        {JSON.stringify(item.hotel_name)}
       </div>
     </>
   );
