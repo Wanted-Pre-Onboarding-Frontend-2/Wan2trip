@@ -4,29 +4,24 @@ import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhit
 import SearchInput from "./SearchInput";
 import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
-import axios from "axios";
-import { SearchData } from "../../store/search";
-import { useRecoilState } from "recoil";
+import { SearchData, PeopleNumber } from "../../store/search";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useQueryClient } from "@tanstack/react-query";
+import { useSearchResults } from "../../api/queries";
 
 const SearchBar = () => {
+  const queryClient = useQueryClient();
+
   const [searchValue, setSearchInput] = useState("");
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
+  const peopleNum = useRecoilValue(PeopleNumber);
 
-  // 검색 임시 api
-  const getSearch = async (keyword: string) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/hotels?q=${keyword}`
-      );
-      return response.data;
-    } catch {}
-  };
+  const { status, data, error } = useSearchResults(searchValue, peopleNum);
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log(event.target.value);
     setSearchInput(event.target.value);
 
     if (event.target.value !== "") {
@@ -36,9 +31,10 @@ const SearchBar = () => {
     }
   };
 
-  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSearchData(await getSearch(searchValue));
+    console.log(data);
+    setSearchData(data);
   };
 
   return (

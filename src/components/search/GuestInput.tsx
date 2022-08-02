@@ -3,13 +3,14 @@ import tw from "tailwind-styled-components";
 import UserBlackIcon from "../../static/image/User.svg";
 import GuestCounter from "./GuestCounter";
 import { useRecoilState } from "recoil";
-import { AdultNumber, ChildrenNumber } from "store/search";
+import { AdultNumber, ChildrenNumber, PeopleNumber } from "store/search";
 
 const maxPeople = 8;
 
 const GuestInput = () => {
   const [adultNum, setAdultNum] = useRecoilState(AdultNumber);
   const [childrenNum, setChildrenNum] = useRecoilState(ChildrenNumber);
+  const [, setPeopleNumber] = useRecoilState(PeopleNumber);
   const peopleNum = Math.floor(adultNum + childrenNum);
   const [open, setOpen] = useState(false);
   const guestRef = useRef<any>();
@@ -48,11 +49,13 @@ const GuestInput = () => {
   };
 
   useEffect(() => {
+    setPeopleNumber(peopleNum);
+
     window.addEventListener("click", onClickClose);
     return () => {
       window.addEventListener("click", onClickClose);
     };
-  }, []);
+  }, [peopleNum]);
 
   return (
     <GuestBox ref={guestRef}>
