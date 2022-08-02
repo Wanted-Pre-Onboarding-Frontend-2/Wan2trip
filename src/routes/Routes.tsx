@@ -1,20 +1,16 @@
 import React, { useLayoutEffect } from "react";
-import {
-  BrowserRouter,
-  LayoutRouteProps,
-  Route,
-  Routes,
-  RoutesProps,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Home from "../page/Home";
 import Result from "../page/Result";
 import BookedList from "../page/BookedList";
 import { RecoilRoot } from "recoil";
 import Calender from "page/Calendar";
 
-// TODO: children type 지정
-const ScrollToTop = ({ children }: any) => {
+type Props = {
+  children: JSX.Element;
+};
+
+const ScrollToTop = ({ children }: Props) => {
   const location = useLocation();
 
   useLayoutEffect(() => {
