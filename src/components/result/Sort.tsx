@@ -6,10 +6,10 @@ const Sort = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="flex items-center pl-5 font-medium h-14 ">
+      <div className="flex items-center pl-5 font-medium h-14 sm:text-[3.3vw] items-center pl-10">
         1,691개 호텔 중 예약가능 호텔 419개
       </div>
-      <ul className="flex items-center h-8 p-0 m-0 text-sm justify-evenly">
+      <ul className="flex items-center h-8 p-0 m-0 text-sm justify-evenly sm:invisible">
         {sortList.map((value, index) =>
           String(value) === "가격" ? (
             <li

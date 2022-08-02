@@ -22,7 +22,6 @@ const ScrollToTop = ({ children }: Props) => {
 
 const Router = () => {
   return (
-    // <BrowserRouter>
     <RecoilRoot>
       <ScrollToTop>
         <Routes>
@@ -35,7 +34,6 @@ const Router = () => {
         </Routes>
       </ScrollToTop>
     </RecoilRoot>
-    // </BrowserRouter>
   );
 };
 
