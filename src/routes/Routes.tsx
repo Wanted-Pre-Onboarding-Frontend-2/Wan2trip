@@ -1,37 +1,41 @@
 import React, { useLayoutEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Home from "../page/Home";
 import Result from "../page/Result";
-
 import BookedListPage from "../page/BookedListPage";
 import { RecoilRoot } from "recoil";
 import Calender from "page/Calendar";
 
-const Router = () => {
+type Props = {
+  children: JSX.Element;
+};
+
+const ScrollToTop = ({ children }: Props) => {
   const location = useLocation();
 
-  React.useEffect(() => {
-    if (!location.hash) {
-      window.scrollTo(0, 0);
-    }
-  }, [location]);
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
 
+  return children;
+};
+
+const Router = () => {
   return (
-
-    <BrowserRouter>
-      <RecoilRoot>
-        <ScrollToTop>
-          <Routes>
-            {["/", "/home", "*"].map((path) => {
-              return <Route path={path} element={<Home />} key={path} />;
-            })}
-            <Route path="/result" element={<Result />} />
-            <Route path="/booked" element={<BookedListPage />} />
-            <Route path="/cal" element={<Calender />} />
-          </Routes>
-        </ScrollToTop>
-      </RecoilRoot>
-    </BrowserRouter>
+    // <BrowserRouter>
+    <RecoilRoot>
+      <ScrollToTop>
+        <Routes>
+          {["/", "/home", "*"].map((path) => {
+            return <Route path={path} element={<Home />} key={path} />;
+          })}
+          <Route path="/result" element={<Result />} />
+          <Route path="/booked" element={<BookedListPage />} />
+          <Route path="/cal" element={<Calender />} />
+        </Routes>
+      </ScrollToTop>
+    </RecoilRoot>
+    // </BrowserRouter>
   );
 };
 
