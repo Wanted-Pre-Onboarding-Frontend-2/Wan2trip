@@ -11,9 +11,9 @@ const HotelList = () => {
     <>
       <div>홈</div>
       {hotels
-        .map((hotel: Hotel) => {
+        ?.map((hotel: Hotel) => {
           return (
-            <div key={hotel.hotel_name}>
+            <div key={hotel.hotel_name} className="w-full">
               <Card data={hotel} />
             </div>
           );
