@@ -11,6 +11,10 @@ const IMAGE_URL =
 const BookedHotels: Hotel[] = [];
 
 const Card = ({ data }: PropsType) => {
+  const priceToString = (price: number) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const HandleClickReserve = (newData: Hotel) => {
     const isExisting = BookedHotels.some(
       (e) => e.hotel_name === newData.hotel_name
@@ -51,7 +55,7 @@ const Card = ({ data }: PropsType) => {
         </div>
       </section>
       <section className="self-end text-end m-3.5">
-        <p className="m-0 text-4xl">{data.price} 원</p>
+        <p className="m-0 text-4xl">{priceToString(data.price)} 원</p>
         <p className="text-xs text-slate-400 ">세금 및 수수료 불포함</p>
         <button onClick={() => HandleClickReserve(data)}>예약 하기</button>
       </section>

@@ -2,9 +2,7 @@ import React from "react";
 import { useWindowScroll, useWindowSize } from "react-use";
 
 type Props = {
-  Item: React.ElementType;
-  itemList: Array<object>;
-  itemCount: number;
+  children: JSX.Element[];
   itemHeight: number;
   rowGap?: number;
   columnGap?: number;
@@ -12,9 +10,7 @@ type Props = {
 };
 
 const VirtualScroll = ({
-  Item,
-  itemList,
-  itemCount,
+  children,
   itemHeight,
   rowGap = 0,
   columnGap = 0,
@@ -31,7 +27,7 @@ const VirtualScroll = ({
     setViewportY(viewportY);
   }, []);
 
-  const containerHeight = (itemHeight + columnGap) * itemCount;
+  const containerHeight = (itemHeight + columnGap) * children.length;
 
   const startIndex = Math.max(
     Math.floor(offsetY / (itemHeight + columnGap)) - renderAhead,
@@ -40,12 +36,12 @@ const VirtualScroll = ({
 
   const endIndex = Math.min(
     Math.ceil(height / (itemHeight + columnGap) + startIndex) + renderAhead,
-    itemCount
+    children.length
   );
 
-  const visibleItem = itemList.slice(
+  const visibleItem = children.slice(
     Math.max(startIndex, 0),
-    Math.min(endIndex + 1, itemList.length)
+    Math.min(endIndex + 1, children.length)
   );
 
   const translateY = Math.max((itemHeight + columnGap) * startIndex, columnGap);
@@ -59,9 +55,7 @@ const VirtualScroll = ({
       ref={scrollRef}
     >
       <div style={{ transform: `translateY(${translateY}px)` }}>
-        {visibleItem.map((item, index) => (
-          <Item key={index} item={item} />
-        ))}
+        {visibleItem}
       </div>
     </div>
   );
