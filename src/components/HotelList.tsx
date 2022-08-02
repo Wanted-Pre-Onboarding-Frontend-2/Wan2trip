@@ -6,9 +6,6 @@ import { useGetHotels } from "api/queries";
 
 const HotelList = () => {
   const { data: hotels } = useGetHotels();
-  const handleClickReserve = (newData: Hotel) => {
-    // TODO: local storage 저장 로직 들어갈 예정
-  };
 
   return (
     <>
@@ -17,12 +14,7 @@ const HotelList = () => {
         .map((hotel: Hotel) => {
           return (
             <div key={hotel.hotel_name}>
-              <Card
-                data={hotel}
-                handleClick={() => {
-                  handleClickReserve(hotel);
-                }}
-              />
+              <Card data={hotel} />
             </div>
           );
         })
