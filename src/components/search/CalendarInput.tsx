@@ -19,10 +19,9 @@ const CalendarInput = () => {
         <CalendarIcon className="ml-4 w-6 h-6 hidden md:block" />
         <div className="flex flex-row item-center  md:pl-4 md:w-1/2 h-full">
           <div className="self-center">
-            <span className="block text-xs text-slate-400 hidden md:block">
+            <span className="text-xs text-slate-400 hidden md:block">
               체크인
             </span>
-            {/* <input type="hidden" readOnly value="2022-08-01" /> */}
             <strong className="whitespace-nowrap">
               {pick.startDate
                 ? format(pick.startDate, "M월 d일")
@@ -36,10 +35,9 @@ const CalendarInput = () => {
         <p className="md:hidden text-main">~</p>
         <div className="flex flex-row justify-end item-center md:px-3 md:w-1/2 h-full">
           <div className="self-center">
-            <span className="block text-xs text-slate-400 hidden md:block">
+            <span className="text-xs text-slate-400 hidden md:block">
               체크아웃
             </span>
-            {/* <input type="hidden" readOnly value="2022-08-02" /> */}
             <strong className="whitespace-nowrap">
               {pick.startDate
                 ? pick.endDate

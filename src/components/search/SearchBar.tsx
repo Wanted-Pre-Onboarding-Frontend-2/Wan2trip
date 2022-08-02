@@ -4,28 +4,17 @@ import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhit
 import SearchInput from "./SearchInput";
 import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
-import {
-  SearchData,
-  PeopleNumber,
-  AdultNumber,
-  ChildrenNumber,
-} from "../../store/search";
+import { SearchData, PeopleNumber } from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { useQueryClient } from "@tanstack/react-query";
 import { useSearchResults } from "../../api/queries";
-import GuestCounter from "./GuestCounter";
 
 const SearchBar = () => {
-  const queryClient = useQueryClient();
-
   const [searchValue, setSearchInput] = useState("");
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
   const peopleNum = useRecoilValue(PeopleNumber);
-  const adultNum = useRecoilValue(AdultNumber);
-  const childrenNum = useRecoilValue(ChildrenNumber);
 
-  const { status, data, error } = useSearchResults(searchValue, peopleNum);
+  const { data } = useSearchResults(searchValue, peopleNum);
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -68,7 +57,6 @@ const SearchBar = () => {
           </SearchBox>
         </form>
       </div>
-      {/* mobile */}
       <MobileSearch className="md:hidden bg-white ">
         <form onSubmit={onSubmitHandler}>
           <div className="flex justify-between items-center ">
@@ -102,6 +90,3 @@ flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
 const MobileSearch = tw.div`
 md:hidden bg-white absolute z-10 w-full py-5 px-3
 `;
-
-const GuestNumberBox = tw.div`
-absolute top-18 right-0 px-5 w-80 bg-white shadow-lg rounded`;

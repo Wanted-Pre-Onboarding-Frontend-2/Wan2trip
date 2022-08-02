@@ -15,7 +15,7 @@ const GuestInput = () => {
   const [open, setOpen] = useState(false);
   const guestRef = useRef<any>();
 
-  const onClickOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const onClickOpen = () => {
     setOpen(true);
   };
 
