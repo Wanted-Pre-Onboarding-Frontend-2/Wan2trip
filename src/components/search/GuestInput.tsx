@@ -59,7 +59,11 @@ const GuestInput = () => {
 
   return (
     <GuestBox ref={guestRef}>
-      <img src={UserBlackIcon} className="ml-4 w-6 h-6" alt="" />
+      <img
+        src={UserBlackIcon}
+        className="ml-4 w-6 h-6 hidden md:block"
+        alt=""
+      />
       <div
         className="flex flex-row item-center pl-4 w-1/2 h-full"
         onClick={onClickOpen}
@@ -67,7 +71,7 @@ const GuestInput = () => {
         <div className="self-center">
           <span className="block text-xs text-slate-400">인원</span>
           <input type="hidden" value={peopleNum} />
-          <strong>인원 {peopleNum}</strong>
+          <strong className="whitespace-nowrap ">인원 {peopleNum}</strong>
         </div>
       </div>
       {open && (
@@ -98,7 +102,7 @@ const GuestInput = () => {
 export default GuestInput;
 
 const GuestBox = tw.div`
-flex flex-row items-center w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100`;
+flex flex-row items-center md:w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100`;
 
 const GuestNumberBox = tw.div`
 absolute top-18 right-0 px-5 w-80 bg-white shadow-lg rounded`;

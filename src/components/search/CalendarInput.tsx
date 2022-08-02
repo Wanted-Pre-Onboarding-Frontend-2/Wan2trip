@@ -16,26 +16,31 @@ const CalendarInput = () => {
   return (
     <>
       <CalendarBox onClick={toggle}>
-        <CalendarIcon className="ml-4 w-6 h-6" />
-        <div className="flex flex-row item-center pl-4 w-1/2 h-full">
+        <CalendarIcon className="ml-4 w-6 h-6 hidden md:block" />
+        <div className="flex flex-row item-center  md:pl-4 md:w-1/2 h-full">
           <div className="self-center">
-            <span className="block text-xs text-slate-400">체크인</span>
+            <span className="block text-xs text-slate-400 hidden md:block">
+              체크인
+            </span>
             {/* <input type="hidden" readOnly value="2022-08-01" /> */}
-            <strong>
+            <strong className="whitespace-nowrap">
               {pick.startDate
                 ? format(pick.startDate, "M월 d일")
                 : format(new Date(), "M월 d일")}
             </strong>
           </div>
         </div>
-        <span className="block w-10 text-sm text-slate-400">
+        <span className="block w-10 text-sm text-slate-400 hidden md:block">
           {highlightedArray.length > 1 ? highlightedArray.length - 1 : 0}박
         </span>
-        <div className="flex flex-row justify-end item-center px-3 w-1/2 h-full">
+        <p className="md:hidden text-main">~</p>
+        <div className="flex flex-row justify-end item-center md:px-3 md:w-1/2 h-full">
           <div className="self-center">
-            <span className="block text-xs text-slate-400">체크아웃</span>
+            <span className="block text-xs text-slate-400 hidden md:block">
+              체크아웃
+            </span>
             {/* <input type="hidden" readOnly value="2022-08-02" /> */}
-            <strong>
+            <strong className="whitespace-nowrap">
               {pick.startDate
                 ? pick.endDate
                   ? format(pick.endDate, "M월 d일")
@@ -58,4 +63,4 @@ const CalendarInput = () => {
 export default CalendarInput;
 
 const CalendarBox = tw.div`
-flex flex-row items-center w-1/3 relative h-full bg-white border-r border-solid border-gray-300 transition-all  cursor-pointer hover:bg-gray-100`;
+flex flex-1 flex-col  md:flex-row items-center  relative h-full bg-white border-none md:border-r md:border-solid md:border-gray-300 transition-all  cursor-pointer hover:bg-gray-100`;
