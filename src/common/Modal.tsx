@@ -41,7 +41,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 };
 
 export const Wrapper = tw.div`
-fixed md:top-[25%] left-0 top-0
+fixed md:top-[25%] left-0 lg:-left-2 top-0
   transform 
   z-50
   w-full
@@ -57,8 +57,8 @@ export const Backdrop = tw.div`
 `;
 
 export const StyledModal = tw.div`
-  z-50 bg-white relative m-auto rounded-md
-  w-full h-full max-w-5xl md:h-fit
+  z-50 bg-white relative mx-auto rounded-md
+  w-full h-full max-w-[58.9rem] md:h-fit
 `;
 
 export const Header = tw.div`
