@@ -4,7 +4,7 @@ import "./index.css";
 import "./tailwind.generated.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Router from "./routes/Routes";
+import App from "App";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,7 +23,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <Router />
+      <App />
     </QueryClientProvider>
   </React.StrictMode>
 );
