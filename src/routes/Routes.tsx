@@ -1,27 +1,23 @@
 import React, { useLayoutEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../page/Home";
 import Result from "../page/Result";
+
 import BookedListPage from "../page/BookedListPage";
 import { RecoilRoot } from "recoil";
 import Calender from "page/Calendar";
 
-type Props = {
-  children: JSX.Element;
-};
-
-const ScrollToTop = ({ children }: Props) => {
+const Router = () => {
   const location = useLocation();
 
-  useLayoutEffect(() => {
-    document.documentElement.scrollTo(0, 0);
-  }, [location.pathname]);
+  React.useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
-  return children;
-};
-
-const Router = () => {
   return (
+
     <BrowserRouter>
       <RecoilRoot>
         <ScrollToTop>
