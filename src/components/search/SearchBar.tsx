@@ -3,28 +3,40 @@ import tw from "tailwind-styled-components";
 import SearchInput from "./SearchInput";
 import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
-import { SearchData, PeopleNumber, SearchKeyword } from "../../store/search";
+import {
+  SearchData,
+  PeopleNumber,
+  SearchKeyword,
+  AdultNumber,
+  ChildrenNumber,
+} from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useSearchResults } from "../../api/queries";
 import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhite.svg";
 import { useQueryClient } from "@tanstack/react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const queryClient = useQueryClient();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // const [searchValue, setSearchInput] = useState("");
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
-  const [searchKeyword, SetSearchKeyword] = useRecoilState(SearchKeyword);
-  const peopleNum = useRecoilValue(PeopleNumber);
+  const [searchKeyword, setSearchKeyword] = useRecoilState(SearchKeyword);
+  const [keyword, setKeyword] = useState("");
 
-  const { status, data, error } = useSearchResults(searchKeyword, peopleNum);
-  // useSearchResults(searchValue, PeopleNum)해서 가져온 data -> result페이지에서 쓰임
+  const adultOfNum: number = useRecoilValue(AdultNumber);
+  const childrenOfNum: number = useRecoilValue(ChildrenNumber);
+  const [, setPeopleNumber] = useRecoilState(PeopleNumber);
+  const peopleNum = Math.floor(adultOfNum + childrenOfNum);
+
+  const { status, data, error } = useSearchResults(keyword, peopleNum);
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    SetSearchKeyword(event.target.value);
+    setKeyword(event.target.value);
 
     if (event.target.value !== "") {
       setRemoveVisible(true);
@@ -35,8 +47,14 @@ const SearchBar = () => {
 
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(data);
+
+    setSearchKeyword(keyword);
+    setPeopleNumber(peopleNum);
     setSearchData(data);
+
+    if (location.pathname === "/") {
+      navigate("/result");
+    }
   };
 
   return (
@@ -46,12 +64,12 @@ const SearchBar = () => {
           <SearchBox>
             <SearchInner>
               <SearchInput
-                value={searchKeyword}
+                value={keyword}
                 onChangeHandler={onChangeSearchHandler}
                 remove={removeVisible}
               />
               <CalendarInput />
-              <GuestInput />
+              <GuestInput peopleNum={peopleNum} />
               <button
                 type="submit"
                 className="flex items-center justify-center w-16 h-full rounded-r-md bg-main"
@@ -66,7 +84,7 @@ const SearchBar = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="flex items-center justify-between ">
             <SearchInput
-              value={searchKeyword}
+              value={keyword}
               onChangeHandler={onChangeSearchHandler}
               remove={removeVisible}
             />
@@ -74,7 +92,7 @@ const SearchBar = () => {
               <CalendarInput />
             </div>
             <div className="flex-1">
-              <GuestInput />
+              <GuestInput peopleNum={peopleNum} />
             </div>
           </div>
         </form>

@@ -9,11 +9,13 @@ import { AdultNumber, ChildrenNumber, PeopleNumber } from "store/search";
 
 const maxPeople = 8;
 
-const GuestInput = () => {
+interface GuestProps {
+  peopleNum: number;
+}
+
+const GuestInput = ({ peopleNum }: GuestProps) => {
   const [adultNum, setAdultNum] = useRecoilState(AdultNumber);
   const [childrenNum, setChildrenNum] = useRecoilState(ChildrenNumber);
-  const [, setPeopleNumber] = useRecoilState(PeopleNumber);
-  const peopleNum = Math.floor(adultNum + childrenNum);
   const [open, setOpen] = useState(false);
   const guestRef = useRef<any>();
 
@@ -55,13 +57,11 @@ const GuestInput = () => {
   };
 
   useEffect(() => {
-    setPeopleNumber(peopleNum);
-
     window.addEventListener("click", onClickClose);
     return () => {
       window.addEventListener("click", onClickClose);
     };
-  }, [peopleNum]);
+  }, []);
 
   return (
     <GuestBox ref={guestRef}>
