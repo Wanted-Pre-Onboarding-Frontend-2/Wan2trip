@@ -6,34 +6,24 @@ import BookedListPage from "../page/BookedListPage";
 import { RecoilRoot } from "recoil";
 import Calender from "page/Calendar";
 
-type Props = {
-  children: JSX.Element;
-};
-
-const ScrollToTop = ({ children }: Props) => {
+const Router = () => {
   const location = useLocation();
 
-  useLayoutEffect(() => {
-    document.documentElement.scrollTo(0, 0);
-  }, [location.pathname]);
+  React.useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
-  return children;
-};
-
-const Router = () => {
   return (
-    <RecoilRoot>
-      <ScrollToTop>
-        <Routes>
-          {["/", "/home", "*"].map((path) => {
-            return <Route path={path} element={<Home />} key={path} />;
-          })}
-          <Route path="/result" element={<Result />} />
-          <Route path="/booked" element={<BookedListPage />} />
-          <Route path="/cal" element={<Calender />} />
-        </Routes>
-      </ScrollToTop>
-    </RecoilRoot>
+    <Routes>
+      {["/", "/home", "*"].map((path) => {
+        return <Route path={path} element={<Home />} key={path} />;
+      })}
+      <Route path="/result" element={<Result />} />
+      <Route path="/booked" element={<BookedListPage />} />
+      <Route path="/cal" element={<Calender />} />
+    </Routes>
   );
 };
 
