@@ -32,7 +32,7 @@ const BookedList = () => {
         {!!localHotelData.length && (
           <div className="flex items-center justify-center w-full py-2 bg-white">
             <div className="flex flex-col items-center text-center">
-              <VirtualScroll itemHeight={300} columnGap={10}>
+              <VirtualScroll itemHeight={20} columnGap={0.625}>
                 {localHotelData.map((hotel, index) => (
                   <Card key={index} data={hotel} />
                 ))}
