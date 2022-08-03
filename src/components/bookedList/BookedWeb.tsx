@@ -3,8 +3,8 @@ import { Hotel } from "types/types";
 import Card from "../Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
+import { uid } from "react-uid";
 
-// TODO: Card list를 감싸는 wrapper div height 수정 -> localHotelData.length를 기준으로 해주면 될듯함
 const BookedWeb = () => {
   const [localHotelData, setLocalHotelData] = React.useState<Hotel[]>([]);
 
@@ -31,7 +31,7 @@ const BookedWeb = () => {
           <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
-                <Card key={index} data={hotel} />
+                <Card key={uid(index)} data={hotel} />
               ))}
             </VirtualScroll>
           </div>
