@@ -77,7 +77,7 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-w-full py-3.5 -ml-1
+w-full py-3.5 -ml-1 hover:ring hover:ring-offset-2 hover:ring-main hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
 ${(props: Cells) =>
   props.startpicked?.toString() === props.thisdate?.toString()
     ? props.startpicked?.toString() === props.thisdate?.toString() &&
