@@ -28,7 +28,7 @@ const ResultList = () => {
 
   return (
     <div>
-      {searchResults === undefined ? (
+      {searchResults === undefined || searchResults.length === 0 ? (
         <div>검색 결과가 없습니다. </div>
       ) : (
         <div>
