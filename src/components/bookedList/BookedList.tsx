@@ -9,10 +9,10 @@ import BookedTablet from "./BookedMobile";
 const BookedList = () => {
   return (
     <>
-      <div className="lg:block md:hidden sm:hidden">
+      <div className="lg:block md:hidden hidden">
         <BookedWeb />
       </div>
-      <div className="md:block sm:bolck lg:hidden">
+      <div className="md:block bolck lg:hidden">
         <BookedTablet />
       </div>
     </>
