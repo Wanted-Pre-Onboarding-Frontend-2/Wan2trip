@@ -7,7 +7,8 @@ import CalenderHeader from "./CalenderHeader";
 import { useObserver } from "../../hooks/useObserver";
 import Table from "./Table";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-
+import { ReactComponent as Left } from "../../static/icons/LeftArrow.svg";
+import { ReactComponent as Right } from "../../static/icons/RightArrow.svg";
 export const Calender = () => {
   const [today, setToday] = useRecoilState(DayState);
   const [date, setDate] = useRecoilState(dateArray);
@@ -52,25 +53,37 @@ export const Calender = () => {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full font-redHat">
       <div className="text-center mx-auto w-full flex flex-col ip:flex-row ip:justify-between max-w-4xl flex-wrap pb-24">
         {matches && (
           <>
             <div className="flex flex-col mx-auto">
-              <div className="flex justify-between">
+              <div className="flex justify-between text-main absolute w-[98%] top-20 left-2">
                 <button type="button" onClick={goToBefore}>
-                  이전달
+                  <Left
+                    className={
+                      !isBefore(new Date(), today)
+                        ? "w-14 fill-gray-300"
+                        : "w-14 fill-gray-700"
+                    }
+                  />
                 </button>
                 <button type="button" onClick={goToAfter}>
-                  다음달
+                  <Right
+                    className={
+                      isSameMonth(add(new Date(), { months: 11 }), today)
+                        ? "w-14 fill-gray-300"
+                        : "w-14 fill-gray-700"
+                    }
+                  />
                 </button>
               </div>
-              <div className="flex flex-row">
-                <div>
+              <div className="flex flex-row gap-4 ">
+                <div className="border-2 border-main p-4 rounded-md py-10  drop-shadow-md">
                   <CalenderHeader today={today} />
                   <Table today={today} />
                 </div>
-                <div>
+                <div className="border-2 border-main p-4 rounded-md py-10 drop-shadow-md">
                   <CalenderHeader today={add(today, { months: 1 })} />
                   <Table today={add(today, { months: 1 })} />
                 </div>

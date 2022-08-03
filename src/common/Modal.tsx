@@ -66,7 +66,7 @@ flex justify-between p-1
 `;
 
 export const HeaderText = tw.div`
-text-start mx-auto w-full cursor-pointer p-2 text-lg underline-offset-2 overline decoration-2 decoration-mainn tracking-wider font-sans hover:text-main text-gray-700
+text-start md:text-center mx-auto w-full cursor-pointer p-2 text-lg underline-offset-2 overline decoration-2 decoration-mainn tracking-wider font-sans ip:hover:text-main text-gray-700 font-redHat
 `;
 
 export const CloseButton = tw.button`

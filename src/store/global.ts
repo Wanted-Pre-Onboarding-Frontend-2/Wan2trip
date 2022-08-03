@@ -19,8 +19,8 @@ export const dateArray = atom<Date[]>({
 export const pickDateState = atom<any>({
   key: "pickDateState",
   default: {
-    startDate: add(new Date(), { days: 7 }),
-    endDate: add(new Date(), { days: 8 }),
+    startDate: null,
+    endDate: null,
   },
 });
 
@@ -28,3 +28,6 @@ export const ModalState = atom({
   key: "ModalState",
   default: false,
 });
+
+// add(new Date(), { days: 7 })
+// add(new Date(), { days: 8 })
