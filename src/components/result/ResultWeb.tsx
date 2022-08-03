@@ -71,11 +71,6 @@ const ResultTablet = () => {
           <div className="">
             <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
               <ResultList />
-              {/* <VirtualScroll itemHeight={300} columnGap={10}>
-                {DUMMY_DATA.map((hotel, index) => (
-                  <Card key={`${hotel}-${index}`} hotel={hotel} />
-                ))}
-              </VirtualScroll> */}
             </div>
           </div>
         ) : (

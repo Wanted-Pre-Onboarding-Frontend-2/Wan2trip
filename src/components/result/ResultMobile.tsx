@@ -3,6 +3,7 @@ import VirtualScroll from "common/VirtualScroll";
 import Tag from "./Tag";
 import Sort from "./Sort";
 import Card from "../../common/Card";
+import ResultList from "./ResultList";
 
 // TODO: fetch 데이터로 변경
 const DUMMY_DATA = [
@@ -33,11 +34,7 @@ const ResultMobile = () => {
       {isMapActive ? (
         <div className="">
           <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
-            {/* <VirtualScroll itemHeight={20} columnGap={0.625}>
-                {DUMMY_DATA.map((hotel, index) => (
-                  <Card key={`${hotel}-${index}`} hotel={hotel} />
-                ))}
-              </VirtualScroll> */}
+            <ResultList />
           </div>
         </div>
       ) : (
