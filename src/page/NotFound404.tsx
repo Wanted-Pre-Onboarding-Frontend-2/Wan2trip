@@ -34,7 +34,7 @@ const NotFound404 = () => {
                     border-t hover:cursor-pointer
                     transition-all duration-200 delay-100"
               >
-                <div className="rounded-xl bg-blue-100 px-3 py-2 md:py-4">
+                <div className="rounded-xl bg-main px-3 py-2 md:py-4">
                   <i
                     className="mdi mdi-home-outline mx-auto 
                             text-indigo-900 text-2xl md:text-3xl"
@@ -42,7 +42,7 @@ const NotFound404 = () => {
                 </div>
 
                 <div className="grow flex flex-col pl-5 pt-2">
-                  <StyledLink to="/">Home Page</StyledLink>
+                  <StyledLink to="/">홈으로 돌아가기</StyledLink>
 
                   <div
                     className="font-semibold text-sm md:text-md lg:text-lg
@@ -64,7 +64,7 @@ const NotFound404 = () => {
                     border-t hover:cursor-pointer
                     transition-all duration-200 delay-100"
               >
-                <div className="rounded-xl bg-blue-100 px-3 py-2 md:py-4">
+                <div className="rounded-xl bg-main px-3 py-2 md:py-4">
                   <i
                     className="mdi mdi-book-open-page-variant-outline mx-auto 
                             text-indigo-800 text-2xl md:text-3xl"
@@ -94,7 +94,7 @@ const NotFound404 = () => {
                     border-t hover:cursor-pointer
                     transition-all duration-200 delay-100"
               >
-                <div className="rounded-xl bg-blue-100 px-3 py-2 md:py-4">
+                <div className="rounded-xl bg-main px-3 py-2 md:py-4">
                   <i
                     className="mdi mdi-archive-settings-outline 
                             mx-auto text-indigo-800 text-2xl md:text-3xl"
@@ -124,7 +124,7 @@ const NotFound404 = () => {
                     border-t hover:cursor-pointer
                     transition-all duration-200 delay-100"
               >
-                <div className="rounded-xl bg-blue-100 px-3 py-2 md:py-4">
+                <div className="rounded-xl bg-main px-3 py-2 md:py-4">
                   <i
                     className="mdi mdi-at mx-auto 
                             text-indigo-800 text-2xl md:text-3xl"
