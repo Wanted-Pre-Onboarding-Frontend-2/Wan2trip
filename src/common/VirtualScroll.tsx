@@ -21,7 +21,7 @@ const VirtualScroll = ({
 
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [viewportY, setViewportY] = React.useState<number>(0);
-  const offsetY = y - viewportY;
+  const offsetY = (y - viewportY) / 16;
   React.useEffect(() => {
     const viewportY = scrollRef.current?.getBoundingClientRect().y ?? 0;
     setViewportY(viewportY);
@@ -50,11 +50,11 @@ const VirtualScroll = ({
     <div
       className="will-change-transform"
       style={{
-        height: `${containerHeight}px`,
+        height: `${containerHeight}rem`,
       }}
       ref={scrollRef}
     >
-      <div style={{ transform: `translateY(${translateY}px)` }}>
+      <div style={{ transform: `translateY(${translateY}rem)` }}>
         {visibleItem}
       </div>
     </div>
