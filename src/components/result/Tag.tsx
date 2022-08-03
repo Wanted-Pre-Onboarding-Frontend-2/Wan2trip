@@ -32,7 +32,7 @@ const Tag = () => {
   return (
     <>
       {/* web */}
-      <div className="lg:block md:hidden">
+      <div className="hidden md:hidden lg:block">
         <div className="my-6 text-lg font-medium">관련태그</div>
         <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
           {tags.map((tag, index) => (
@@ -49,8 +49,8 @@ const Tag = () => {
           ))}
         </div>
       </div>
-      {/* tablet */}
-      <div className="md:pl-6 lg:hidden md:block md:border-slate-300 md:border-b-2 md:mt-2 md:absolute">
+      {/* mobile */}
+      <div className="pl-6 block lg:hidden md:block border-slate-300 border-b-2 mt-2">
         <div className="flex w-full pb-2 text-sm font-semibold text-black border-red-300 flex-nowrap justify-evenly">
           {tags.map((tag, index) => (
             <div key={index}>
