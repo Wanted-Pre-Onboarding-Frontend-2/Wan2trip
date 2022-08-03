@@ -58,7 +58,7 @@ export const Backdrop = tw.div`
 
 export const StyledModal = tw.div`
   z-50 bg-white relative mx-auto rounded-md
-  w-full h-full max-w-[58.9rem] md:h-fit
+  w-full h-full max-w-[58.9rem] md:h-fit top-5 left-2.5
 `;
 
 export const Header = tw.div`
