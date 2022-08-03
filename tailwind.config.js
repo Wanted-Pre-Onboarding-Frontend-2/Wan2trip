@@ -92,6 +92,7 @@ module.exports = {
       12: "3rem",
       14: "3.5rem",
       16: "4rem",
+      17: "4.375rem",
       18: "4.5rem",
       20: "5rem",
       24: "6rem",
@@ -660,6 +661,7 @@ module.exports = {
     }),
     minHeight: {
       0: "0px",
+      400: "400px",
       full: "100%",
       screen: "100vh",
       min: "min-content",

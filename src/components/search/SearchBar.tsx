@@ -86,12 +86,12 @@ const SearchBar = () => {
 export default SearchBar;
 
 const SearchBox = tw.div`
-pt-16 z-20 
+pt-16 z-20 md:px-3 lg:px-0
 `;
 
 const SearchInner = tw.div`
 flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
-md:hidden bg-white absolute z-10 w-full py-5 px-3
+ fixed top-17 left-0 bg-white z-10 w-full py-5 px-3
 `;
