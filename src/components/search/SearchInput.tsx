@@ -22,17 +22,17 @@ const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
       <SearchInputBox>
         <label
           htmlFor="hotel_name"
-          className="flex justify-center items-center absolute top-5 left-3 w-6 h-6"
+          className=" justify-center items-center absolute top-5 left-3 w-6 h-6 hidden md:flex"
         >
           <SearchBlackIcon />
         </label>
-        <div className="relative flex flex-row px-12 h-full ">
+        <div className=" md:w-auto relative flex flex-row md:px-12 h-full ">
           <input
             name="hotel_name"
             id="hotel_name"
             type="text"
             placeholder="호텔명"
-            className="flex-1 h-full pl-2 focus:outline-none border-0"
+            className="flex-1 h-full pl-2 focus:outline-none border-0  bg-gray-200 md:bg-white rounded-2xl  md:rounded-none text-sm md:text-md"
             onChange={onChangeHandler}
             value={value}
             ref={searchRef}
@@ -40,7 +40,7 @@ const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
           {remove && (
             <button
               type="button"
-              className="flex justify-center items-center absolute top-5 right-4 w-5 h-5"
+              className="flex justify-center items-center absolute top-4 md:top-5 right-4 w-5 h-5"
               onClick={onRemoveValue}
             >
               <CancelIcon className=" w-4 h-4 text-tahiti" />
@@ -70,7 +70,7 @@ const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
 export default SearchInput;
 
 const SearchInputBox = tw.div`
-w-1/3 relative h-full bg-white border-r border-solid border-gray-300 rounded-l-md
+w-2/3  md:w-1/3 relative h-12 md:h-full  md:bg-white md:border-r md:border-solid md:border-gray-300  md:rounded-l-md
 `;
 
 const SearchListBox = tw.div`

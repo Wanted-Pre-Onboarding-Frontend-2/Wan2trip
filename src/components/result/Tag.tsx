@@ -31,10 +31,11 @@ const Tag = () => {
   ];
   return (
     <>
-      <div className="my-6 text-lg font-medium">관련태그</div>
-      <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
-        {tags.map((tag, index) => (
-          <>
+      {/* web */}
+      <div className="lg:block md:hidden">
+        <div className="my-6 text-lg font-medium">관련태그</div>
+        <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
+          {tags.map((tag, index) => (
             <div key={index}>
               <input type="checkbox" className="hidden" id="tagActive" />
               <label
@@ -45,8 +46,25 @@ const Tag = () => {
                 {tag}
               </label>
             </div>
-          </>
-        ))}
+          ))}
+        </div>
+      </div>
+      {/* tablet */}
+      <div className="md:pl-6 lg:hidden md:block md:border-slate-300 md:border-b-2 md:mt-2 md:absolute">
+        <div className="flex w-full pb-2 text-sm font-semibold text-black border-red-300 flex-nowrap justify-evenly">
+          {tags.map((tag, index) => (
+            <div key={index}>
+              <input type="checkbox" className="hidden" id="tagActive" />
+              <label
+                htmlFor="tagActive"
+                className="checked:bg-[#686888] 
+                flex flex-col items-center justify-center h-7 m-1 border cursor-pointer py-4 w-24 rounded-3xl bg-[#EEEEEE]"
+              >
+                {tag}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
