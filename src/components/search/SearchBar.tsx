@@ -6,18 +6,15 @@ import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
 import { SearchData, PeopleNumber } from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { useQueryClient } from "@tanstack/react-query";
 import { useSearchResults } from "../../api/queries";
 
 const SearchBar = () => {
-  const queryClient = useQueryClient();
-
   const [searchValue, setSearchInput] = useState("");
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
   const peopleNum = useRecoilValue(PeopleNumber);
 
-  const { status, data, error } = useSearchResults(searchValue, peopleNum);
+  const { data } = useSearchResults(searchValue, peopleNum);
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -38,25 +35,46 @@ const SearchBar = () => {
   };
 
   return (
-    <form action="" onSubmit={onSubmitHandler}>
-      <SearchBox>
-        <SearchInner>
-          <SearchInput
-            value={searchValue}
-            onChangeHandler={onChangeSearchHandler}
-            remove={removeVisible}
-          />
-          <CalendarInput />
-          <GuestInput />
-          <button
-            type="submit"
-            className="flex justify-center items-center w-16 h-full rounded-r-md bg-main"
-          >
-            <SearchWhiteIcon className="w-6 h-6" />
-          </button>
-        </SearchInner>
-      </SearchBox>
-    </form>
+    <>
+      <div className="hidden md:block">
+        <form action="" onSubmit={onSubmitHandler}>
+          <SearchBox>
+            <SearchInner>
+              <SearchInput
+                value={searchValue}
+                onChangeHandler={onChangeSearchHandler}
+                remove={removeVisible}
+              />
+              <CalendarInput />
+              <GuestInput />
+              <button
+                type="submit"
+                className="flex justify-center items-center w-16 h-full rounded-r-md bg-main"
+              >
+                <SearchWhiteIcon className="w-6 h-6" />
+              </button>
+            </SearchInner>
+          </SearchBox>
+        </form>
+      </div>
+      <MobileSearch className="md:hidden bg-white ">
+        <form onSubmit={onSubmitHandler}>
+          <div className="flex justify-between items-center ">
+            <SearchInput
+              value={searchValue}
+              onChangeHandler={onChangeSearchHandler}
+              remove={removeVisible}
+            />
+            <div className="flex flex-1 flex-col text-center px-4">
+              <CalendarInput />
+            </div>
+            <div className="flex-1">
+              <GuestInput />
+            </div>
+          </div>
+        </form>
+      </MobileSearch>
+    </>
   );
 };
 
@@ -67,4 +85,8 @@ pt-16 z-20
 `;
 
 const SearchInner = tw.div`
-flex flex-row items-center relative md:mx-[2rem] pb-[0.1rem] h-16 z-20  box-border`;
+flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
+
+const MobileSearch = tw.div`
+md:hidden bg-white absolute z-10 w-full py-5 px-3
+`;

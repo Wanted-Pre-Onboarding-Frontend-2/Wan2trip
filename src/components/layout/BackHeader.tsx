@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const BackHeader = () => {
   return (
     <EngSkyHeader>
-      <img src={Back} alt="" />
+      <img src={Back} alt="" className="w-full h-full object-cover lg:h-auto" />
     </EngSkyHeader>
   );
 };
