@@ -15,10 +15,10 @@ const CalenderHeader = (props: TableType) => {
       </button>
 
       <div className="text-center mx-auto w-full">
-        <div className="flex w-full mx-auto justify-center gap-7">
+        <div className="flex w-full mx-auto justify-center gap-5">
           {daysShort.map((day, i) => (
             <div key={uid(i)}>
-              <div>{day}</div>
+              <div className="p-1.5 -ml-1.5">{day}</div>
             </div>
           ))}
         </div>

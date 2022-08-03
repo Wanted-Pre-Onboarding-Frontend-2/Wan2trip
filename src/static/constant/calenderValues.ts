@@ -1,16 +1,16 @@
 export const months = [
-  "January 1월",
-  "February 2월",
-  "March 3월",
-  "April 4월",
-  "May 5월",
-  "June 6월",
-  "July 7월",
-  "August 8월",
-  "September 9월",
-  "October 10월",
-  "November 11월",
-  "December 12월",
+  "January 1",
+  "February 2",
+  "March 3",
+  "April 4",
+  "May 5",
+  "June 6",
+  "July 7",
+  "August 8",
+  "September 9",
+  "October 10",
+  "November 11",
+  "December 12",
 ];
 
 export const days = [
