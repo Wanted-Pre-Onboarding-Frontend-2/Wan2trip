@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../page/Home";
 import Result from "../page/Result";
@@ -6,11 +6,12 @@ import BookedListPage from "../page/BookedListPage";
 import NotFound404 from "../page/NotFound404";
 
 const Router = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
+  window.history.scrollRestoration = "manual";
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <Routes>
