@@ -1,5 +1,5 @@
 import React from "react";
-import { Hotel } from "types/hotel";
+import { Hotel } from "types/types";
 
 const Card = ({ hotel }: { hotel: Hotel }) => {
   return (

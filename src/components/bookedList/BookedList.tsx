@@ -6,7 +6,6 @@ import VirtualScroll from "common/VirtualScroll";
 import BookedWeb from "./BookedWeb";
 import BookedTablet from "./BookedTablet";
 
-// TODO: Card list를 감싸는 wrapper div height 수정 -> localHotelData.length를 기준으로 해주면 될듯함
 const BookedList = () => {
   return (
     <>
