@@ -12,7 +12,7 @@ const Home = () => {
     <Layout>
       <Header />
       <SearchBar />
-      <div className="flex flex-col items-center justify-center w-full gap-10 pt-12 md:pt-16 mx-auto mt-24">
+      <div className="flex flex-col items-center justify-center w-full gap-10  md:pt-16 mx-auto md:mt-44">
         <HotelList />
       </div>
     </Layout>
