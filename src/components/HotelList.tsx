@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/Card";
+import Card from "../common/Card";
 
 import { Hotel } from "types/types";
 import { useGetHotels } from "api/queries";
@@ -14,7 +14,7 @@ const HotelList = () => {
         ?.map((hotel: Hotel) => {
           return (
             <div key={hotel.hotel_name} className="w-full">
-              <Card data={hotel} />
+              <Card data={hotel} isBooked={false} />
             </div>
           );
         })
