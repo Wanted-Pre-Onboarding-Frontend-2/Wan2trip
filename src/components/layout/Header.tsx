@@ -24,8 +24,8 @@ const Header = (props: any) => {
         <StyledLink to="/booked" className="mr-10">
           예약내역
         </StyledLink>
-        <StyledLink to="/cal" className="mr-10">
-          달력
+        <StyledLink to="/result" className="mr-10">
+          검색
         </StyledLink>
       </div>
     </EngSkyHeader>

@@ -57,7 +57,7 @@ const Cell = (props: CellType) => {
       <EachCell
         className={
           fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-full"
+            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-lg"
             : "w-14 h-14 max-w-full cursor-pointer"
         }
         thisdate={props.value}
@@ -77,21 +77,23 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-w-full
+w-full py-3.5 -ml-1
 ${(props: Cells) =>
-  props.startpicked?.toString() === props.thisdate?.toString() &&
-  props.highlights === 1
-    ? "rounded-l-full"
-    : props.startpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full outline-4 outline-dashed outline-gray-400"}
+  props.startpicked?.toString() === props.thisdate?.toString()
+    ? props.startpicked?.toString() === props.thisdate?.toString() &&
+      "rounded-full bg-main ring ring-offset-2 ring-4 ring-main z-10"
+    : ""}
 ${(props: Cells) =>
-  props.endpicked?.toString() === props.thisdate?.toString() &&
-  props.highlights === 1
-    ? "rounded-r-full"
-    : props.endpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full outline-gray-400"}
+  props.endpicked?.toString() === props.thisdate?.toString()
+    ? props.endpicked?.toString() === props.thisdate?.toString() &&
+      "rounded-full bg-main ring ring-offset-2 ring-4 ring-main"
+    : ""}
 
-${(props: Cells) => props.highlights === 1 && "bg-main"}
+${(props: Cells) =>
+  props.highlights === 1 &&
+  props.startpicked.toString() !== props.thisdate.toString() &&
+  props.endpicked.toString() !== props.thisdate.toString() &&
+  "bg-main bg-clip-content"}
 ${(props: Cells) => props.issame === 0 && "text-gray-400"}
 ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
 `;
