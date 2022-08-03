@@ -82,10 +82,11 @@ const GuestInput = ({ peopleNum }: GuestProps) => {
       </div>
       {open && (
         <GuestNumberBox>
-          <div className="pt-10 md:pt-4">
+          <div className="pt-12 md:pt-4">
             <button
               type="button"
-              className="absolute top-3 right-3 md:hidden"
+              className="absolute top-5 right-5 md:hidden"
+
               onClick={onClickClosebtn}
             >
               <CloseIcon />

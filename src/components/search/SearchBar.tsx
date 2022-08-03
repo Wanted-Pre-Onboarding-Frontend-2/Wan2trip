@@ -111,5 +111,5 @@ const SearchInner = tw.div`
 flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-10 w-full py-5 px-3
+ fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5
 `;

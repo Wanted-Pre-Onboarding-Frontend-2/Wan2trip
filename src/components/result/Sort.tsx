@@ -7,7 +7,7 @@ const Sort = () => {
   return (
     <>
       {/* web */}
-      <div className="lg:block md:hidden sm:hidden">
+      <div className="hidden md:hidden lg:block">
         <div className="flex items-center pl-5 font-medium h-14 ">
           1,691개 호텔 중 예약가능 호텔 419개
         </div>
@@ -43,8 +43,8 @@ const Sort = () => {
           </div>
         )}
       </div>
-      {/* tablet */}
-      <div className="md:mt-14 md:relative lg:hidden md:block md:border-slate-300 md:border-b-2">
+      {/* mobile */}
+      <div className="relative lg:hidden md:block border-slate-300 border-b-2">
         <div className="flex items-center pl-10 font-medium h-14">
           1,691개 호텔 중 예약가능 호텔 419개
         </div>

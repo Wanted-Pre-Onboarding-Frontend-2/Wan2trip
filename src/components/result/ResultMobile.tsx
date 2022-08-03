@@ -20,32 +20,30 @@ const DUMMY_DATA = [
   },
 ];
 
-const ResultTablet = () => {
+const ResultMobile = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="flex bg-white">
-      <div className="absolute w-full">
-        <Tag />
-        <div className="w-full border-black px-50">
-          <div className="h-11">
-            <Sort />
-          </div>
+    <div className="bg-white">
+      <Tag />
+      <div className="border-black px-50">
+        <div className="h-4">
+          <Sort />
         </div>
-        {isMapActive ? (
-          <div className="">
-            <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
-              {/* <VirtualScroll itemHeight={300} columnGap={10}>
+      </div>
+      {isMapActive ? (
+        <div className="">
+          <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+            {/* <VirtualScroll itemHeight={20} columnGap={0.625}>
                 {DUMMY_DATA.map((hotel, index) => (
                   <Card key={`${hotel}-${index}`} hotel={hotel} />
                 ))}
               </VirtualScroll> */}
-            </div>
           </div>
-        ) : (
-          <div className="">지도API?</div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="">지도API?</div>
+      )}
     </div>
   );
 };
-export default ResultTablet;
+export default ResultMobile;
