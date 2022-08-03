@@ -20,11 +20,11 @@ const DUMMY_DATA = [
   },
 ];
 
-const ResultTablet = () => {
+const ResultMobile = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="flex bg-white">
-      <div className="absolute w-full">
+    <div className="flex bg-black">
+      <div className="w-full">
         <Tag />
         <div className="w-full border-black px-50">
           <div className="h-11">
@@ -48,4 +48,4 @@ const ResultTablet = () => {
     </div>
   );
 };
-export default ResultTablet;
+export default ResultMobile;

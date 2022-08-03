@@ -3,7 +3,7 @@ import SearchBar from "../components/search/SearchBar";
 import Layout from "../components/layout/Layout";
 import Header from "../components/layout/Header";
 import ResultWeb from "../components/result/ResultWeb";
-import ResultTablet from "../components/result/ResultTablet";
+import ResultMobile from "../components/result/ResultMobile";
 
 const Result = () => {
   return (
@@ -12,11 +12,11 @@ const Result = () => {
       <div className="-mt-10">
         <SearchBar />
       </div>
-      <div className="lg:block md:hidden sm:hidden">
+      <div className="hidden md:hidden lg:block">
         <ResultWeb />
       </div>
-      <div className="md:block sm:bolck lg:hidden">
-        <ResultTablet />
+      <div className="block lg:hidden">
+        <ResultMobile />
       </div>
     </Layout>
   );
