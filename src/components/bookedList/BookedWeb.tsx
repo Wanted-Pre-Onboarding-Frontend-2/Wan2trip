@@ -29,7 +29,7 @@ const BookedWeb = () => {
         </div>
         <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
           {!!localHotelData.length && (
-            <VirtualScroll itemHeight={300} columnGap={10}>
+            <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
                 <Card key={index} data={hotel} />
               ))}

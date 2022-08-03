@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
-import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhite.svg";
 import SearchInput from "./SearchInput";
 import CalendarInput from "./CalendarInput";
 import GuestInput from "./GuestInput";
-import { SearchData, PeopleNumber } from "../../store/search";
+import { SearchData, PeopleNumber, SearchKeyword } from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useSearchResults } from "../../api/queries";
+import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhite.svg";
+import { useQueryClient } from "@tanstack/react-query";
 
 const SearchBar = () => {
-  const [searchValue, setSearchInput] = useState("");
+  const queryClient = useQueryClient();
+
+  // const [searchValue, setSearchInput] = useState("");
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
+  const [searchKeyword, SetSearchKeyword] = useRecoilState(SearchKeyword);
   const peopleNum = useRecoilValue(PeopleNumber);
 
-  const { data } = useSearchResults(searchValue, peopleNum);
+  const { status, data, error } = useSearchResults(searchKeyword, peopleNum);
+  // useSearchResults(searchValue, PeopleNum)해서 가져온 data -> result페이지에서 쓰임
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setSearchInput(event.target.value);
+    SetSearchKeyword(event.target.value);
 
     if (event.target.value !== "") {
       setRemoveVisible(true);
@@ -41,7 +46,7 @@ const SearchBar = () => {
           <SearchBox>
             <SearchInner>
               <SearchInput
-                value={searchValue}
+                value={searchKeyword}
                 onChangeHandler={onChangeSearchHandler}
                 remove={removeVisible}
               />
@@ -49,7 +54,7 @@ const SearchBar = () => {
               <GuestInput />
               <button
                 type="submit"
-                className="flex justify-center items-center w-16 h-full rounded-r-md bg-main"
+                className="flex items-center justify-center w-16 h-full rounded-r-md bg-main"
               >
                 <SearchWhiteIcon className="w-6 h-6" />
               </button>
@@ -57,15 +62,15 @@ const SearchBar = () => {
           </SearchBox>
         </form>
       </div>
-      <MobileSearch className="md:hidden bg-white ">
+      <MobileSearch className="bg-white md:hidden ">
         <form onSubmit={onSubmitHandler}>
-          <div className="flex justify-between items-center ">
+          <div className="flex items-center justify-between ">
             <SearchInput
-              value={searchValue}
+              value={searchKeyword}
               onChangeHandler={onChangeSearchHandler}
               remove={removeVisible}
             />
-            <div className="flex flex-1 flex-col text-center px-4">
+            <div className="flex flex-col flex-1 px-4 text-center">
               <CalendarInput />
             </div>
             <div className="flex-1">
@@ -88,5 +93,5 @@ const SearchInner = tw.div`
 flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-10 w-full py-5 px-3
+ fixed top-17 left-0 bg-white z-10 w-full md:hidden
 `;

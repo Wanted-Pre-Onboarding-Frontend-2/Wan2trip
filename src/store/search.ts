@@ -15,6 +15,11 @@ export const PeopleNumber = atom({
   default: 0,
 });
 
+export const SearchKeyword = atom({
+  key: "SearchKeyword",
+  default: "",
+});
+
 export const SearchData = atom({
   key: "SearchData",
   default: [],
