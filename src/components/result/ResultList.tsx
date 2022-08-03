@@ -32,13 +32,15 @@ const ResultList = () => {
         <div>검색 결과가 없습니다. </div>
       ) : (
         <div>
-          {searchResults?.map((result: Hotel) => {
-            return (
-              <div key={result.hotel_name} className="w-full">
-                <Card data={result} isBooked={false} />
-              </div>
-            );
-          })}
+          <VirtualScroll itemHeight={20} columnGap={0.625}>
+            {searchResults?.map((result: Hotel) => {
+              return (
+                <div key={result.hotel_name} className="w-full">
+                  <Card data={result} isBooked={false} />
+                </div>
+              );
+            })}
+          </VirtualScroll>
         </div>
       )}
     </div>
@@ -46,3 +48,12 @@ const ResultList = () => {
 };
 
 export default ResultList;
+/*
+
+<VirtualScroll itemHeight={20} columnGap={0.625}>
+{DUMMY_DATA.map((hotel, index) => (
+  <Card key={`${hotel}-${index}`} hotel={hotel} />
+  ))}
+  </VirtualScroll>
+
+  */
