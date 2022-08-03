@@ -9,6 +9,8 @@ type Props = {
   renderAhead?: number;
 };
 
+const REM_SIZE = 16;
+
 const VirtualScroll = ({
   children,
   itemHeight,
@@ -16,12 +18,12 @@ const VirtualScroll = ({
   columnGap = 0,
   renderAhead = 0,
 }: Props) => {
-  const { height } = useWindowSize();
   const { y } = useWindowScroll();
+  const { height } = useWindowSize();
 
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [viewportY, setViewportY] = React.useState<number>(0);
-  const offsetY = (y - viewportY) / 16;
+  const offsetY = (y - viewportY) / REM_SIZE;
   React.useEffect(() => {
     const viewportY = scrollRef.current?.getBoundingClientRect().y ?? 0;
     setViewportY(viewportY);
@@ -35,7 +37,8 @@ const VirtualScroll = ({
   );
 
   const endIndex = Math.min(
-    Math.ceil(height / (itemHeight + columnGap) + startIndex) + renderAhead,
+    Math.ceil(height / REM_SIZE / (itemHeight + columnGap) + startIndex) +
+      renderAhead,
     children.length
   );
 
@@ -48,7 +51,7 @@ const VirtualScroll = ({
 
   return (
     <div
-      className="will-change-transform"
+      className="will-change-transform w-full"
       style={{
         height: `${containerHeight}rem`,
       }}
