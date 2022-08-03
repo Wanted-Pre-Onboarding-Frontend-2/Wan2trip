@@ -4,7 +4,6 @@ import Card from "../Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 
-// TODO: Card list를 감싸는 wrapper div height 수정 -> localHotelData.length를 기준으로 해주면 될듯함
 const BookedList = () => {
   const [localHotelData, setLocalHotelData] = React.useState<Hotel[]>([]);
 
@@ -27,22 +26,26 @@ const BookedList = () => {
             투숙 완료
           </div>
         </div>
-        <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
-          {!!localHotelData.length && (
-            <VirtualScroll itemHeight={300} columnGap={10}>
-              {localHotelData.map((hotel, index) => (
-                <Card key={index} data={hotel} />
-              ))}
-            </VirtualScroll>
-          )}
-          {!!localHotelData.length || (
+        {!!localHotelData.length && (
+          <div className="flex items-center justify-center w-3/4 py-2 mx-4 bg-white">
+            <div className="flex flex-col items-center text-center">
+              <VirtualScroll itemHeight={300} columnGap={10}>
+                {localHotelData.map((hotel, index) => (
+                  <Card key={index} data={hotel} />
+                ))}
+              </VirtualScroll>
+            </div>
+          </div>
+        )}
+        {!!localHotelData.length || (
+          <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
             <div className="flex flex-col items-center text-center">
               <img src={Noreserve} className="w-20 mb-5" />
               아직 준비된 예약이 없어요. <br />
               함께 새로운 스테이를 찾아봐요.
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
