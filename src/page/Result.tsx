@@ -9,7 +9,7 @@ const Result = () => {
   return (
     <Layout>
       <Header />
-      <div className="-mt-10">
+      <div className="-mt-10 relative">
         <SearchBar />
       </div>
       <div className="hidden md:hidden lg:block">

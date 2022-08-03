@@ -5,7 +5,7 @@ import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 
 // TODO: Card list를 감싸는 wrapper div height 수정 -> localHotelData.length를 기준으로 해주면 될듯함
-const BookedTablet = () => {
+const BookedMobile = () => {
   const [localHotelData, setLocalHotelData] = React.useState<Hotel[]>([]);
 
   React.useEffect(() => {
@@ -51,4 +51,4 @@ const BookedTablet = () => {
   );
 };
 
-export default BookedTablet;
+export default BookedMobile;

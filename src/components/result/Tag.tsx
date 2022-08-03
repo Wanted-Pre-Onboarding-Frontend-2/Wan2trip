@@ -49,7 +49,7 @@ const Tag = () => {
           ))}
         </div>
       </div>
-      {/* tablet */}
+      {/* mobile */}
       <div className="pl-6 block lg:hidden md:block border-slate-300 border-b-2 mt-2">
         <div className="flex w-full pb-2 text-sm font-semibold text-black border-red-300 flex-nowrap justify-evenly">
           {tags.map((tag, index) => (
