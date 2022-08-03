@@ -4,6 +4,7 @@ import Tag from "./Tag";
 import Checkbox from "./Checkbox";
 import Sort from "./Sort";
 import Card from "../../common/Card";
+import ResultList from "./ResultList";
 import { ReactComponent as Location } from "../../static/image/Location.svg";
 import { ReactComponent as LeftArrow } from "../../static/image/LeftArrow.svg";
 
@@ -69,6 +70,7 @@ const ResultTablet = () => {
         {isMapActive ? (
           <div className="">
             <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+              <ResultList />
               {/* <VirtualScroll itemHeight={300} columnGap={10}>
                 {DUMMY_DATA.map((hotel, index) => (
                   <Card key={`${hotel}-${index}`} hotel={hotel} />
