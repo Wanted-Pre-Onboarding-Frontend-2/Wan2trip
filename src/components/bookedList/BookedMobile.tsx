@@ -1,6 +1,6 @@
 import React from "react";
 import { Hotel } from "types/types";
-import Card from "../Card";
+import Card from "common/Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 import { uid } from "react-uid";
@@ -40,7 +40,7 @@ const BookedMobile = () => {
           <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
-                <Card key={uid(index)} data={hotel} />
+                <Card key={uid(index)} data={hotel} isBooked={true} />
               ))}
             </VirtualScroll>
           </div>

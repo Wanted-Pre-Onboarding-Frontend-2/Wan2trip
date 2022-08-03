@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { uid } from "react-uid";
 
-import Card from "../components/Card";
+import Card from "common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import { Hotel } from "types/types";
 import { useGetHotels } from "api/queries";
@@ -21,7 +21,7 @@ const HotelList = () => {
 
       <VirtualScroll itemHeight={20} columnGap={0.625}>
         {hotels.map((hotel: Hotel, index: number) => (
-          <Card key={uid(index)} data={hotel} />
+          <Card key={uid(index)} data={hotel} isBooked={false} />
         ))}
       </VirtualScroll>
     </>
