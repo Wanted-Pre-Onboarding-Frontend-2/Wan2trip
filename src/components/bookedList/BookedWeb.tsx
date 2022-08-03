@@ -27,22 +27,24 @@ const BookedWeb = () => {
             투숙 완료
           </div>
         </div>
-        <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
-          {!!localHotelData.length && (
+        {!!localHotelData.length && (
+          <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
                 <Card key={index} data={hotel} isBooked={true} />
               ))}
             </VirtualScroll>
-          )}
-          {!!localHotelData.length || (
+          </div>
+        )}
+        {!!localHotelData.length || (
+          <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
             <div className="flex flex-col items-center text-center">
               <img src={Noreserve} className="w-20 mb-5" />
               아직 준비된 예약이 없어요. <br />
               함께 새로운 스테이를 찾아봐요.
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
