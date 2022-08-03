@@ -9,11 +9,12 @@ import Table from "./Table";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ReactComponent as Left } from "../../static/icons/LeftArrow.svg";
 import { ReactComponent as Right } from "../../static/icons/RightArrow.svg";
+import _ from "lodash";
 export const Calender = () => {
   const [today, setToday] = useRecoilState(DayState);
   const [date, setDate] = useRecoilState(dateArray);
   const [pageNum, setPageNum] = React.useState(4);
-
+  const fixedToday = new Date();
   const { observer, lastElement, setLastElement } = useObserver(
     pageNum,
     setPageNum
@@ -37,7 +38,8 @@ export const Calender = () => {
   }, [lastElement, observer]);
 
   useEffect(() => {
-    if (pageNum < 12) setDate([...date, add(new Date(), { months: pageNum })]);
+    if (pageNum < 12)
+      setDate(_.uniq([...date, add(fixedToday, { months: pageNum })]));
   }, [pageNum]);
 
   const goToBefore = () => {
@@ -52,13 +54,19 @@ export const Calender = () => {
     setToday(add(today, { months: 1 }));
   };
 
+  const goToAfterMoblie = () => {
+    if (pageNum < 12) {
+      return setDate(_.uniq([...date, add(new Date(), { months: pageNum })]));
+    }
+    alert("더 이후의 예약은 아직 할수 없어요!");
+  };
   return (
     <div className="flex flex-col w-full font-redHat">
       <div className="text-center mx-auto w-full flex flex-col ip:flex-row ip:justify-between max-w-4xl flex-wrap pb-24">
         {matches && (
           <>
             <div className="flex flex-col mx-auto">
-              <div className="flex justify-between text-main absolute w-[98%] top-20 left-2">
+              <div className="flex justify-between text-main absolute w-[98.3%] top-20 left-2">
                 <button type="button" onClick={goToBefore}>
                   <Left
                     className={
@@ -79,11 +87,11 @@ export const Calender = () => {
                 </button>
               </div>
               <div className="flex flex-row gap-4 ">
-                <div className="border-2 border-main p-4 rounded-md py-10  drop-shadow-md">
+                <div className=" p-4 py-10 rounded-2xl drop-shadow-md shadow-xl bg-white">
                   <CalenderHeader today={today} />
                   <Table today={today} />
                 </div>
-                <div className="border-2 border-main p-4 rounded-md py-10 drop-shadow-md">
+                <div className=" p-4 py-10 rounded-2xl drop-shadow-md shadow-xl bg-white">
                   <CalenderHeader today={add(today, { months: 1 })} />
                   <Table today={add(today, { months: 1 })} />
                 </div>
@@ -95,11 +103,12 @@ export const Calender = () => {
         {!matches && (
           <>
             {date.map((day) => (
-              <div key={uid(day)} ref={setLastElement}>
+              <div key={uid(day)} ref={setLastElement} className="bg-white">
                 <CalenderHeader today={day} />
                 <Table today={day} />
               </div>
             ))}
+            <button onClick={goToAfterMoblie}>loading...</button>
           </>
         )}
       </div>
