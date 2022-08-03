@@ -12,7 +12,6 @@ const Home = () => {
     <Layout>
       <Header />
       <SearchBar />
-      <BackHeader />
       <div className="flex flex-col items-center justify-center w-full gap-10 pt-12 md:pt-16 mx-auto mt-24">
         <HotelList />
       </div>
