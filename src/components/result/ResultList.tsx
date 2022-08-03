@@ -29,7 +29,7 @@ const ResultList = () => {
   return (
     <div>
       {searchResults === undefined || searchResults.length === 0 ? (
-        <div>검색 결과가 없습니다. </div>
+        <div className="flex justify-center py-10">검색 결과가 없습니다. </div>
       ) : (
         <div>
           <VirtualScroll itemHeight={20} columnGap={0.625}>
@@ -49,11 +49,9 @@ const ResultList = () => {
 
 export default ResultList;
 /*
-
 <VirtualScroll itemHeight={20} columnGap={0.625}>
 {DUMMY_DATA.map((hotel, index) => (
   <Card key={`${hotel}-${index}`} hotel={hotel} />
   ))}
   </VirtualScroll>
-
   */

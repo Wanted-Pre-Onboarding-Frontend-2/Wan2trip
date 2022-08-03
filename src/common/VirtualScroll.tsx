@@ -51,7 +51,7 @@ const VirtualScroll = ({
 
   return (
     <div
-      className="will-change-transform w-full"
+      className="w-full will-change-transform"
       style={{
         height: `${containerHeight}rem`,
       }}

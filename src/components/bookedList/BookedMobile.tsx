@@ -21,7 +21,7 @@ const BookedMobile = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full w-full">
+      <div className="flex flex-col w-full h-full">
         <div className="flex items-center justify-center w-full h-16 py-2 bg-white border-b-4 border-slate-200">
           예약된 내역
         </div>
@@ -37,7 +37,7 @@ const BookedMobile = () => {
           </div>
         </div>
         {!!localHotelData.length && (
-          <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
+          <div className="flex items-center justify-center w-full py-2 bg-white">
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
                 <Card key={uid(index)} data={hotel} isBooked={true} />
@@ -46,7 +46,7 @@ const BookedMobile = () => {
           </div>
         )}
         {!!localHotelData.length || (
-          <div className="flex items-center justify-center w-full py-2 ml-4 bg-white h-[60vh]">
+          <div className="flex items-center justify-center w-full py-2 bg-white h-[60vh]">
             <div className="flex flex-col items-center text-center">
               <img src={Noreserve} className="w-20 mb-5" />
               아직 준비된 예약이 없어요. <br />

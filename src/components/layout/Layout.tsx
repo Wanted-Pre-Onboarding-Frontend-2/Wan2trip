@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       {location.pathname === "/" ? <BackHeader /> : ""}
-      <MoveToTop onClick={moveToTop}>top</MoveToTop>
+      <MoveToTop onClick={moveToTop}>Top</MoveToTop>
       <GlobalLayout isshown={isShown ? 1 : 0}>{children}</GlobalLayout>
     </>
   );
@@ -32,5 +32,5 @@ const GlobalLayout = tw.div<Modal>`
 `;
 
 const MoveToTop = tw.button`
-fixed bottom-5 right-5
+fixed bottom-5 right-5 bg-white w-10 h-10 rounded-full shadow-lg shadow-slate-500/50
 `;
