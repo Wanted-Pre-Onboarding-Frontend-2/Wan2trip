@@ -13,18 +13,24 @@ const Header = (props: any) => {
   const location = useLocation();
   return (
     <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
-      <StyledLink to="/" className="ml-10">
+      <StyledLink to="/" className="ml-5 md:ml-0">
         {location.pathname === "/" ? (
-          <img src={Logo} alt="" />
+          <>
+            <img src={Logo} alt="" className="w-32 hidden md:block" />
+            <img src={LogoDark} alt="" className="w-32 md:hidden" />
+          </>
         ) : (
-          <img src={LogoDark} alt="" />
+          <img src={LogoDark} alt="" className="w-32" />
         )}
       </StyledLink>
       <div>
-        <StyledLink to="/booked" className="mr-10">
+        <StyledLink to="/booked" className="mr-10 text-black md:text-white">
           예약내역
         </StyledLink>
-        <StyledLink to="/result" className="mr-10">
+        <StyledLink
+          to="/result"
+          className="mr-8 text-black md:text-white md:mr-0"
+        >
           검색
         </StyledLink>
       </div>
@@ -35,7 +41,7 @@ const Header = (props: any) => {
 export default Header;
 
 const EngSkyHeader = tw.header<HeaderType>`
-h-16 flex justify-between items-center relative z-20 
+fixed md:relative top-0 left-0 w-full py-3 z-10 flex justify-between items-center bg-white border-b md:px-3 lg:px-0 md:border-b-0 md:bg-transparent
 ${(props: HeaderType) =>
   props.location === 1 ? "text-white" : "text-gray-600"}
 `;

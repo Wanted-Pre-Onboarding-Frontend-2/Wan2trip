@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import tw from "tailwind-styled-components";
 import UserBlackIcon from "../../static/image/User.svg";
+import { ReactComponent as CloseIcon } from "../../static/image/Close.svg";
+
 import GuestCounter from "./GuestCounter";
 import { useRecoilState } from "recoil";
 import { AdultNumber, ChildrenNumber, PeopleNumber } from "store/search";
@@ -17,6 +19,10 @@ const GuestInput = () => {
 
   const onClickOpen = () => {
     setOpen(true);
+  };
+
+  const onClickClosebtn = () => {
+    setOpen(false);
   };
 
   const onClickClose: any = (event: React.MouseEvent<HTMLElement>) => {
@@ -76,21 +82,30 @@ const GuestInput = () => {
       </div>
       {open && (
         <GuestNumberBox>
-          <div className="pt-4">
-            <strong className="block pb-2 border-b">인원</strong>
-            <div className="pb-6">
-              <GuestCounter
-                title="성인"
-                people="adult"
-                value={adultNum}
-                onClick={onClickCounter}
-              />
-              <GuestCounter
-                title="아동"
-                people="children"
-                value={childrenNum}
-                onClick={onClickCounter}
-              />
+          <div className="pt-12 md:pt-4">
+            <button
+              type="button"
+              className="absolute top-5 right-5 md:hidden"
+              onClick={onClickClosebtn}
+            >
+              <CloseIcon />
+            </button>
+            <div>
+              <strong className="block pb-2 border-b">인원</strong>
+              <div className="pb-6">
+                <GuestCounter
+                  title="성인"
+                  people="adult"
+                  value={adultNum}
+                  onClick={onClickCounter}
+                />
+                <GuestCounter
+                  title="아동"
+                  people="children"
+                  value={childrenNum}
+                  onClick={onClickCounter}
+                />
+              </div>
             </div>
           </div>
         </GuestNumberBox>
@@ -102,7 +117,7 @@ const GuestInput = () => {
 export default GuestInput;
 
 const GuestBox = tw.div`
-flex flex-row items-center md:w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100`;
+ flex flex-row items-center md:w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100`;
 
 const GuestNumberBox = tw.div`
-absolute top-18 right-0 px-5 w-80 bg-white shadow-lg rounded`;
+fixed top-0 md:left-0 right-0 z-20 w-full h-full md:absolute md:h-auto md:absolute md:top-18 px-5  bg-white md:shadow-lg md:rounded`;
