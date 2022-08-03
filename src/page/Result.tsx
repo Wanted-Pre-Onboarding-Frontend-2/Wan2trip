@@ -4,7 +4,6 @@ import Layout from "../components/layout/Layout";
 import Header from "../components/layout/Header";
 import ResultWeb from "../components/result/ResultWeb";
 import ResultTablet from "../components/result/ResultTablet";
-
 const Result = () => {
   return (
     <Layout>
