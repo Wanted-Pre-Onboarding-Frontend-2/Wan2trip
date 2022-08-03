@@ -1,6 +1,6 @@
 import React from "react";
 import { Hotel } from "types/types";
-import Card from "../Card";
+import Card from "../../common/Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 
@@ -31,7 +31,7 @@ const BookedWeb = () => {
           {!!localHotelData.length && (
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
-                <Card key={index} data={hotel} />
+                <Card key={index} data={hotel} isBooked={true} />
               ))}
             </VirtualScroll>
           )}

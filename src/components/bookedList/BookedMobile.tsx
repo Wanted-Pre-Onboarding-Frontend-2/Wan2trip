@@ -1,6 +1,6 @@
 import React from "react";
 import { Hotel } from "types/types";
-import Card from "../Card";
+import Card from "../../common/Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 
@@ -15,7 +15,7 @@ const BookedMobile = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full w-full">
+      <div className="flex flex-col w-full h-full">
         <div className="flex items-center justify-center w-full h-16 py-2 bg-white border-b-4 border-slate-200">
           예약된 내역
         </div>
@@ -34,7 +34,7 @@ const BookedMobile = () => {
           {!!localHotelData.length && (
             <VirtualScroll itemHeight={20} columnGap={0.625}>
               {localHotelData.map((hotel, index) => (
-                <Card key={index} data={hotel} />
+                <Card key={index} data={hotel} isBooked={true} />
               ))}
             </VirtualScroll>
           )}

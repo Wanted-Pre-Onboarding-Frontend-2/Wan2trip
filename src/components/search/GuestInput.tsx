@@ -67,11 +67,11 @@ const GuestInput = ({ peopleNum }: GuestProps) => {
     <GuestBox ref={guestRef}>
       <img
         src={UserBlackIcon}
-        className="ml-4 w-6 h-6 hidden md:block"
+        className="hidden w-6 h-6 ml-4 md:block"
         alt=""
       />
       <div
-        className="flex flex-row item-center pl-4 w-1/2 h-full"
+        className="flex flex-row w-1/2 h-full pl-4 item-center"
         onClick={onClickOpen}
       >
         <div className="self-center">
@@ -86,7 +86,6 @@ const GuestInput = ({ peopleNum }: GuestProps) => {
             <button
               type="button"
               className="absolute top-5 right-5 md:hidden"
-
               onClick={onClickClosebtn}
             >
               <CloseIcon />

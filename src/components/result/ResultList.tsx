@@ -1,6 +1,6 @@
 import VirtualScroll from "common/VirtualScroll";
 import React from "react";
-import Card from "../Card";
+import Card from "../../common/Card";
 import { useRecoilValue } from "recoil";
 import { PeopleNumber, SearchKeyword } from "store/search";
 import { useSearchResults } from "api/queries";
@@ -20,7 +20,7 @@ const ResultList = () => {
     searchResults?.map((result: Hotel) => {
       return (
         <div key={result.hotel_name} className="w-full">
-          <Card data={result} />
+          <Card data={result} isBooked={false} />
         </div>
       );
     });
@@ -35,7 +35,7 @@ const ResultList = () => {
           {searchResults?.map((result: Hotel) => {
             return (
               <div key={result.hotel_name} className="w-full">
-                <Card data={result} />
+                <Card data={result} isBooked={false} />
               </div>
             );
           })}
