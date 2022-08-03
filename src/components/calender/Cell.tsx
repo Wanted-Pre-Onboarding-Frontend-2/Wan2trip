@@ -57,7 +57,7 @@ const Cell = (props: CellType) => {
       <EachCell
         className={
           fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-lg"
+            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-full"
             : "w-14 h-14 max-w-full cursor-pointer"
         }
         thisdate={props.value}

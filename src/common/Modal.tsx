@@ -41,8 +41,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
 };
 
 export const Wrapper = tw.div`
-fixed md:top-[25%] left-0 lg:-left-2 top-0
-  transform 
+fixed md:top-[25%] left-0 top-0
+  transform duration-200
+  transition-all ease-in-out
   z-50
   w-full
   h-full
@@ -58,7 +59,7 @@ export const Backdrop = tw.div`
 
 export const StyledModal = tw.div`
   z-50 bg-white relative mx-auto rounded-md
-  w-full h-full max-w-[58.9rem] md:h-fit
+  w-full h-full max-w-[58.9rem] md:h-fit top-0 bottom-3
 `;
 
 export const Header = tw.div`
@@ -66,7 +67,7 @@ flex justify-between p-1
 `;
 
 export const HeaderText = tw.div`
-text-start mx-auto w-full cursor-pointer p-2 text-lg underline-offset-2 overline decoration-2 decoration-mainn tracking-wider font-sans hover:text-main text-gray-700
+text-start md:text-center mx-auto w-full cursor-pointer p-2 text-lg underline-offset-2 overline decoration-2 decoration-mainn tracking-wider font-sans ip:hover:text-main text-gray-700 font-redHat
 `;
 
 export const CloseButton = tw.button`
