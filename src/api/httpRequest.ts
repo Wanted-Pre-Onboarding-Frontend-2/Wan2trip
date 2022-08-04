@@ -14,3 +14,13 @@ export const getHotelSearchData = async (
   );
   return response.data;
 };
+
+export const getHotelList = async ({ pageParam = 1 }) => {
+  const { data } = await axios.get(
+    `http://localhost:8000/hotels?_page=${pageParam}&_limit=10`
+  );
+  return {
+    result: data,
+    nextPage: pageParam + 1,
+  };
+};
