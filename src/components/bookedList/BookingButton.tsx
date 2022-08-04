@@ -1,5 +1,8 @@
 import React from "react";
 import { Hotel } from "types/types";
+import { useConfirm } from "../../hooks/useConfirm";
+import ConfirmContent from "../../components/result/ConfirmContent";
+import { Confirm } from "../../common/Confirm";
 
 interface PropsType {
   newData: Hotel;
@@ -9,6 +12,9 @@ interface PropsType {
 const BookedHotels: Hotel[] = [];
 
 const BookingButton = ({ newData, isBooked }: PropsType) => {
+  const { isShown, toggle } = useConfirm();
+  const content = <ConfirmContent />;
+  console.log(newData);
   const handleClickBooking = (newData: Hotel) => {
     const isExisting = BookedHotels.some(
       (e) => e.hotel_name === newData.hotel_name
@@ -20,6 +26,7 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
     if (!isExisting) {
       BookedHotels.push(newData);
       localStorage.setItem("hotels", JSON.stringify(BookedHotels));
+      toggle();
     }
   };
 
@@ -28,23 +35,32 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
   };
 
   return (
-    <div>
-      {isBooked ? (
-        <button
-          className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
-          onClick={handleClickCancel}
-        >
-          예약 취소
-        </button>
-      ) : (
-        <button
-          className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
-          onClick={() => handleClickBooking(newData)}
-        >
-          예약 하기
-        </button>
-      )}
-    </div>
+    <>
+      <div>
+        {isBooked ? (
+          <button
+            className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
+            onClick={handleClickCancel}
+          >
+            예약 취소
+          </button>
+        ) : (
+          <button
+            className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
+            onClick={() => handleClickBooking(newData)}
+          >
+            예약 하기
+          </button>
+        )}
+      </div>
+      <Confirm
+        isShown={isShown}
+        hide={toggle}
+        modalContent={content}
+        headerText="예약 완료!"
+        newdata={newData}
+      />
+    </>
   );
 };
 
