@@ -4,7 +4,6 @@ import { useWindowScroll, useWindowSize } from "react-use";
 type Props = {
   children: JSX.Element[];
   itemHeight: number;
-  rowGap?: number;
   columnGap?: number;
   renderAhead?: number;
 };
@@ -14,7 +13,6 @@ const REM_SIZE = 16;
 const VirtualScroll = ({
   children,
   itemHeight,
-  rowGap = 0,
   columnGap = 0,
   renderAhead = 0,
 }: Props) => {
@@ -53,6 +51,7 @@ const VirtualScroll = ({
     <div
       className="w-full will-change-transform"
       style={{
+        width: "100%",
         height: `${containerHeight}rem`,
       }}
       ref={scrollRef}
