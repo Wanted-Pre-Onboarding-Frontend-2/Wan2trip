@@ -11,13 +11,12 @@ type HeaderType = {
 
 const Header = (props: any) => {
   const location = useLocation();
-  console.log(location.pathname === "/");
   return (
     <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
       <StyledLink to="/" className="ml-5 md:ml-0">
         {location.pathname === "/" ? (
           <>
-            <img src={Logo} alt="" className="w-32 hidden md:block" />
+            <img src={Logo} alt="" className="hidden w-32 md:block" />
             <img src={LogoDark} alt="" className="w-32 md:hidden" />
           </>
         ) : (
