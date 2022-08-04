@@ -11,10 +11,11 @@ import {
   ChildrenNumber,
 } from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { useSearchResults } from "../../api/queries";
+import { useGetHotels, useSearchResults } from "../../api/queries";
 import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhite.svg";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSearch } from "hooks/useSearch";
 
 const SearchBar = () => {
   const queryClient = useQueryClient();
@@ -31,7 +32,10 @@ const SearchBar = () => {
   const [, setPeopleNumber] = useRecoilState(PeopleNumber);
   const peopleNum = Math.floor(adultOfNum + childrenOfNum);
 
-  const { status, data, error } = useSearchResults(keyword, peopleNum);
+  const { data } = useSearchResults(keyword, peopleNum);
+  const { data: hotels } = useGetHotels();
+  const { createFuzzyMatcher } = useSearch();
+  const [searchList, setSearchList] = useState();
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -40,6 +44,18 @@ const SearchBar = () => {
 
     if (event.target.value !== "") {
       setRemoveVisible(true);
+
+      const fuzzyRegex = createFuzzyMatcher(event.target.value);
+
+      const strList: string[] | any = [];
+
+      for (const key in hotels) {
+        if (fuzzyRegex.test(hotels[key].hotel_name.toLowerCase())) {
+          strList.push(hotels[key].hotel_name);
+        }
+      }
+
+      setSearchList(strList);
     } else {
       setRemoveVisible(false);
     }
@@ -67,6 +83,7 @@ const SearchBar = () => {
                 value={keyword}
                 onChangeHandler={onChangeSearchHandler}
                 remove={removeVisible}
+                searchList={searchList}
               />
               <CalendarInput />
               <GuestInput peopleNum={peopleNum} />

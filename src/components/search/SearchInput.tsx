@@ -7,11 +7,17 @@ interface SearchProps {
   value: string;
   remove: boolean;
   onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  searchList?: string[] | undefined;
 }
 
-const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
+const SearchInput = ({
+  value,
+  onChangeHandler,
+  remove,
+  searchList,
+}: SearchProps) => {
   const searchRef = useRef<HTMLInputElement>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const onRemoveValue = () => {
     if (searchRef.current) searchRef.current.value = "";
@@ -40,25 +46,24 @@ const SearchInput = ({ value, onChangeHandler, remove }: SearchProps) => {
           {remove && (
             <button
               type="button"
-              className="absolute flex items-center justify-center w-5 h-5 top-4 md:top-5 right-4"
+              className="absolute flex items-center justify-center w-5 h-5 top-4 md:top-5 right-4 "
               onClick={onRemoveValue}
             >
               <CancelIcon className="w-4 h-4  text-tahiti" />
             </button>
           )}
         </div>
-        {open && (
+        {remove && (
           <SearchListBox>
             <ul className="overflow-x-hidden overflow-y-auto max-h-56">
-              <li className="p-2 cursor-pointer hover:bg-slate-200">
-                Search List
-              </li>
-              <li className="p-2 cursor-pointer hover:bg-slate-200">
-                Search List
-              </li>
-              <li className="p-2 cursor-pointer hover:bg-slate-200">
-                Search List
-              </li>
+              {searchList?.map((hotel: string, index: number) => (
+                <li
+                  key={hotel + index}
+                  className="p-2 cursor-pointer hover:bg-slate-200 text-sm"
+                >
+                  {hotel}
+                </li>
+              ))}
             </ul>
           </SearchListBox>
         )}
