@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { uid } from "react-uid";
-import axios from "axios";
 import Card from "common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import Spinner from "../static/icons/spinner.png";
