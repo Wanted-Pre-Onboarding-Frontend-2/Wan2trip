@@ -3,9 +3,9 @@ import React from "react";
 const Confirm = () => {
   return (
     <>
-      <div>
-        <div>예약이 완료되었습니다.</div>
-        <div>예약 페이지로 가시겠습니까?</div>
+      <div className="text-sm tracking-wider mt-5">
+        <div>저장되었습니다.</div>
+        <div>예약 페이지로 이동하시겠습니까?</div>
       </div>
     </>
   );
