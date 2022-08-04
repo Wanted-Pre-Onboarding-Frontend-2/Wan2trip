@@ -25,14 +25,18 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
     }
     if (!isExisting) {
       BookedHotels.push(newData);
-      localStorage.setItem("hotels", JSON.stringify(BookedHotels));
       toggle();
     }
+    localStorage.setItem("hotels", JSON.stringify(BookedHotels));
   };
 
-  const handleClickCancel = () => {
-    // TODO: 로컬 스토리지 삭제 로직 들어감
-  };
+  const handleClickCancel = React.useCallback((targetHotel: Hotel) => {
+    const localHotelData = JSON.parse(localStorage.getItem("hotels")!) ?? [];
+    const newBookedHotels = localHotelData.filter(
+      (hotel: Hotel) => hotel.hotel_name !== targetHotel.hotel_name
+    );
+    localStorage.setItem("hotels", JSON.stringify(newBookedHotels));
+  }, []);
 
   return (
     <>
@@ -40,7 +44,7 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
         {isBooked ? (
           <button
             className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
-            onClick={handleClickCancel}
+            onClick={() => handleClickCancel(newData)}
           >
             예약 취소
           </button>
