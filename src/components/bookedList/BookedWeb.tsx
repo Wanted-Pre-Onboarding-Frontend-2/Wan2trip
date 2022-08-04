@@ -1,18 +1,16 @@
-import React from "react";
 import { Hotel } from "types/types";
 import Card from "common/Card";
 import Noreserve from "../../static/image/Noreserve.png";
 import VirtualScroll from "common/VirtualScroll";
 import { uid } from "react-uid";
+import Spinner from "../../static/icons/spinner.png";
 
-const BookedWeb = () => {
-  const [localHotelData, setLocalHotelData] = React.useState<Hotel[]>([]);
+type Props = {
+  hotel: Hotel[];
+  isLoading: boolean;
+};
 
-  React.useEffect(() => {
-    const localHotelData = JSON.parse(localStorage.getItem("hotels")!) ?? [];
-    setLocalHotelData(localHotelData as Hotel[]);
-  }, []);
-
+const BookedWeb = ({ hotel, isLoading }: Props) => {
   return (
     <>
       <div className="flex h-full">
@@ -27,25 +25,43 @@ const BookedWeb = () => {
             투숙 완료
           </div>
         </div>
-        {!!localHotelData.length && (
-          <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
-            <VirtualScroll itemHeight={20} columnGap={0.625}>
-              {localHotelData.map((hotel, index) => (
-                <Card key={uid(index)} data={hotel} isBooked={true} />
-              ))}
-            </VirtualScroll>
-          </div>
-        )}
-        {!!localHotelData.length || (
-          <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
-            <div className="flex flex-col items-center text-center">
-              <img src={Noreserve} className="w-20 mb-5" />
-              아직 준비된 예약이 없어요. <br />
-              함께 새로운 스테이를 찾아봐요.
-            </div>
-          </div>
-        )}
+        <BookedWebContent hotel={hotel} isLoading={isLoading} />
       </div>
+    </>
+  );
+};
+
+const BookedWebContent = ({ hotel, isLoading }: Props) => {
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
+        <div className="flex flex-col items-center text-center">
+          <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {!!hotel.length && (
+        <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
+          <VirtualScroll itemHeight={20} columnGap={0.625}>
+            {hotel.map((hotel, index) => (
+              <Card key={uid(index)} data={hotel} isBooked={true} />
+            ))}
+          </VirtualScroll>
+        </div>
+      )}
+      {!!hotel.length || (
+        <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
+          <div className="flex flex-col items-center text-center">
+            <img src={Noreserve} className="w-20 mb-5" />
+            아직 준비된 예약이 없어요. <br />
+            함께 새로운 스테이를 찾아봐요.
+          </div>
+        </div>
+      )}
     </>
   );
 };

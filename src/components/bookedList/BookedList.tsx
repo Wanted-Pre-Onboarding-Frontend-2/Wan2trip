@@ -1,19 +1,31 @@
 import React from "react";
 import { Hotel } from "types/types";
-import Card from "../../common/Card";
-import Noreserve from "../../static/image/Noreserve.png";
-import VirtualScroll from "common/VirtualScroll";
 import BookedWeb from "./BookedWeb";
-import BookedTablet from "./BookedMobile";
+import BookedMobile from "./BookedMobile";
 
 const BookedList = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [localHotelData, setLocalHotelData] = React.useState<Hotel[]>([]);
+
+  React.useEffect(() => {
+    const localHotelData = JSON.parse(localStorage.getItem("hotels")!) ?? [];
+    const timer = setTimeout(() => {
+      setLocalHotelData(localHotelData as Hotel[]);
+      setIsLoading(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
       <div className="hidden lg:block md:hidden">
-        <BookedWeb />
+        <BookedWeb hotel={localHotelData} isLoading={isLoading} />
       </div>
       <div className="md:block bolck lg:hidden">
-        <BookedTablet />
+        <BookedMobile hotel={localHotelData} isLoading={isLoading} />
       </div>
     </>
   );
