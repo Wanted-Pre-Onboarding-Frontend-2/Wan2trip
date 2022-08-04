@@ -60,7 +60,7 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
 };
 
 export const Wrapper = tw.div`
-fixed md:top-[25%] left-0 top-0
+fixed top-[25%] left-0 
   transform duration-200
   transition-all ease-in-out
   z-50
