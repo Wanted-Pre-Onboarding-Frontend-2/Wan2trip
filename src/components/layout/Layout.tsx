@@ -32,5 +32,5 @@ const GlobalLayout = tw.div<Modal>`
 `;
 
 const MoveToTop = tw.button`
-fixed bottom-5 right-5 bg-white w-10 h-10 rounded-full shadow-lg shadow-slate-500/50
+fixed bottom-5 right-5 bg-white w-10 h-10 rounded-full shadow-lg shadow-slate-500/50 hover:scale-105
 `;
