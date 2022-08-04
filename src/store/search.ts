@@ -20,7 +20,22 @@ export const SearchKeyword = atom({
   default: "",
 });
 
+export const SearchValue = atom({
+  key: "SearchValue",
+  default: "",
+});
+
 export const SearchData = atom({
   key: "SearchData",
   default: [],
+});
+
+export const SearchListIndex = atom({
+  key: "SearchListIndex",
+  default: 0,
+});
+
+export const SearchListOpen = atom({
+  key: "SearchListOpen",
+  default: false,
 });
