@@ -9,6 +9,8 @@ import {
   SearchKeyword,
   AdultNumber,
   ChildrenNumber,
+  SearchValue,
+  SearchListOpen,
 } from "../../store/search";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useGetHotels, useSearchResults } from "../../api/queries";
@@ -25,7 +27,7 @@ const SearchBar = () => {
   const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
   const [searchKeyword, setSearchKeyword] = useRecoilState(SearchKeyword);
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useRecoilState(SearchValue);
 
   const adultOfNum: number = useRecoilValue(AdultNumber);
   const childrenOfNum: number = useRecoilValue(ChildrenNumber);
@@ -36,22 +38,29 @@ const SearchBar = () => {
   const { data: hotels } = useGetHotels();
   const { createFuzzyMatcher } = useSearch();
   const [searchList, setSearchList] = useState();
+  const [searchListOpen, setSearchListOpen] = useRecoilState(SearchListOpen);
 
   const onChangeSearchHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setKeyword(event.target.value);
+    const value = event.target.value;
 
-    if (event.target.value !== "") {
+    setSearchListOpen(true);
+    setKeyword(value);
+    if (value !== "") {
       setRemoveVisible(true);
 
-      const fuzzyRegex = createFuzzyMatcher(event.target.value);
+      const fuzzyRegex = createFuzzyMatcher(value);
 
       const strList: string[] | any = [];
 
       for (const key in hotels) {
-        if (fuzzyRegex.test(hotels[key].hotel_name.toLowerCase())) {
-          strList.push(hotels[key].hotel_name);
+        const hotelName: string = hotels[key].hotel_name;
+
+        if (fuzzyRegex.test(hotelName.toLowerCase())) {
+          if (hotelName.includes(value)) {
+            strList.push(hotelName);
+          }
         }
       }
 
@@ -84,6 +93,7 @@ const SearchBar = () => {
                 onChangeHandler={onChangeSearchHandler}
                 remove={removeVisible}
                 searchList={searchList}
+                searchOpen={searchListOpen}
               />
               <CalendarInput />
               <GuestInput peopleNum={peopleNum} />
@@ -104,6 +114,8 @@ const SearchBar = () => {
               value={keyword}
               onChangeHandler={onChangeSearchHandler}
               remove={removeVisible}
+              searchList={searchList}
+              searchOpen={searchListOpen}
             />
             <div className="flex flex-col flex-1 px-4 text-center">
               <CalendarInput />
