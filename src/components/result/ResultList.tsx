@@ -14,17 +14,6 @@ const ResultList = () => {
     searchKeyword,
     numberOfPeople
   );
-  console.log("searchResults", searchResults);
-
-  const getResultsList = () => {
-    searchResults?.map((result: Hotel) => {
-      return (
-        <div key={result.hotel_name} className="w-full">
-          <Card data={result} isBooked={false} />
-        </div>
-      );
-    });
-  };
 
   return (
     <div>
@@ -48,10 +37,3 @@ const ResultList = () => {
 };
 
 export default ResultList;
-/*
-<VirtualScroll itemHeight={20} columnGap={0.625}>
-{DUMMY_DATA.map((hotel, index) => (
-  <Card key={`${hotel}-${index}`} hotel={hotel} />
-  ))}
-  </VirtualScroll>
-  */
