@@ -32,8 +32,6 @@ const HotelList = () => {
   // TODO: NextPage button 대신 무한스크롤 Observer로 변경
   return (
     <>
-      <div>홈</div>
-
       <VirtualScroll itemHeight={20} columnGap={0.625}>
         {hotelList.map((hotel: Hotel, index: number) => (
           <Card key={uid(index)} data={hotel} isBooked={false} />

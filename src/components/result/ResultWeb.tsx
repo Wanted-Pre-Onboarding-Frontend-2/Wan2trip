@@ -8,28 +8,13 @@ import ResultList from "./ResultList";
 import { ReactComponent as Location } from "../../static/image/Location.svg";
 import { ReactComponent as LeftArrow } from "../../static/image/LeftArrow.svg";
 
-// TODO: fetch 데이터로 변경
-const DUMMY_DATA = [
-  {
-    hotel_name: "에코랜드 호텔",
-    occupancy: {
-      base: 2,
-      max: 3,
-    },
-    image: "https://source.unsplash.com/random",
-    address: "중구 동호로 249 서울특별시",
-    price: 320337,
-    review: 1807,
-    rating: 1,
-  },
-];
 const ResultTablet = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="flex p-10 bg-white">
-      <div className="flex-col w-5/12">
+    <div className="flex pt-10 pl-2 bg-white">
+      <div className="flex-col w-4/12">
         <div
-          className="flex h-16 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
+          className="flex h-16 ml-4 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
           onClick={() => {
             setIsMapActive(!isMapActive);
           }}
@@ -47,6 +32,7 @@ const ResultTablet = () => {
           )}
         </div>
         <Tag />
+
         <div className="my-6 text-lg font-medium">가격 범위</div>
         <div className="pb-10 border-b-2 border-slate-200">
           <input

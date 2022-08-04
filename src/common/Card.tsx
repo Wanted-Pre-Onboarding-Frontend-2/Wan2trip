@@ -1,7 +1,8 @@
 import React from "react";
 import { Hotel } from "types/types";
-import BookingButton from "../components/bookedList/BookingButton";
 import { priceToString } from "../utils/priceToString";
+import BookingButton from "../components/bookedList/BookingButton";
+import Rating from "./Rating";
 
 interface PropsType {
   data: Hotel;
@@ -14,29 +15,44 @@ const IMAGE_URL =
 const BookedHotels: Hotel[] = [];
 
 const Card = ({ data, isBooked }: PropsType) => {
+  const {
+    hotel_name: hotelName,
+    address,
+    rating,
+    review,
+    occupancyBase,
+    occupancyMax,
+    price,
+  } = data;
+
   return (
     <div
-      key={data.hotel_name}
+      key={hotelName}
       className="flex justify-between w-full mb-5 bg-white rounded-lg max-w-7xl h-80 border-slate-300 drop-shadow-md "
     >
       <div className="mr-1">
         <img
           src={IMAGE_URL}
           alt="hotel_image"
-          className="bg-cover rounded-l-lg h-80"
+          className="bg-cover rounded-l-lg h-80 w-96"
         />
       </div>
       <section className="flex flex-col w-full ml-2 mr-6 mt-9 h-1/2">
-        <h2 className="text-2xl font-bold">{data.hotel_name}</h2>
-        <p className="text-slate-600">{data.address}</p>
+        <h2 className="text-2xl font-bold">{hotelName}</h2>
+        <p className="text-slate-600">{address}</p>
         <div className="mt-3 mb-5 ">
-          <span>평점: {data.rating} / 5 </span>
-          <span> 총 {data.review} 건의 리뷰</span>
+          <span className="font-bold text-slate-600 ">
+            총 {review} 건의 리뷰{" "}
+          </span>
+          <span>
+            <Rating rating={rating} />
+          </span>
+          {/* <span>평점: {rating} / 5 </span> */}
         </div>
-        <p>기본 인원: {data.occupancy.base}</p>
-        <p>최대 인원: {data.occupancy.max}</p>
-        <div className="self-end m-0 mt-5 text-4xl text-end">
-          <p>{priceToString(data.price)} 원</p>
+        <p>기본 인원 {occupancyBase}</p>
+        <p>최대 인원 {occupancyMax}</p>
+        <div className="self-end m-0 mt-3 text-4xl text-end">
+          <p>{priceToString(price)} 원</p>
           <p className="text-xs text-slate-400">세금 및 수수료 불포함</p>
           <BookingButton newData={data} isBooked={isBooked} />
         </div>
