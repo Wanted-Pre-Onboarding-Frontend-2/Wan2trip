@@ -24,12 +24,10 @@ const DUMMY_DATA = [
 const ResultMobile = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="bg-white">
+    <div className="fixed top-48">
       <Tag />
-      <div className="border-black px-50">
-        <div className="h-4">
-          <Sort />
-        </div>
+      <div className="h-4">
+        <Sort />
       </div>
       {isMapActive ? (
         <div className="">

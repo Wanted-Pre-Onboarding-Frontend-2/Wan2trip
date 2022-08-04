@@ -50,15 +50,15 @@ const Tag = () => {
         </div>
       </div>
       {/* mobile */}
-      <div className="pl-6 block lg:hidden md:block border-slate-300 border-b-2 mt-2">
-        <div className="flex w-full pb-2 text-sm font-semibold text-black border-red-300 flex-nowrap justify-evenly">
+      <div className="flex flex-wrap">
+        <div className="flex w-full pb-2 overflow-x-auto text-sm font-semibold text-black abolute flex-nowrap">
           {tags.map((tag, index) => (
             <div key={index}>
               <input type="checkbox" className="hidden" id="tagActive" />
               <label
                 htmlFor="tagActive"
                 className="checked:bg-[#686888] 
-                flex flex-col items-center justify-center h-7 m-1 border cursor-pointer py-4 w-24 rounded-3xl bg-[#EEEEEE]"
+                flex items-center justify-center h-7 m-1 border cursor-pointer py-4 w-24 rounded-3xl bg-[#EEEEEE]"
               >
                 {tag}
               </label>

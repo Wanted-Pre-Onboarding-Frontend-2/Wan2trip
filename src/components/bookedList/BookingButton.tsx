@@ -31,14 +31,14 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
     <div>
       {isBooked ? (
         <button
-          className="self-end mt-2 text-base text-end"
+          className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
           onClick={handleClickCancel}
         >
           예약 취소
         </button>
       ) : (
         <button
-          className="self-end mt-2 text-base text-end"
+          className="self-end mt-2 text-base w-24 h-8 text-white rounded text-center bg-[#FF375C] hover:shadow-md"
           onClick={() => handleClickBooking(newData)}
         >
           예약 하기
