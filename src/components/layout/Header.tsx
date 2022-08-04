@@ -11,6 +11,7 @@ type HeaderType = {
 
 const Header = (props: any) => {
   const location = useLocation();
+  console.log(location.pathname === "/");
   return (
     <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
       <StyledLink to="/" className="ml-5 md:ml-0">
@@ -24,12 +25,23 @@ const Header = (props: any) => {
         )}
       </StyledLink>
       <div>
-        <StyledLink to="/booked" className="mr-10 text-black md:text-white">
+        <StyledLink
+          to="/booked"
+          className={
+            location.pathname === "/"
+              ? "mr-10 text-gray-600 md:text-white"
+              : "mr-10"
+          }
+        >
           예약내역
         </StyledLink>
         <StyledLink
           to="/result"
-          className="mr-8 text-black md:text-white md:mr-0"
+          className={
+            location.pathname === "/"
+              ? "mr-8 md:mr-0 text-gray-600 md:text-white"
+              : "mr-8 md:mr-0"
+          }
         >
           검색
         </StyledLink>

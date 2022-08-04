@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
-    "@storybook/addon-postcss": "^3.0.0-alpha.1",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@tanstack/react-query": "^4.0.10",
     "@tanstack/react-query-devtools": "^4.0.10",
@@ -38,7 +37,6 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "build-storybook": "build-storybook -s public",
     "build:tailwind": "postcss src/tailwind.css -o src/tailwind.generated.css",
     "watch:tailwind": "postcss -w src/tailwind.css -o src/tailwind.generated.css",
     "start": "react-scripts start & yarn server",
@@ -47,7 +45,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
     "server": "json-server --watch ./public/data/index.js --port 8000"
   },
   "eslintConfig": {
@@ -79,17 +76,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-webpack5": "^6.5.9",
-    "@storybook/jest": "^0.0.10",
-    "@storybook/manager-webpack5": "^6.5.9",
-    "@storybook/node-logger": "^6.5.9",
-    "@storybook/preset-create-react-app": "^4.1.2",
-    "@storybook/react": "^6.5.9",
-    "@storybook/testing-library": "^0.0.13",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "babel-plugin-named-exports-order": "^0.0.2",
