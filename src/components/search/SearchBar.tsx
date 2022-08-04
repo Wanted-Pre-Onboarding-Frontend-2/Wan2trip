@@ -107,7 +107,7 @@ const SearchBar = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="flex items-center justify-between ">
             <SearchInput
-              value={searchKeyword}
+              value={keyword}
               onChangeHandler={onChangeSearchHandler}
               searchList={searchList}
               searchOpen={searchListOpen}

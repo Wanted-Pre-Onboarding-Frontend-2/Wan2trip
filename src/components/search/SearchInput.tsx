@@ -25,7 +25,8 @@ const SearchInput = ({
   const [, setSearchListOpen] = useRecoilState(SearchListOpen);
 
   const onRemoveValue = () => {
-    if (searchRef.current) searchRef.current.value = "";
+    // if (searchRef.current) searchRef.current.value = "";
+    setKeyword("");
     setSearchListOpen(false);
   };
 
@@ -39,25 +40,30 @@ const SearchInput = ({
       <SearchInputBox>
         <label
           htmlFor="hotel_name"
-          className="absolute items-center justify-center hidden w-6 h-6  top-5 left-3 md:flex"
+          className="absolute z-10 items-center justify-center hidden w-6 h-6 top-5 left-4 md:flex"
         >
           <SearchBlackIcon />
         </label>
-        <div className="relative flex flex-row h-full  md:w-auto md:px-12">
+        <div className="relative overflow-hidden flex flex-row h-full md:w-auto md:px-12 bg-gray-200 md:bg-white rounded-2xl">
           <input
             name="hotel_name"
             id="hotel_name"
             type="text"
             placeholder="호텔명"
-            className="flex-1 h-full pl-2 text-sm bg-gray-200 border-0 focus:outline-none md:bg-white rounded-2xl md:rounded-none md:text-md"
+            className="flex-1 h-full pl-2 text-sm border-0 bg-gray-200 md:bg-white  focus:outline-none md:text-md"
             onChange={onChangeHandler}
             value={value}
             ref={searchRef}
           />
+
+          <button type="submit" className="absolute top-3 right-5 md:hidden">
+            <SearchBlackIcon className="ml-2 w-5 h-5 " />
+          </button>
+
           {searchOpen && (
             <button
               type="button"
-              className="absolute flex items-center justify-center w-5 h-5 top-4 md:top-5 right-4 "
+              className="absolute flex items-center justify-center w-5 h-5 top-3 md:top-5 right-14 md:right-4 "
               onClick={onRemoveValue}
             >
               <CancelIcon className="w-4 h-4  text-tahiti" />
