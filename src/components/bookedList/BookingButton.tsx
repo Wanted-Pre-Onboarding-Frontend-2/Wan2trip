@@ -14,7 +14,6 @@ const BookedHotels: Hotel[] = [];
 const BookingButton = ({ newData, isBooked }: PropsType) => {
   const { isShown, toggle } = useConfirm();
   const content = <ConfirmContent />;
-  console.log(newData);
   const handleClickBooking = (newData: Hotel) => {
     const isExisting = BookedHotels.some(
       (e) => e.hotel_name === newData.hotel_name

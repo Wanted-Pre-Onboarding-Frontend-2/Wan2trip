@@ -44,7 +44,6 @@ const Tag = () => {
                 checked={isTagActive}
                 onChange={() => {
                   setIsTagActive(!isTagActive);
-                  console.log(isTagActive);
                 }}
               />
               <label

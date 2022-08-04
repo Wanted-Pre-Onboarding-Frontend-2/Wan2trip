@@ -54,7 +54,7 @@ const ResultTablet = () => {
         </div>
         {isMapActive ? (
           <div className="">
-            <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+            <div className="flex-col items-center justify-center gap-10 pt-10">
               <ResultList />
             </div>
           </div>
