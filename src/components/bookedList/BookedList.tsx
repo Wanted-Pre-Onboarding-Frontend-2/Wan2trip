@@ -12,7 +12,7 @@ const BookedList = () => {
     const timer = setTimeout(() => {
       setLocalHotelData(localHotelData as Hotel[]);
       setIsLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
