@@ -44,29 +44,32 @@ const SearchInput = ({
         >
           <SearchBlackIcon />
         </label>
-        <div className="relative overflow-hidden flex flex-row h-full md:w-auto md:px-12 bg-gray-200 md:bg-white rounded-2xl">
+        <div className="relative overflow-hidden flex flex-row h-full  md:w-auto md:px-12 rounded-2xl md:rounded-none ">
           <input
             name="hotel_name"
             id="hotel_name"
             type="text"
             placeholder="호텔명"
-            className="flex-1 h-full pl-2 text-sm border-0 bg-gray-200 md:bg-white  focus:outline-none md:text-md"
+            className="flex-1 h-full pl-2 text-sm border-0  bg-gray-200 md:bg-white  focus:outline-none md:text-md"
             onChange={onChangeHandler}
             value={value}
             ref={searchRef}
           />
 
-          <button type="submit" className="absolute top-3 right-5 md:hidden">
+          <button
+            type="submit"
+            className="absolute right-0 md:hidden h-full bg-gray-200 w-10"
+          >
             <SearchBlackIcon className="ml-2 w-5 h-5 " />
           </button>
 
           {searchOpen && (
             <button
               type="button"
-              className="absolute flex items-center justify-center w-5 h-5 top-3 md:top-5 right-14 md:right-4 "
+              className="absolute flex items-center justify-center w-10 h-full md:h-auto md:top-6 right-10 md:right-4 bg-gray-200 md:bg-transparent"
               onClick={onRemoveValue}
             >
-              <CancelIcon className="w-4 h-4  text-tahiti" />
+              <CancelIcon className="w-4 h-4 text-tahiti" />
             </button>
           )}
         </div>
