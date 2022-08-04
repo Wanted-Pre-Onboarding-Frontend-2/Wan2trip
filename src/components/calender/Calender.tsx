@@ -10,6 +10,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ReactComponent as Left } from "../../static/icons/LeftArrow.svg";
 import { ReactComponent as Right } from "../../static/icons/RightArrow.svg";
 import _ from "lodash";
+
 export const Calender = () => {
   const [today, setToday] = useRecoilState(DayState);
   const [date, setDate] = useRecoilState(dateArray);
@@ -56,7 +57,7 @@ export const Calender = () => {
 
   const goToAfterMoblie = () => {
     if (pageNum < 12) {
-      return setDate(_.uniq([...date, add(new Date(), { months: pageNum })]));
+      return setDate(_.uniq([...date, add(fixedToday, { months: pageNum })]));
     }
     alert("더 이후의 예약은 아직 할수 없어요!");
   };
