@@ -30,7 +30,6 @@ export const useSearch = () => {
 
       return `[${ch}\\u${start.toString(16)}-\\u${last.toString(16)}]`;
     } else if (/[가-히]/.test(ch)) {
-      console.log(ch, "초성, 중성, 종성 입력한 문자");
       const startCode = "가".charCodeAt(0);
       const charCode = ch.charCodeAt(0) - startCode;
 
