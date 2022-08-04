@@ -75,7 +75,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden md:block ">
         <form action="" onSubmit={onSubmitHandler}>
           <SearchBox>
             <SearchInner>
@@ -121,11 +121,11 @@ const SearchBar = () => {
 export default SearchBar;
 
 const SearchBox = tw.div`
-pt-16 z-20 md:px-3 lg:px-0
+mt-16 z-20 md:px-3 lg:px-0 border-gray-300	border rounded-md
 `;
 
 const SearchInner = tw.div`
-flex flex-row items-center relative  pb-[0.1rem] h-16 z-20  box-border`;
+flex flex-row items-center relative h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
  fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5
