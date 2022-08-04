@@ -24,7 +24,6 @@ const SearchBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [removeVisible, setRemoveVisible] = useState(false);
   const [searchData, setSearchData] = useRecoilState(SearchData);
   const [searchKeyword, setSearchKeyword] = useRecoilState(SearchKeyword);
   const [keyword, setKeyword] = useRecoilState(SearchValue);
@@ -48,8 +47,6 @@ const SearchBar = () => {
     setSearchListOpen(true);
     setKeyword(value);
     if (value !== "") {
-      setRemoveVisible(true);
-
       const fuzzyRegex = createFuzzyMatcher(value);
 
       const strList: string[] | any = [];
@@ -66,7 +63,7 @@ const SearchBar = () => {
 
       setSearchList(strList);
     } else {
-      setRemoveVisible(false);
+      setSearchListOpen(false);
     }
   };
 
@@ -91,7 +88,6 @@ const SearchBar = () => {
               <SearchInput
                 value={keyword}
                 onChangeHandler={onChangeSearchHandler}
-                remove={removeVisible}
                 searchList={searchList}
                 searchOpen={searchListOpen}
               />
@@ -111,9 +107,8 @@ const SearchBar = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="flex items-center justify-between ">
             <SearchInput
-              value={keyword}
+              value={searchKeyword}
               onChangeHandler={onChangeSearchHandler}
-              remove={removeVisible}
               searchList={searchList}
               searchOpen={searchListOpen}
             />

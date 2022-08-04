@@ -5,15 +5,10 @@ import tw from "tailwind-styled-components";
 import { ReactComponent as SearchBlackIcon } from "../../static/image/SearchBlack.svg";
 import { ReactComponent as CancelIcon } from "../../static/image/Cancel.svg";
 import { useRecoilState } from "recoil";
-import {
-  SearchListIndex,
-  SearchValue,
-  SearchListOpen,
-} from "../../store/search";
+import { SearchValue, SearchListOpen } from "../../store/search";
 
 interface SearchProps {
   value: string;
-  remove: boolean;
   onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
   searchList?: string[];
   searchOpen: boolean;
@@ -22,21 +17,19 @@ interface SearchProps {
 const SearchInput = ({
   value,
   onChangeHandler,
-  remove,
   searchList,
   searchOpen,
 }: SearchProps) => {
   const searchRef = useRef<HTMLInputElement>(null);
-  const [currentIndex, setCurrentIndex] = useRecoilState(SearchListIndex);
   const [, setKeyword] = useRecoilState(SearchValue);
   const [, setSearchListOpen] = useRecoilState(SearchListOpen);
 
   const onRemoveValue = () => {
     if (searchRef.current) searchRef.current.value = "";
+    setSearchListOpen(false);
   };
 
   const onClickGetValue = (hotel: string, index: number) => {
-    setCurrentIndex(index);
     setKeyword(hotel);
     setSearchListOpen(false);
   };
@@ -61,14 +54,15 @@ const SearchInput = ({
             value={value}
             ref={searchRef}
           />
-
-          <button
-            type="button"
-            className="absolute flex items-center justify-center w-5 h-5 top-4 md:top-5 right-4 "
-            onClick={onRemoveValue}
-          >
-            <CancelIcon className="w-4 h-4  text-tahiti" />
-          </button>
+          {searchOpen && (
+            <button
+              type="button"
+              className="absolute flex items-center justify-center w-5 h-5 top-4 md:top-5 right-4 "
+              onClick={onRemoveValue}
+            >
+              <CancelIcon className="w-4 h-4  text-tahiti" />
+            </button>
+          )}
         </div>
         {searchOpen && (
           <SearchListBox>
