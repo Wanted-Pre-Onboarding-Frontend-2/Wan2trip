@@ -9,10 +9,10 @@ const Result = () => {
   return (
     <Layout>
       <Header />
-      <div className="-mt-10 relative">
+      <div className="relative -mt-10">
         <SearchBar />
       </div>
-      <div className="hidden md:hidden lg:block">
+      <div className="hidden mt-6 md:hidden lg:block">
         <ResultWeb />
       </div>
       <div className="block lg:hidden">

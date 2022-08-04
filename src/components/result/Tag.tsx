@@ -33,7 +33,7 @@ const Tag = () => {
     <>
       {/* web */}
       <div className="hidden md:hidden lg:block w-92">
-        <div className="mt-5 mb-5 ml-4 text-xl font-semibold ">관련태그</div>
+        <div className="mt-5 mb-5 text-xl font-semibold ">관련태그</div>
         <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
           {tags.map((tag, index) => (
             <div key={index}>

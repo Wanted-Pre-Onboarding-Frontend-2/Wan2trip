@@ -11,10 +11,10 @@ import { ReactComponent as LeftArrow } from "../../static/image/LeftArrow.svg";
 const ResultTablet = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="flex pt-10 pl-2 bg-white">
+    <div className="flex bg-white">
       <div className="flex-col w-4/12">
         <div
-          className="flex h-16 ml-4 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
+          className="flex h-16 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
           onClick={() => {
             setIsMapActive(!isMapActive);
           }}
