@@ -27,21 +27,30 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
       <Backdrop onClick={() => hide()} />
       <Wrapper>
         <StyledModal>
-          <Header>
+          {/* <Header>
             <HeaderText>{headerText}</HeaderText>
             <CloseButton onClick={hide}>X</CloseButton>
-          </Header>
+          </Header> */}
           <Content>
-            <img src={newdata.image} alt="" className="w-56" />
-            <div className="flex flex-col justify-between">
-              {newdata.hotel_name}
+            <div className="pt-10 border-b w-full pb-5 justify-center items-center flex flex-col text-center">
+              <p className="text-2xl">{newdata.hotel_name}</p>
+              <p className="text-gray-400">{newdata.address}</p>
               {modalContent}
             </div>
+            <Footer>
+              <div className="h-14 border-r w-36 flex justify-center items-center text-center pr-10 font-bold">
+                <Link to="/booked" className="">
+                  이동
+                </Link>
+              </div>
+              <div
+                onClick={hide}
+                className="h-14  w-32 flex justify-center items-center text-center pl-7 font-bold"
+              >
+                <button>취소</button>
+              </div>
+            </Footer>
           </Content>
-          <Footer>
-            <Link to="/booked">예약 보러가기</Link>
-            <button onClick={hide}>좀더 둘러보기</button>
-          </Footer>
         </StyledModal>
       </Wrapper>
     </React.Fragment>
@@ -69,7 +78,7 @@ export const Backdrop = tw.div`
 
 export const StyledModal = tw.div`
   z-50  relative mx-auto rounded-md bg-white md:bg-transparent
-  w-full h-full max-w-[58.9rem] md:h-fit top-0 bottom-3 
+  w-full max-w-[58.9rem] h-fit top-0 bottom-3 
 `;
 
 export const Header = tw.div`
@@ -85,8 +94,8 @@ rounded-sm cursor-pointer mr-2
 `;
 
 export const Content = tw.div`
-  overflow-y-auto w-full bg-white flex flex-col md:flex-row items-center
-  h-[80%] min-h-max
+  overflow-y-auto w-full bg-white flex flex-col items-center
+  h-[80%] min-h-max max-w-sm mx-auto border border-main rounded-md 
 `;
 
 export const HotelData = tw.div`
@@ -94,5 +103,5 @@ bg-white
 `;
 
 export const Footer = tw.div`
-bg-white flex justify-center gap-4 md:-mt-10 md:absolute md:right-5
+bg-white flex justify-center gap-4 max-w-lg mx-auto
 `;
