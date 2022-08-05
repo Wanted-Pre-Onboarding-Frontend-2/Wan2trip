@@ -68,7 +68,6 @@ const SearchBar = () => {
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log("submit");
     setSearchKeyword(keyword);
     setPeopleNumber(peopleNum);
 
@@ -133,5 +132,5 @@ const SearchInner = tw.div`
 flex flex-row items-center relative h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5 z-30
+ fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5
 `;
