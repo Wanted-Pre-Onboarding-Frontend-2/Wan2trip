@@ -129,7 +129,7 @@ const SearchBar = () => {
 export default SearchBar;
 
 const SearchBox = tw.div`
-z-20 mx-3 lg:mx-0 lg:px-0 border-gray-300 border rounded-md mt-10 md:mt-40
+z-20 mx-3 lg:mx-0 lg:px-0 border-gray-300 border rounded-md mt-12 
 `;
 
 const SearchInner = tw.div`
