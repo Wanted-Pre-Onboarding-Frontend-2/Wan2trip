@@ -1,40 +1,28 @@
 import VirtualScroll from "common/VirtualScroll";
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, RefObject } from "react";
 import Card from "../../common/Card";
 import { useRecoilValue } from "recoil";
-import { PeopleNumber, SearchKeyword } from "store/search";
+import { PeopleNumber, SearchValue } from "store/search";
 import { useSearchResults } from "api/queries";
+import { changeInfiniteScrollDataToArray } from "../../utils/changeInfiniteScrollDataToArray";
 import { Hotel } from "types/types";
 import Noreserve from "../../static/image/Noreserve.png";
 import Spinner from "../../static/icons/spinner.png";
-import { getHotelList } from "api/httpRequest";
-import { useInfiniteQuery } from "@tanstack/react-query";
 
 const ResultList = () => {
-  const observerElem = useRef(null);
+  const searchKeyword = useRecoilValue(SearchValue);
+  const numberOfPeople = useRecoilValue(PeopleNumber);
   const {
-    data: hotels,
-    isLoading,
-    isFetching,
+    data: searchHotels,
     isFetchingNextPage,
+    isLoading,
     hasNextPage,
     fetchNextPage,
-  } = useInfiniteQuery(["infiniteHotelList"], getHotelList, {
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+    isFetching,
+  } = useSearchResults(searchKeyword, numberOfPeople);
+  const searchList = changeInfiniteScrollDataToArray(searchHotels) as Hotel[];
 
-  const hotelList: any = [];
-  hotels?.pages.forEach((page) => {
-    hotelList.push(...page.result);
-  });
-
-  const searchKeyword = useRecoilValue(SearchKeyword);
-  const numberOfPeople = useRecoilValue(PeopleNumber);
-  const { data: searchResults } = useSearchResults(
-    searchKeyword,
-    numberOfPeople
-  );
-
+  const observationTarget = React.useRef<HTMLImageElement>(null);
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const [target] = entries;
@@ -46,28 +34,52 @@ const ResultList = () => {
   );
 
   useEffect(() => {
-    const element: any = observerElem.current;
+    const target = observationTarget.current as HTMLImageElement;
+    if (!target) return;
+
     const option = { threshold: 0 };
     const observer = new IntersectionObserver(handleObserver, option);
-    console.log(element);
-    observer.observe(element);
-    return () => observer.unobserve(element);
+    observer.observe(target);
+    return () => observer.unobserve(target);
   }, [fetchNextPage, isFetchingNextPage, handleObserver]);
 
   return (
     <div>
-      {isLoading ? (
-        <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
-      ) : null}
-      {searchResults === undefined || searchResults.length === 0 ? (
+      {isLoading && (
+        <img
+          src={Spinner}
+          alt="로딩중 스피너"
+          className="flex justify-center animate-spin"
+        />
+      )}
+      {isLoading || (
+        <ResultListContent target={observationTarget} searchList={searchList} />
+      )}
+    </div>
+  );
+};
+
+export default ResultList;
+
+const ResultListContent = ({
+  target,
+  searchList,
+}: {
+  target: RefObject<HTMLImageElement>;
+  searchList: Hotel[];
+}) => {
+  return (
+    <>
+      {searchList.length === 0 && (
         <div className="flex flex-col items-center justify-center py-10 text-center">
           <img src={Noreserve} alt="예약없음" className="mb-10 w-28" />
           <div>검색 결과가 없습니다.</div>
         </div>
-      ) : (
-        <div>
-          <VirtualScroll itemHeight={20} columnGap={0.625}>
-            {searchResults?.map((result: Hotel) => {
+      )}
+      {searchList.length > 0 && (
+        <>
+          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={10}>
+            {searchList.map((result: Hotel) => {
               return (
                 <div key={result.hotel_name} className="w-full">
                   <Card data={result} isBooked={false} />
@@ -75,11 +87,9 @@ const ResultList = () => {
               );
             })}
           </VirtualScroll>
-          <div ref={observerElem}></div>
-        </div>
+          <div ref={target} />
+        </>
       )}
-    </div>
+    </>
   );
 };
-
-export default ResultList;
