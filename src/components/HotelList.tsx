@@ -4,7 +4,7 @@ import Card from "common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import Spinner from "../static/icons/spinner.png";
 import { Hotel } from "types/types";
-import { changeInfiniteScrollDataToArray } from "utils/spreadArrays";
+import { changeInfiniteScrollDataToArray } from "utils/changeInfiniteScrollDataToArray";
 import { useGetHotelList } from "api/queries";
 
 const HotelList = () => {
