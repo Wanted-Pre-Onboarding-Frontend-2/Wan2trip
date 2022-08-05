@@ -54,7 +54,7 @@ const BookedMobileContent = ({ hotel, isLoading }: Props) => {
     <>
       {!!hotel.length && (
         <div className="flex items-center justify-center w-full py-2 bg-white">
-          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={5}>
+          <VirtualScroll itemHeight={20} columnGap={1.25} renderAhead={5}>
             {hotel.map((hotel, index) => (
               <Card key={uid(index)} data={hotel} isBooked={true} />
             ))}

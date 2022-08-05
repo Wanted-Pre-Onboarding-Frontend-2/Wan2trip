@@ -47,7 +47,7 @@ const HotelList = () => {
       )}
       {isLoading || (
         <>
-          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={10}>
+          <VirtualScroll itemHeight={20} columnGap={1.25} renderAhead={10}>
             {hotelList.map((hotel: Hotel, index: number) => (
               <Card key={uid(index)} data={hotel} isBooked={false} />
             ))}

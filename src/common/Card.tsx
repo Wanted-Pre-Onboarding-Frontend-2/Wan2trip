@@ -29,9 +29,9 @@ const Card = ({ data, isBooked }: PropsType) => {
   return (
     <div
       key={hotelName}
-      className="flex justify-between w-full mb-5 bg-white rounded-lg max-w-7xl  border-slate-300 drop-shadow-md "
+      className="flex justify-between w-full h-80 bg-white mt-5 mb-5 rounded-lg max-w-7xl  border-slate-300 drop-shadow-md "
     >
-      <div className="w-1/3">
+      <div className="w-1/3 h-full">
         <img
           src={IMAGE_URL}
           alt="hotel_image"

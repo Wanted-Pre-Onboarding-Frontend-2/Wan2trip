@@ -90,7 +90,7 @@ const ResultListContent = ({
       )}
       {searchList.length > 0 && (
         <>
-          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={10}>
+          <VirtualScroll itemHeight={20} columnGap={1.25} renderAhead={10}>
             {searchList.map((result: Hotel) => {
               return (
                 <div key={result.hotel_name} className="w-full">
