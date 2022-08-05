@@ -46,11 +46,9 @@ const ResultList = () => {
   return (
     <div>
       {isLoading && (
-        <img
-          src={Spinner}
-          alt="로딩중 스피너"
-          className="flex justify-center animate-spin"
-        />
+        <div className="w-full h-full flex justify-center item-center">
+          <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
+        </div>
       )}
       {isLoading || (
         <ResultListContent target={observationTarget} searchList={searchList} />
