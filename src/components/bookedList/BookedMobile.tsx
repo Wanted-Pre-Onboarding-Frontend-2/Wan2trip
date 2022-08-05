@@ -34,12 +34,6 @@ const BookedMobileAside = () => {
         <div className="flex items-center justify-center w-1/3 border-b-2 border-black">
           예정된 예약
         </div>
-        <div className="flex justify-center items-center w-1/3  bl-[#FF375C]">
-          취소된 예약
-        </div>
-        <div className="flex justify-center items-center w-1/3  bl-[#FF375C]">
-          투숙 완료
-        </div>
       </div>
     </>
   );
