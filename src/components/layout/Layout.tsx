@@ -2,8 +2,8 @@ import React from "react";
 import { LayoutProps } from "../../types/types";
 import tw from "tailwind-styled-components";
 import { useModal } from "../../hooks/useModal";
-import BackHeader from "./BackHeader";
 import Footer from "./Footer";
+import HomeBackground from "./HomeBackground";
 import { Link, useLocation } from "react-router-dom";
 import { moveToTop } from "../../hooks/moveToTop";
 type Modal = {
@@ -15,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   return (
     <>
-      {location.pathname === "/" ? <BackHeader /> : ""}
+      {location.pathname === "/" ? <HomeBackground /> : ""}
       <MoveToTop onClick={moveToTop}>Top</MoveToTop>
       <GlobalLayout isshown={isShown ? 1 : 0}>{children}</GlobalLayout>
       <Footer />

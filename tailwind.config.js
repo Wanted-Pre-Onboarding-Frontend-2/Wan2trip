@@ -132,7 +132,7 @@ module.exports = {
     backdropSaturate: ({ theme }) => theme("saturate"),
     backdropSepia: ({ theme }) => theme("sepia"),
     backgroundColor: ({ theme }) => theme("colors"),
-    backgroundImage: {
+    HomeBackground: {
       none: "none",
       map: "url('./static/image/map.jpg')",
       "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
