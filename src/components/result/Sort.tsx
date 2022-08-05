@@ -44,11 +44,11 @@ const Sort = () => {
         )}
       </div>
       {/* mobile */}
-      <div className="fixed border-b-2 md:-mt-28 md:relative lg:hidden border-slate-300 w-[100vw] bg-white drop-shadow-xl mt-18">
-        <div className="flex items-center pl-10 font-medium h-14">
+      <div className="fixed top-56 md:top-0 flex items-center px-5 justify-between md:relative lg:hidden border-b-2lg:hidden border-gray-200 w-[100vw] bg-white drop-shadow-xl">
+        <div className="flex items-center font-medium text-sm h-14">
           1,691개 호텔 중 예약가능 호텔 419개
         </div>
-        <select className="absolute flex items-center justify-center justify-self-end right-6 bottom-4">
+        <select className="flex items-center justify-center justify-self-end text-sm">
           {sortList.map((value, index) => (
             <option
               key={index}
