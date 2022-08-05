@@ -6,6 +6,7 @@ import Spinner from "../static/icons/spinner.png";
 import { Hotel } from "types/types";
 import { getHotelList } from "api/httpRequest";
 import { useInfiniteQuery } from "@tanstack/react-query";
+// import { changeInfiniteScrollDataToArray } from "utils/spreadArrays";
 
 const HotelList = () => {
   const observerElem = useRef(null);
@@ -14,7 +15,7 @@ const HotelList = () => {
     isLoading,
     isFetching,
     isFetchingNextPage,
-    isFetchingPreviousPage,
+    hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery(["infiniteHotelList"], getHotelList, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
@@ -23,41 +24,48 @@ const HotelList = () => {
   hotels?.pages.forEach((page) => {
     hotelList.push(...page.result);
   });
-  console.log(hotelList);
 
-  const handleObserver = useCallback(
-    (entries: any) => {
-      const target = entries;
-      console.log(entries);
-      if (target.isIntersecting && isFetchingNextPage) {
+  const observationTarget = React.useRef<HTMLImageElement>(null);
+  const handleObserver = React.useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [target] = entries;
+      if (target.isIntersecting && hasNextPage) {
         fetchNextPage();
-        console.log("next");
       }
     },
-    [fetchNextPage, isFetchingNextPage]
+    [hasNextPage, fetchNextPage, isFetchingNextPage]
   );
 
   useEffect(() => {
-    const element: any = observerElem.current;
+    const target = observationTarget.current as HTMLImageElement;
+    if (!target) return;
+
     const option = { threshold: 0 };
     const observer = new IntersectionObserver(handleObserver, option);
-    observer.observe(element);
-    return () => observer.unobserve(element);
-  }, [fetchNextPage, isFetchingNextPage, handleObserver]);
+    observer.observe(target);
+    return () => observer.unobserve(target);
+  }, [handleObserver]);
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && (
         <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
-      ) : null}
-
-      <VirtualScroll itemHeight={20} columnGap={0.625}>
-        {hotelList.map((hotel: Hotel, index: number) => (
-          <Card key={uid(index)} data={hotel} isBooked={false} />
-        ))}
-      </VirtualScroll>
-      <div ref={observerElem}></div>
-      <button onClick={() => fetchNextPage()}>NextPage</button>
+      )}
+      {isLoading || (
+        <>
+          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={10}>
+            {hotelList.map((hotel: Hotel, index: number) => (
+              <Card key={uid(index)} data={hotel} isBooked={false} />
+            ))}
+          </VirtualScroll>
+          <img
+            ref={observationTarget}
+            src={Spinner}
+            alt="로딩중 스피너"
+            className="animate-spin"
+          />
+        </>
+      )}
     </>
   );
 };
