@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-
 const BASE_URL = "http://localhost:8000";
 
 export const getHotelsData = () =>
@@ -17,10 +16,22 @@ export const getHotelSearchData = async (
 
 export const getHotelList = async ({ pageParam = 1 }) => {
   const { data } = await axios.get(
-    `http://localhost:8000/hotels?_page=${pageParam}&_limit=10`
+    `${BASE_URL}/hotels?_page=${pageParam}&_limit=10`
   );
   return {
     result: data,
     nextPage: pageParam + 1,
   };
 };
+
+/*
+export const saveBookedHotel = async (data: Hotel) => {
+  const { data: response } = await axios.post(`${BASE_URL}/booked`, data);
+  return response.data;
+};
+
+export const deleteBookedHotel = async (id: number) => {
+  const response = await axios.delete(`${BASE_URL}/booked/${id}`);
+  return response.data;
+};
+*/
