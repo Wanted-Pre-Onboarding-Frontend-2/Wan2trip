@@ -1,15 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import _ from "lodash";
 import { uid } from "react-uid";
-import { getMonth, add, getDay, format, isBefore, isSameMonth } from "date-fns";
+import { add, isBefore, isSameMonth } from "date-fns";
 import { dateArray, DayState } from "../../store/global";
 import { useRecoilState } from "recoil";
-import CalenderHeader from "./CalenderHeader";
 import { useObserver } from "../../hooks/useObserver";
-import Table from "./Table";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ReactComponent as Left } from "../../static/icons/LeftArrow.svg";
 import { ReactComponent as Right } from "../../static/icons/RightArrow.svg";
-import _ from "lodash";
+import tw from "tailwind-styled-components";
+import CalenderHeader from "./CalenderHeader";
+import Table from "./Table";
 
 export const Calender = () => {
   const [today, setToday] = useRecoilState(DayState);
@@ -21,7 +22,6 @@ export const Calender = () => {
     setPageNum
   );
   const matches = useMediaQuery("(min-width: 768px)");
-  // console.log(matches);
 
   React.useEffect(() => {
     const currentElement = lastElement;
@@ -38,7 +38,7 @@ export const Calender = () => {
     };
   }, [lastElement, observer]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (pageNum < 12)
       setDate(_.uniq([...date, add(fixedToday, { months: pageNum })]));
   }, [pageNum]);
@@ -61,13 +61,14 @@ export const Calender = () => {
     }
     alert("더 이후의 예약은 아직 할수 없어요!");
   };
+
   return (
-    <div className="flex flex-col w-full font-redHat">
+    <Container>
       <div className="text-center mx-auto w-full flex flex-col ip:flex-row ip:justify-between max-w-4xl flex-wrap pb-24">
         {matches && (
           <>
-            <div className="flex flex-col mx-auto">
-              <div className="flex justify-between text-main absolute w-[98.3%] top-20 left-2">
+            <CalenderBox>
+              <ArrowBox>
                 <button type="button" onClick={goToBefore}>
                   <Left
                     className={
@@ -86,18 +87,18 @@ export const Calender = () => {
                     }
                   />
                 </button>
-              </div>
-              <div className="flex flex-row gap-4 ">
-                <div className=" p-4 py-10 rounded-2xl drop-shadow-md shadow-xl bg-white">
+              </ArrowBox>
+              <div className="flex flex-row gap-4">
+                <DesktopCalender>
                   <CalenderHeader today={today} />
                   <Table today={today} />
-                </div>
-                <div className=" p-4 py-10 rounded-2xl drop-shadow-md shadow-xl bg-white">
+                </DesktopCalender>
+                <DesktopCalender>
                   <CalenderHeader today={add(today, { months: 1 })} />
                   <Table today={add(today, { months: 1 })} />
-                </div>
+                </DesktopCalender>
               </div>
-            </div>
+            </CalenderBox>
           </>
         )}
 
@@ -113,6 +114,22 @@ export const Calender = () => {
           </>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
+
+const Container = tw.div`
+flex flex-col w-full font-redHat
+`;
+
+const CalenderBox = tw.div`
+flex flex-col mx-auto
+`;
+
+const DesktopCalender = tw.div`
+p-4 py-10 rounded-2xl drop-shadow-md shadow-xl bg-white
+`;
+
+const ArrowBox = tw.div`
+flex justify-between text-main absolute w-[98.3%] top-20 left-2
+`;

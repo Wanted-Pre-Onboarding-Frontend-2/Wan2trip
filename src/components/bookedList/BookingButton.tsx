@@ -13,7 +13,7 @@ const BookedHotels: Hotel[] = [];
 
 const BookingButton = ({ newData, isBooked }: PropsType) => {
   const { isShown, toggle } = useConfirm();
-  const content = <ConfirmContent />;
+  const content = <ConfirmContent {...newData} />;
   const handleClickBooking = (newData: Hotel) => {
     const isExisting = BookedHotels.some(
       (e) => e.hotel_name === newData.hotel_name
@@ -61,7 +61,6 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
         hide={toggle}
         modalContent={content}
         headerText="예약 완료!"
-        newdata={newData}
       />
     </>
   );

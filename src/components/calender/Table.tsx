@@ -10,10 +10,10 @@ type TableType = {
 const Table = (props: TableType) => {
   return (
     <>
-      {generateCalendar(props.today).map((date, i) => (
-        <div key={i} className="flex justify-center items-center">
-          {date.map((day, i) => {
-            return <Cell key={uid(i)} value={day} month={props.today} />;
+      {generateCalendar(props.today).map((date) => (
+        <div key={uid(date)} className="flex justify-center items-center">
+          {date.map((day, index) => {
+            return <Cell key={uid(index)} value={day} month={props.today} />;
           })}
         </div>
       ))}

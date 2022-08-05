@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
-import { getMonth, add, getDay, format } from "date-fns";
-import { dateArray, DayState } from "../store/global";
+import { DayState } from "../store/global";
 import { useRecoilState } from "recoil";
 
 export interface ModalProps {

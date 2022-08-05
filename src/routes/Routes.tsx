@@ -4,6 +4,7 @@ import Home from "../page/Home";
 import Result from "../page/Result";
 import BookedListPage from "../page/BookedListPage";
 import NotFound404 from "../page/NotFound404";
+import About from "../page/About";
 
 const Router = () => {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ const Router = () => {
       })}
       <Route path="/result" element={<Result />} />
       <Route path="/booked" element={<BookedListPage />} />
+      <Route path="/about" element={<About />} />
       <Route path="/*" element={<NotFound404 />} />
     </Routes>
   );
