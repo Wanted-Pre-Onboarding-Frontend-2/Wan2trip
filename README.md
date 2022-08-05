@@ -14,7 +14,7 @@
 | 김수빈 | 팀원 </br> Frontend |                                            - 회원가입(정보입력) </br> - 회원가입 validation                                            |
 | 김민주 | 팀원 </br> Frontend |                                      - 검색 결과 페이지,예약 확인 페이지 반응형 웹 구현 </br> - 무한스크롤에 옵저버 기능 추가                                       |
 | 이상지 | 팀장 </br> Frontend |                                            - admin페이지 구현 </br> - Pagenation </br> 기획                                            |
-| 이혜림 | 팀원 </br> Frontend |                  - headers, routing, interactive buttons </br> - mui & lottie & outter layout </br> - 반응형 웹 구현                   |
+| 이혜림 | 팀원 </br> Frontend |                  - modal, responsive calenders </br> - custom hooks, global layout </br> - tailwindCSS 플러그인 설정                   |
 | 홍승연 | 팀원 </br> Frontend | - 전체데이터 fetch 및 필터링 api 구축 </br> - 당첨여부 체크박스 toggle callback 구현 </br> - search bar 구현 </br> - csv 다운로드 구현 |
 
 </br>
