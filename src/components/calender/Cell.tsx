@@ -56,20 +56,27 @@ const Cell = (props: CellType) => {
   return (
     <>
       <EachCell
-        className={
-          fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-full"
-            : "w-14 h-14 max-w-full cursor-pointer"
-        }
         thisdate={props.value}
-        highlights={dateFilter(props.value) ? 1 : 0}
         startpicked={pick.startDate}
         endpicked={pick.endDate}
-        issame={isSameMonth(props.value, props.month) ? 1 : 0}
-        isbefore={isBefore(props.value, new Date()) ? 1 : 0}
-        onClick={() => dateHighlights()}
+        highlights={dateFilter(props.value) ? 1 : 0}
       >
-        {date}
+        <CellActive
+          className={
+            fixedToday === format(props.value, "yyyy-MM-dd")
+              ? "outline-4 outline-dashed rounded-full"
+              : ""
+          }
+          thisdate={props.value}
+          startpicked={pick.startDate}
+          endpicked={pick.endDate}
+          highlights={dateFilter(props.value) ? 1 : 0}
+          issame={isSameMonth(props.value, props.month) ? 1 : 0}
+          isbefore={isBefore(props.value, new Date()) ? 1 : 0}
+          onClick={() => dateHighlights()}
+        >
+          {date}
+        </CellActive>
       </EachCell>
     </>
   );
@@ -78,23 +85,51 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-w-full py-3.5 -ml-1 hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
+relative w-full h-14 flex justify-center items-center 
+${(props: Cells) =>
+  props.highlights === 1 &&
+  "bg-red-200 bg-clip-content w-full h-6 rounded-none"}
+${(props: Cells) =>
+  props.endpicked?.toString() === props.thisdate?.toString()
+    ? props.endpicked?.toString() === props.thisdate?.toString() && ""
+    : ""}
+    
+`;
+
+// const EachCell = tw.div<Cells>`
+// relative w-full py-3.5 -ml-1 flex justify-center items-center
+// ${(props: Cells) =>
+//   props.startpicked?.toString() === props.thisdate?.toString()
+//     ? props.startpicked?.toString() === props.thisdate?.toString() &&
+//       "rounded-full bg-main z-10"
+//     : ""}
+// ${(props: Cells) =>
+//   props.endpicked?.toString() === props.thisdate?.toString()
+//     ? props.endpicked?.toString() === props.thisdate?.toString() &&
+//       "rounded-full bg-gray-300"
+//     : ""}
+
+// ${(props: Cells) =>
+//   props.highlights === 1 &&
+//   props.startpicked.toString() !== props.thisdate.toString() &&
+//   props.endpicked.toString() !== props.thisdate.toString() &&
+//   "bg-red-200 bg-clip-content"}
+// ${(props: Cells) => props.issame === 0 && "text-gray-400"}
+// ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
+// `;
+
+const CellActive = tw.div<Cells>`
+flex justify-center items-center w-9 h-9 rounded-full cursor-pointer
 ${(props: Cells) =>
   props.startpicked?.toString() === props.thisdate?.toString()
     ? props.startpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main z-10"
+      "bg-main text-white"
     : ""}
 ${(props: Cells) =>
   props.endpicked?.toString() === props.thisdate?.toString()
     ? props.endpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main"
+      "bg-main text-white"
     : ""}
-
-${(props: Cells) =>
-  props.highlights === 1 &&
-  props.startpicked.toString() !== props.thisdate.toString() &&
-  props.endpicked.toString() !== props.thisdate.toString() &&
-  "bg-red-200 bg-clip-content"}
-${(props: Cells) => props.issame === 0 && "text-gray-400"}
-${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
+${(props: Cells) => props.issame === 0 && "cursor-not-allowed	"}
+${(props: Cells) => props.isbefore === 1 && "text-gray-400 cursor-not-allowed	"}
 `;
