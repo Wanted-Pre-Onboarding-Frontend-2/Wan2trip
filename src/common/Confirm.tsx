@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
-import { getMonth, add, getDay, format } from "date-fns";
-import { dateArray, DayState } from "../store/global";
-import { useRecoilState } from "recoil";
-import { Hotel } from "types/types";
+
 import { Link } from "react-router-dom";
 
 export interface ConfirmProps {
@@ -12,7 +9,6 @@ export interface ConfirmProps {
   hide: () => void;
   modalContent: JSX.Element;
   headerText?: string;
-  newdata: Hotel;
 }
 
 export const Confirm: FunctionComponent<ConfirmProps> = ({
@@ -20,7 +16,6 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
   hide,
   modalContent,
   headerText,
-  newdata,
 }) => {
   const Confirm = (
     <React.Fragment>
@@ -32,11 +27,7 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
             <CloseButton onClick={hide}>X</CloseButton>
           </Header> */}
           <Content>
-            <div className="pt-10 border-b w-full pb-5 justify-center items-center flex flex-col text-center">
-              <p className="text-2xl">{newdata.hotel_name}</p>
-              <p className="text-gray-400">{newdata.address}</p>
-              {modalContent}
-            </div>
+            {modalContent}
             <Footer>
               <div className="h-14 border-r w-36 flex justify-center items-center text-center pr-10 font-bold">
                 <Link to="/booked" className="">

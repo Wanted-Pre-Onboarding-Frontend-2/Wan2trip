@@ -54,6 +54,7 @@ const SearchInput = ({
             onChange={onChangeHandler}
             value={value}
             ref={searchRef}
+            autoComplete="off"
           />
 
           <button

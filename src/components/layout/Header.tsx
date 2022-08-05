@@ -1,6 +1,5 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-// import { ReactComponent as Logo } from "../../static/image/Logo.svg";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../static/image/logo.png";
 import LogoDark from "../../static/image/logoDark.png";
@@ -11,13 +10,12 @@ type HeaderType = {
 
 const Header = (props: any) => {
   const location = useLocation();
-  console.log(location.pathname === "/");
   return (
     <EngSkyHeader location={location.pathname === "/" ? 1 : 0}>
       <StyledLink to="/" className="ml-5 md:ml-0">
         {location.pathname === "/" ? (
           <>
-            <img src={Logo} alt="" className="w-32 hidden md:block" />
+            <img src={Logo} alt="" className="hidden w-32 md:block" />
             <img src={LogoDark} alt="" className="w-32 md:hidden" />
           </>
         ) : (
@@ -29,21 +27,11 @@ const Header = (props: any) => {
           to="/booked"
           className={
             location.pathname === "/"
-              ? "mr-10 text-gray-600 md:text-white"
-              : "mr-10"
+              ? "text-gray-600 md:text-white rounded-md border-slate-200 border px-4 py-2 hover:font-bold"
+              : null
           }
         >
           예약내역
-        </StyledLink>
-        <StyledLink
-          to="/result"
-          className={
-            location.pathname === "/"
-              ? "mr-8 md:mr-0 text-gray-600 md:text-white"
-              : "mr-8 md:mr-0"
-          }
-        >
-          검색
         </StyledLink>
       </div>
     </EngSkyHeader>
