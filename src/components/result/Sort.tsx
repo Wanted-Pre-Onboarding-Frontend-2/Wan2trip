@@ -44,7 +44,7 @@ const Sort = () => {
         )}
       </div>
       {/* mobile */}
-      <div className="relative border-b-2 filxed lg:hidden md:block border-slate-300 w-[100vw]">
+      <div className="fixed border-b-2 md:-mt-28 md:relative lg:hidden border-slate-300 w-[100vw] bg-white drop-shadow-xl mt-18">
         <div className="flex items-center pl-10 font-medium h-14">
           1,691개 호텔 중 예약가능 호텔 419개
         </div>

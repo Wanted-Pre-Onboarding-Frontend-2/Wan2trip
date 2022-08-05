@@ -49,7 +49,6 @@ const ResultList = () => {
     const element: any = observerElem.current;
     const option = { threshold: 0 };
     const observer = new IntersectionObserver(handleObserver, option);
-    console.log(element);
     observer.observe(element);
     return () => observer.unobserve(element);
   }, [fetchNextPage, isFetchingNextPage, handleObserver]);
