@@ -1,43 +1,65 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { uid } from "react-uid";
 import Card from "common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import Spinner from "../static/icons/spinner.png";
 import { Hotel } from "types/types";
-import { getHotelList } from "api/httpRequest";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { changeInfiniteScrollDataToArray } from "utils/spreadArrays";
+import { useGetHotelList } from "api/queries";
 
 const HotelList = () => {
   const {
     data: hotels,
-    isLoading,
-    isFetching,
     isFetchingNextPage,
-    isFetchingPreviousPage,
+    isLoading,
+    hasNextPage,
     fetchNextPage,
-  } = useInfiniteQuery(["infiniteHotelList"], getHotelList, {
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  } = useGetHotelList();
 
-  if (isLoading) {
-    return <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />;
-  }
+  const hotelList = changeInfiniteScrollDataToArray(hotels) as Hotel[];
 
-  const hotelList: Hotel[] = [];
-  hotels?.pages.forEach((page) => {
-    hotelList.push(...page.result);
-  });
-  console.log(hotelList);
+  const observationTarget = React.useRef<HTMLImageElement>(null);
+  const handleObserver = React.useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [target] = entries;
+      if (target.isIntersecting && hasNextPage) {
+        fetchNextPage();
+      }
+    },
+    [hasNextPage, fetchNextPage, isFetchingNextPage]
+  );
 
-  // TODO: NextPage button 대신 무한스크롤 Observer로 변경
+  // TODO: observationTarget과 handleObserver를 인자로 받아 처리하는 useInfiniteScroll 훅 생성
+  React.useEffect(() => {
+    const target = observationTarget.current as HTMLImageElement;
+    if (!target) return;
+
+    const option = { threshold: 0 };
+    const observer = new IntersectionObserver(handleObserver, option);
+    observer.observe(target);
+    return () => observer.unobserve(target);
+  }, [handleObserver]);
+
   return (
     <>
-      <VirtualScroll itemHeight={20} columnGap={0.625}>
-        {hotelList.map((hotel: Hotel, index: number) => (
-          <Card key={uid(index)} data={hotel} isBooked={false} />
-        ))}
-      </VirtualScroll>
-      <button onClick={() => fetchNextPage()}>NextPage</button>
+      {isLoading && (
+        <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
+      )}
+      {isLoading || (
+        <>
+          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={10}>
+            {hotelList.map((hotel: Hotel, index: number) => (
+              <Card key={uid(index)} data={hotel} isBooked={false} />
+            ))}
+          </VirtualScroll>
+          <img
+            ref={observationTarget}
+            src={Spinner}
+            alt="로딩중 스피너"
+            className="animate-spin"
+          />
+        </>
+      )}
     </>
   );
 };
