@@ -1,29 +1,22 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React from "react";
 import { uid } from "react-uid";
 import Card from "common/Card";
 import VirtualScroll from "common/VirtualScroll";
 import Spinner from "../static/icons/spinner.png";
 import { Hotel } from "types/types";
-import { getHotelList } from "api/httpRequest";
-import { useInfiniteQuery } from "@tanstack/react-query";
-// import { changeInfiniteScrollDataToArray } from "utils/spreadArrays";
+import { changeInfiniteScrollDataToArray } from "utils/changeInfiniteScrollDataToArray";
+import { useGetHotelList } from "api/queries";
 
 const HotelList = () => {
-  const observerElem = useRef(null);
   const {
     data: hotels,
-    isLoading,
-    isFetching,
     isFetchingNextPage,
+    isLoading,
     hasNextPage,
     fetchNextPage,
-  } = useInfiniteQuery(["infiniteHotelList"], getHotelList, {
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
-  const hotelList: any = [];
-  hotels?.pages.forEach((page) => {
-    hotelList.push(...page.result);
-  });
+  } = useGetHotelList();
+
+  const hotelList = changeInfiniteScrollDataToArray(hotels) as Hotel[];
 
   const observationTarget = React.useRef<HTMLImageElement>(null);
   const handleObserver = React.useCallback(
@@ -36,7 +29,8 @@ const HotelList = () => {
     [hasNextPage, fetchNextPage, isFetchingNextPage]
   );
 
-  useEffect(() => {
+  // TODO: observationTarget과 handleObserver를 인자로 받아 처리하는 useInfiniteScroll 훅 생성
+  React.useEffect(() => {
     const target = observationTarget.current as HTMLImageElement;
     if (!target) return;
 
