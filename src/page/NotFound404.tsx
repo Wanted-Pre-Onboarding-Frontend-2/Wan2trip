@@ -79,7 +79,7 @@ const NotFound404 = () => {
                             text-gray-400 group-hover:text-gray-500
                             transition-all duration-200 delay-100"
                   >
-                    Read our awesome articles
+                    visit our awesome search page
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@ const NotFound404 = () => {
                             text-gray-400 group-hover:text-gray-500
                             transition-all duration-200 delay-100"
                   >
-                    Archived posts but still readable
+                    Booked hotels are Archived here
                   </div>
                 </div>
 

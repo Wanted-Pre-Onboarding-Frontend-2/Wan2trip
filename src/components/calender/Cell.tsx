@@ -1,7 +1,7 @@
 import React from "react";
-import { DayState, pickDateState } from "../../store/global";
+import { pickDateState } from "../../store/global";
 import { useRecoilState } from "recoil";
-import { setDate, format, isBefore, isSameMonth } from "date-fns";
+import { format, isBefore, isSameMonth } from "date-fns";
 import tw from "tailwind-styled-components";
 import { useHighlightDate } from "../../hooks/useHighlightDate";
 import { useModal } from "../../hooks/useModal";
@@ -23,7 +23,7 @@ interface Cells {
 const Cell = (props: CellType) => {
   const [pick, setPick] = useRecoilState(pickDateState);
   const { dateFilter } = useHighlightDate();
-  // console.log(pick.startDate?.toString() === props.value?.toString());
+
   const fixedToday = format(new Date(), "yyyy-MM-dd");
   const date = format(props.value, "d");
   const { isShown, toggle } = useModal();
@@ -31,14 +31,14 @@ const Cell = (props: CellType) => {
   const dateHighlights = () => {
     if (pick.startDate === null) {
       if (isBefore(props.value, new Date())) {
-        alert("뒤에 날짜는 선택할수 없음");
+        alert("오늘이나 오늘보다 이전 날짜는 선택할수 없습니다.");
         return;
       }
       setPick({ startDate: props.value, endDate: null });
     } else if (pick.startDate !== null && pick.endDate === null) {
       if (isBefore(props.value, pick.startDate)) {
         if (isBefore(props.value, new Date())) {
-          alert("뒤에 날짜는 선택할수 없음");
+          alert("오늘이나 오늘보다 이전 날짜는 선택할수 없습니다.");
           return;
         }
         setPick({ startDate: props.value, endDate: null });
@@ -47,11 +47,12 @@ const Cell = (props: CellType) => {
       setPick({ startDate: pick.startDate, endDate: props.value });
       setTimeout(() => {
         toggle();
-      }, 200);
+      }, 250);
     } else if (pick.startDate !== null && pick.endDate !== null) {
       setPick({ startDate: null, endDate: null });
     }
   };
+
   return (
     <>
       <EachCell
