@@ -52,7 +52,7 @@ const CalendarInput = () => {
         isShown={isShown}
         hide={toggle}
         modalContent={content}
-        headerText={`${format(new Date(), "yyyy년 M월 d일 h시")}`}
+        // headerText={`${format(new Date(), "yyyy년 M월 d일 h시")}`}
       />
     </>
   );

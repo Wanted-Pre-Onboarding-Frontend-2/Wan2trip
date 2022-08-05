@@ -43,6 +43,7 @@ const SearchBar = () => {
 
     setSearchListOpen(true);
     setKeyword(value);
+
     if (value !== "") {
       const fuzzyRegex = createFuzzyMatcher(value);
 
@@ -51,7 +52,10 @@ const SearchBar = () => {
       for (const key in hotels) {
         const hotelName: string = hotels[key].hotel_name;
 
-        if (fuzzyRegex.test(hotelName.toLowerCase())) {
+        if (
+          fuzzyRegex.test(hotelName.toLowerCase()) ||
+          fuzzyRegex.test(hotelName)
+        ) {
           if (hotelName.includes(value)) {
             strList.push(hotelName);
           }
@@ -125,12 +129,12 @@ const SearchBar = () => {
 export default SearchBar;
 
 const SearchBox = tw.div`
-mt-32 z-20 md:px-3 lg:px-0 border-gray-300	border rounded-md
+z-20 mx-3 lg:mx-0 lg:px-0 border-gray-300 border rounded-md mt-12 
 `;
 
 const SearchInner = tw.div`
 flex flex-row items-center relative h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5
+ fixed top-17 left-0 bg-white z-30 w-full md:hidden px-3 py-5
 `;

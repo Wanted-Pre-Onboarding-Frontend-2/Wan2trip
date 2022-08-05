@@ -41,7 +41,7 @@ const Header = (props: any) => {
 export default Header;
 
 const EngSkyHeader = tw.header<HeaderType>`
-fixed md:relative top-0 left-0 w-full py-3 z-10 flex justify-between items-center bg-white border-b md:px-3 lg:px-0 md:border-b-0 md:bg-transparent
+fixed md:relative top-0 left-0 w-full py-3 pr-3 z-10 flex justify-between items-center bg-white border-b md:px-3 lg:px-0 md:border-b-0 md:bg-transparent
 ${(props: HeaderType) =>
   props.location === 1 ? "text-white" : "text-gray-600"}
 `;

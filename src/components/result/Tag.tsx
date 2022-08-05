@@ -32,7 +32,7 @@ const Tag = () => {
   return (
     <>
       {/* web */}
-      <div className="hidden md:hidden lg:block lg:pr-4">
+      <div className="hidden lg:block lg:pr-4">
         <div className="mt-5 mb-5 text-xl font-semibold ">관련태그</div>
         <div className="flex flex-wrap justify-between w-full pb-10 font-semibold border-b-2 text-slate-300 border-slate-200">
           {tags.map((tag, index) => (
@@ -59,7 +59,7 @@ const Tag = () => {
       </div>
       {/* mobile */}
       <div className="flex lg:hidden">
-        <div className="fixed flex w-full pb-2 mt-6 overflow-x-auto text-sm font-semibold text-black bg-white abolute flex-nowrap md:relative md:-mt-44">
+        <div className="fixed top-46 md:top-0 flex w-full pl-2 pb-2 pt-0 md:pt-6 bg-white overflow-x-auto text-sm font-semibold text-black flex-nowrap md:relative ">
           {tags.map((tag, index) => (
             <div key={index}>
               <input
@@ -74,7 +74,7 @@ const Tag = () => {
               <label
                 htmlFor="tagActive"
                 className="checked:bg-[#686888] checked:text-white
-                flex items-center justify-center h-7 m-1 border cursor-pointer py-4 w-24 rounded-3xl bg-[#EEEEEE]"
+                flex items-center justify-center h-7 m-1 border cursor-pointer py-4 px-4 whitespace-nowrap rounded-3xl bg-[#EEEEEE]"
               >
                 {tag}
               </label>
