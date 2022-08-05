@@ -59,7 +59,7 @@ const Tag = () => {
       </div>
       {/* mobile */}
       <div className="flex lg:hidden">
-        <div className="flex w-full pb-2 overflow-x-auto text-sm font-semibold text-black abolute flex-nowrap">
+        <div className="fixed flex w-full pb-2 mt-6 overflow-x-auto text-sm font-semibold text-black bg-white abolute flex-nowrap md:relative md:-mt-44">
           {tags.map((tag, index) => (
             <div key={index}>
               <input

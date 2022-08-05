@@ -4,9 +4,9 @@ import React, { useRef, useState } from "react";
 import tw from "tailwind-styled-components";
 import { ReactComponent as SearchBlackIcon } from "../../static/image/SearchBlack.svg";
 import { ReactComponent as CancelIcon } from "../../static/image/Cancel.svg";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { SearchValue, SearchListOpen } from "../../store/search";
-
+import Dropdown from "./dropdown/Dropdown";
 interface SearchProps {
   value: string;
   onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -21,19 +21,19 @@ const SearchInput = ({
   searchOpen,
 }: SearchProps) => {
   const searchRef = useRef<HTMLInputElement>(null);
-  const [, setKeyword] = useRecoilState(SearchValue);
-  const [, setSearchListOpen] = useRecoilState(SearchListOpen);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const setKeyword = useSetRecoilState(SearchValue);
+  const setSearchDropdownOpen = useSetRecoilState(SearchListOpen);
 
   const onRemoveValue = () => {
-    // if (searchRef.current) searchRef.current.value = "";
     setKeyword("");
-    setSearchListOpen(false);
+    setSearchDropdownOpen(false);
   };
 
-  const onClickGetValue = (hotel: string, index: number) => {
-    setKeyword(hotel);
-    setSearchListOpen(false);
+  const handleInputFocused = () => {
+    setIsInputFocused((current) => !current);
   };
+  React.useEffect(() => {}, [isInputFocused]);
 
   return (
     <>
@@ -44,14 +44,16 @@ const SearchInput = ({
         >
           <SearchBlackIcon />
         </label>
-        <div className="relative overflow-hidden flex flex-row h-full  md:w-auto md:px-12 rounded-2xl md:rounded-none ">
+        <div className="relative flex flex-row h-full overflow-hidden md:w-auto md:px-12 rounded-2xl md:rounded-none ">
           <input
             name="hotel_name"
             id="hotel_name"
             type="text"
             placeholder="호텔명"
-            className="flex-1 h-full pl-2 text-sm border-0  bg-gray-200 md:bg-white  focus:outline-none md:text-md"
+            className="flex-1 h-full pl-2 text-sm bg-gray-200 border-0 md:bg-white focus:outline-none md:text-md"
             onChange={onChangeHandler}
+            onFocus={handleInputFocused}
+            onBlur={handleInputFocused}
             value={value}
             ref={searchRef}
             autoComplete="off"
@@ -59,15 +61,15 @@ const SearchInput = ({
 
           <button
             type="submit"
-            className="absolute right-0 md:hidden h-full bg-gray-200 w-10"
+            className="absolute right-0 w-10 h-full bg-gray-200 md:hidden"
           >
-            <SearchBlackIcon className="ml-2 w-5 h-5 " />
+            <SearchBlackIcon className="w-5 h-5 ml-2 " />
           </button>
 
           {searchOpen && (
             <button
               type="button"
-              className="absolute flex items-center justify-center w-10 h-full md:h-auto md:top-6 right-10 md:right-4 bg-gray-200 md:bg-transparent"
+              className="absolute flex items-center justify-center w-10 h-full bg-gray-200 md:h-auto md:top-6 right-10 md:right-4 md:bg-transparent"
               onClick={onRemoveValue}
             >
               <CancelIcon className="w-4 h-4 text-tahiti" />
@@ -75,22 +77,7 @@ const SearchInput = ({
           )}
         </div>
         {searchOpen && (
-          <SearchListBox>
-            <ul className="overflow-x-hidden overflow-y-auto max-h-56">
-              {searchList?.map((hotel: string, index: number) => (
-                <li
-                  key={hotel + index}
-                  className="p-2 cursor-pointer text-sm hover:bg-slate-200"
-                  onClick={() => onClickGetValue(hotel, index)}
-                >
-                  {hotel}
-                </li>
-              ))}
-              {searchList?.length === 0 && (
-                <li className="text-sm">검색 결과가 없습니다.</li>
-              )}
-            </ul>
-          </SearchListBox>
+          <Dropdown searchList={searchList} inputState={isInputFocused} />
         )}
       </SearchInputBox>
     </>

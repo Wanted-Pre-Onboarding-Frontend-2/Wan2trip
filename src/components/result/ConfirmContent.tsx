@@ -1,17 +1,25 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { IsBookingButton } from "store/global";
 import { Hotel } from "types/types";
 
 const Confirm = (newdata: Hotel) => {
-  // console.log(newdata);
+  const isBooking = useRecoilValue(IsBookingButton);
   return (
     <>
-      <div className="pt-10 border-b w-full pb-5 justify-center items-center flex flex-col text-center">
+      <div className="flex flex-col items-center justify-center w-full pt-10 pb-5 text-center border-b">
         <p className="text-2xl">{newdata.hotel_name}</p>
         <p className="text-gray-400">{newdata.address}</p>
-        <div className="text-sm tracking-wider mt-5">
-          <div>저장되었습니다.</div>
-          <div>예약 페이지로 이동하시겠습니까?</div>
-        </div>
+        {isBooking ? (
+          <div className="mt-5 text-sm tracking-wider">
+            <div>저장되었습니다.</div>
+            <div>예약 페이지로 이동하시겠습니까?</div>
+          </div>
+        ) : (
+          <div className="mt-5 text-base tracking-wider">
+            <div>삭제하시겠습니까?</div>
+          </div>
+        )}
       </div>
     </>
   );

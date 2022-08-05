@@ -29,5 +29,17 @@ export const ModalState = atom({
   default: false,
 });
 
-// add(new Date(), { days: 7 })
-// add(new Date(), { days: 8 })
+export const HideCard = atom<boolean>({
+  key: "hideCard",
+  default: false,
+});
+
+export const IsBooked = atom<boolean>({
+  key: "isBookedHotel",
+  default: false,
+});
+
+export const IsBookingButton = atom<boolean>({
+  key: "IsBookingButton",
+  default: false,
+});

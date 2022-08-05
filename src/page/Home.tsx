@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Layout>
       <Header />
-      <div className=" relative z-auto m-2 text-4xl top-28 font-bold text-[#103922] ">
+      <div className=" relative z-auto m-2 text-4xl top-28 font-bold text-[#103922] hidden md:block ">
         Play, Share, Stay, 트립비토즈
       </div>
       <SearchBar />

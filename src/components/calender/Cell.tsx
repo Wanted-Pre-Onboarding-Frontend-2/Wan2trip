@@ -1,10 +1,11 @@
 import React from "react";
 import { pickDateState } from "../../store/global";
 import { useRecoilState } from "recoil";
-import { format, isBefore, isSameMonth } from "date-fns";
+import { format, isBefore, isSameMonth, isSameDay } from "date-fns";
 import tw from "tailwind-styled-components";
 import { useHighlightDate } from "../../hooks/useHighlightDate";
 import { useModal } from "../../hooks/useModal";
+import "../../style.css";
 
 type CellType = {
   value: Date | number;
@@ -56,20 +57,27 @@ const Cell = (props: CellType) => {
   return (
     <>
       <EachCell
-        className={
-          fixedToday === format(props.value, "yyyy-MM-dd")
-            ? "w-14 h-14 max-w-full cursor-pointer outline-4 outline-dashed rounded-full"
-            : "w-14 h-14 max-w-full cursor-pointer"
-        }
         thisdate={props.value}
-        highlights={dateFilter(props.value) ? 1 : 0}
         startpicked={pick.startDate}
         endpicked={pick.endDate}
-        issame={isSameMonth(props.value, props.month) ? 1 : 0}
-        isbefore={isBefore(props.value, new Date()) ? 1 : 0}
-        onClick={() => dateHighlights()}
+        highlights={dateFilter(props.value) ? 1 : 0}
       >
-        {date}
+        <CellActive
+          className={
+            fixedToday === format(props.value, "yyyy-MM-dd")
+              ? "border border-dashed border-gray-500 rounded-full"
+              : ""
+          }
+          thisdate={props.value}
+          startpicked={pick.startDate}
+          endpicked={pick.endDate}
+          highlights={dateFilter(props.value) ? 1 : 0}
+          issame={isSameMonth(props.value, props.month) ? 1 : 0}
+          isbefore={isBefore(props.value, new Date()) ? 1 : 0}
+          onClick={() => dateHighlights()}
+        >
+          {date}
+        </CellActive>
       </EachCell>
     </>
   );
@@ -78,23 +86,28 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-w-full py-3.5 -ml-1 hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
+relative w-full h-12 flex justify-center items-center 
+${(props: Cells) => props.highlights === 1 && "bg-red-100 w-full h-full"}
 ${(props: Cells) =>
-  props.startpicked?.toString() === props.thisdate?.toString()
-    ? props.startpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main z-10"
-    : ""}
+  props.highlights === 1 && isSameDay(props.startpicked, props.thisdate)
+    ? isSameDay(props.startpicked, props.thisdate) && "left-gradient"
+    : ""} 
 ${(props: Cells) =>
-  props.endpicked?.toString() === props.thisdate?.toString()
-    ? props.endpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main"
-    : ""}
+  props.highlights === 1 && isSameDay(props.endpicked, props.thisdate)
+    ? isSameDay(props.endpicked, props.thisdate) && "right-gradient"
+    : ""} 
+`;
 
+const CellActive = tw.div<Cells>`
+flex justify-center items-center w-9 h-9 rounded-full cursor-pointer text-sm
 ${(props: Cells) =>
-  props.highlights === 1 &&
-  props.startpicked.toString() !== props.thisdate.toString() &&
-  props.endpicked.toString() !== props.thisdate.toString() &&
-  "bg-red-200 bg-clip-content"}
-${(props: Cells) => props.issame === 0 && "text-gray-400"}
-${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
+  isSameDay(props.startpicked, props.thisdate)
+    ? isSameDay(props.startpicked, props.thisdate) && "bg-main text-white"
+    : ""}
+${(props: Cells) =>
+  isSameDay(props.endpicked, props.thisdate)
+    ? isSameDay(props.endpicked, props.thisdate) && "bg-main text-white"
+    : ""}
+${(props: Cells) => props.issame === 0 && "cursor-not-allowed	"}
+${(props: Cells) => props.isbefore === 1 && "text-gray-400 cursor-not-allowed	"}
 `;

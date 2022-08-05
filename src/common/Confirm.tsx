@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
 
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { IsBookingButton } from "store/global";
 
 export interface ConfirmProps {
   isShown: boolean;
@@ -17,30 +19,46 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
   modalContent,
   headerText,
 }) => {
+  const isBookingButton = useRecoilValue(IsBookingButton);
   const Confirm = (
     <React.Fragment>
       <Backdrop onClick={() => hide()} />
       <Wrapper>
         <StyledModal>
-          {/* <Header>
-            <HeaderText>{headerText}</HeaderText>
-            <CloseButton onClick={hide}>X</CloseButton>
-          </Header> */}
           <Content>
             {modalContent}
-            <Footer>
-              <div className="h-14 border-r w-36 flex justify-center items-center text-center pr-10 font-bold">
+            {isBookingButton ? (
+              <Footer>
                 <Link to="/booked" className="">
-                  이동
+                  <button className="flex items-center justify-center pr-10 font-bold text-center border-r h-14 w-36">
+                    이동
+                  </button>
                 </Link>
-              </div>
-              <div
-                onClick={hide}
-                className="h-14  w-32 flex justify-center items-center text-center pl-7 font-bold"
-              >
-                <button>취소</button>
-              </div>
-            </Footer>
+                <button
+                  onClick={hide}
+                  className="flex items-center justify-center w-32 font-bold text-center h-14 pl-7"
+                >
+                  취소
+                </button>
+              </Footer>
+            ) : (
+              <Footer>
+                <button
+                  onClick={() => {
+                    location.reload();
+                  }}
+                  className="flex items-center justify-center pr-10 font-bold text-center border-r h-14 w-36"
+                >
+                  삭제
+                </button>
+                <div
+                  onClick={hide}
+                  className="flex items-center justify-center w-32 font-bold text-center h-14 pl-7"
+                >
+                  <button>취소</button>
+                </div>
+              </Footer>
+            )}
           </Content>
         </StyledModal>
       </Wrapper>

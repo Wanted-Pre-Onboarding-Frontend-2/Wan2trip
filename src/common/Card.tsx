@@ -1,8 +1,9 @@
-import React from "react";
 import { Hotel } from "types/types";
 import { priceToString } from "../utils/priceToString";
 import BookingButton from "../components/bookedList/BookingButton";
 import Rating from "./Rating";
+import { useRecoilValue } from "recoil";
+import { HideCard } from "store/global";
 
 interface PropsType {
   data: Hotel;

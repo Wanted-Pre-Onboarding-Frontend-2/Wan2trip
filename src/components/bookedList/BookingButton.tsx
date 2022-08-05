@@ -3,6 +3,8 @@ import { Hotel } from "types/types";
 import { useConfirm } from "../../hooks/useConfirm";
 import ConfirmContent from "../../components/result/ConfirmContent";
 import { Confirm } from "../../common/Confirm";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { IsBookingButton, HideCard } from "store/global";
 
 interface PropsType {
   newData: Hotel;
@@ -11,9 +13,25 @@ interface PropsType {
 
 const BookedHotels: Hotel[] = [];
 
+const BOOK_HOTEL = true;
+const CANCEL_HOTEL = false;
+
 const BookingButton = ({ newData, isBooked }: PropsType) => {
+  const setIsBooking = useSetRecoilState(IsBookingButton);
   const { isShown, toggle } = useConfirm();
-  const content = <ConfirmContent {...newData} />;
+  const modalContent = <ConfirmContent {...newData} />;
+
+  const SwitchModalContent = (booking: boolean) => {
+    if (booking) {
+      setIsBooking(BOOK_HOTEL);
+      toggle();
+    }
+    if (!booking) {
+      setIsBooking(CANCEL_HOTEL);
+      toggle();
+    }
+  };
+
   const handleClickBooking = (newData: Hotel) => {
     const isExisting = BookedHotels.some(
       (e) => e.hotel_name === newData.hotel_name
@@ -24,7 +42,7 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
     }
     if (!isExisting) {
       BookedHotels.push(newData);
-      toggle();
+      SwitchModalContent(BOOK_HOTEL);
     }
     localStorage.setItem("hotels", JSON.stringify(BookedHotels));
   };
@@ -35,6 +53,7 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
       (hotel: Hotel) => hotel.hotel_name !== targetHotel.hotel_name
     );
     localStorage.setItem("hotels", JSON.stringify(newBookedHotels));
+    SwitchModalContent(CANCEL_HOTEL);
   }, []);
 
   return (
@@ -59,7 +78,7 @@ const BookingButton = ({ newData, isBooked }: PropsType) => {
       <Confirm
         isShown={isShown}
         hide={toggle}
-        modalContent={content}
+        modalContent={modalContent}
         headerText="예약 완료!"
       />
     </>
