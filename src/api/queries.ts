@@ -1,6 +1,6 @@
-import { getHotelsData, getHotelList, getHotelSearchData } from "./httpRequest";
+import { getHotelsData } from "./httpRequest";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 
 const BASE_URL = "http://localhost:8000";
 
