@@ -7,13 +7,6 @@ import NotFound404 from "../page/NotFound404";
 import About from "../page/About";
 
 const Router = () => {
-  const { pathname } = useLocation();
-  window.history.scrollRestoration = "manual";
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
     <Routes>
       {["/", "/home"].map((path) => {
