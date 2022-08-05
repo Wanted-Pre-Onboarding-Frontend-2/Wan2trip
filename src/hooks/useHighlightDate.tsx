@@ -16,12 +16,6 @@ export const useHighlightDate = () => {
     if (highlightedArray) {
       for (let i = 0; i < highlightedArray.length; i++) {
         if (isSameDay(highlightedArray[i], date)) {
-          if (
-            highlightedArray[i].toString() === pick.startDate.toString() ||
-            highlightedArray[i].toString() === pick.endDate.toString()
-          ) {
-            break;
-          }
           a = true;
           break;
         }
