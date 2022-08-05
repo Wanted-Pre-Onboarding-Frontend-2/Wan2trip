@@ -58,7 +58,6 @@ const SearchBar = () => {
         }
       }
 
-      refetchSearchResult();
       setSearchList(strList);
     } else {
       setSearchListOpen(false);
@@ -70,6 +69,7 @@ const SearchBar = () => {
 
     setSearchKeyword(keyword);
     setPeopleNumber(peopleNum);
+    refetchSearchResult();
 
     if (location.pathname === "/") {
       navigate("/result");
