@@ -78,23 +78,23 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-w-full py-3.5 -ml-1 hover:ring hover:ring-offset-2 hover:ring-main hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
+w-full py-3.5 -ml-1 hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
 ${(props: Cells) =>
   props.startpicked?.toString() === props.thisdate?.toString()
     ? props.startpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main ring ring-offset-2 ring-4 ring-main z-10"
+      "rounded-full bg-main z-10"
     : ""}
 ${(props: Cells) =>
   props.endpicked?.toString() === props.thisdate?.toString()
     ? props.endpicked?.toString() === props.thisdate?.toString() &&
-      "rounded-full bg-main ring ring-offset-2 ring-4 ring-main"
+      "rounded-full bg-main"
     : ""}
 
 ${(props: Cells) =>
   props.highlights === 1 &&
   props.startpicked.toString() !== props.thisdate.toString() &&
   props.endpicked.toString() !== props.thisdate.toString() &&
-  "bg-main bg-clip-content"}
+  "bg-red-200 bg-clip-content"}
 ${(props: Cells) => props.issame === 0 && "text-gray-400"}
 ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
 `;
