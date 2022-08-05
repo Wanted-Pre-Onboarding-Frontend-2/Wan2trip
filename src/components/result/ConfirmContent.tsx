@@ -5,8 +5,6 @@ import { Hotel } from "types/types";
 
 const Confirm = (newdata: Hotel) => {
   const isBooking = useRecoilValue(IsBookingButton);
-  // console.log(newdata);
-  console.log(isBooking);
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full pt-10 pb-5 text-center border-b">
