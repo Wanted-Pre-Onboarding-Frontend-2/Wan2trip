@@ -18,7 +18,7 @@ const ResultList = () => {
     isLoading,
     hasNextPage,
     fetchNextPage,
-    isFetching,
+    isRefetching,
   } = useSearchResults(searchKeyword, numberOfPeople);
   const searchList = changeInfiniteScrollDataToArray(searchHotels) as Hotel[];
 
@@ -51,7 +51,11 @@ const ResultList = () => {
         </div>
       )}
       {isLoading || (
-        <ResultListContent target={observationTarget} searchList={searchList} />
+        <ResultListContent
+          target={observationTarget}
+          searchList={searchList}
+          isRefetching={isRefetching}
+        />
       )}
     </div>
   );
@@ -62,10 +66,20 @@ export default ResultList;
 const ResultListContent = ({
   target,
   searchList,
+  isRefetching,
 }: {
   target: RefObject<HTMLImageElement>;
   searchList: Hotel[];
+  isRefetching: boolean;
 }) => {
+  if (isRefetching) {
+    return (
+      <div className="w-full h-full flex justify-center item-center">
+        <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <>
       {searchList.length === 0 && (
