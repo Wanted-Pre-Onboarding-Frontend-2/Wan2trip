@@ -5,6 +5,7 @@ import { format, isBefore, isSameMonth, isSameDay } from "date-fns";
 import tw from "tailwind-styled-components";
 import { useHighlightDate } from "../../hooks/useHighlightDate";
 import { useModal } from "../../hooks/useModal";
+import "../../style.css";
 
 type CellType = {
   value: Date | number;
@@ -64,7 +65,7 @@ const Cell = (props: CellType) => {
         <CellActive
           className={
             fixedToday === format(props.value, "yyyy-MM-dd")
-              ? "outline-4 outline-dashed rounded-full"
+              ? "border border-dashed border-gray-500 rounded-full"
               : ""
           }
           thisdate={props.value}
@@ -85,40 +86,20 @@ const Cell = (props: CellType) => {
 export default Cell;
 
 const EachCell = tw.div<Cells>`
-relative w-full h-14 flex justify-center items-center 
+relative w-full h-12 flex justify-center items-center 
+${(props: Cells) => props.highlights === 1 && "bg-red-100 w-full h-full"}
 ${(props: Cells) =>
-  props.highlights === 1 &&
-  "bg-red-200 bg-clip-content w-full h-6 rounded-none"}
+  props.highlights === 1 && isSameDay(props.startpicked, props.thisdate)
+    ? isSameDay(props.startpicked, props.thisdate) && "left-gradient"
+    : ""} 
 ${(props: Cells) =>
-  isSameDay(props.endpicked, props.thisdate)
-    ? isSameDay(props.endpicked, props.thisdate) && ""
-    : ""}
-    
+  props.highlights === 1 && isSameDay(props.endpicked, props.thisdate)
+    ? isSameDay(props.endpicked, props.thisdate) && "right-gradient"
+    : ""} 
 `;
 
-// const EachCell = tw.div<Cells>`
-// w-full py-3.5 -ml-1 hover:rounded-full hover:bg-main hover:bg-clip-border hover:z-10
-// ${(props: Cells) =>
-//   isSameDay(props.startpicked, props.thisdate)
-//     ? isSameDay(props.startpicked, props.thisdate) &&
-//       "rounded-full bg-main z-10"
-//     : ""}
-// ${(props: Cells) =>
-//   isSameDay(props.endpicked, props.thisdate)
-//     ? isSameDay(props.endpicked, props.thisdate) && "rounded-full bg-main "
-//     : ""}
-
-// ${(props: Cells) =>
-//   props.highlights === 1 &&
-//   !isSameDay(props.startpicked, props.thisdate) &&
-//   !isSameDay(props.endpicked, props.thisdate) &&
-//   "bg-red-200 bg-clip-content"}
-// ${(props: Cells) => props.issame === 0 && "text-gray-400"}
-// ${(props: Cells) => props.isbefore === 1 && "text-gray-400"}
-// `;
-
 const CellActive = tw.div<Cells>`
-flex justify-center items-center w-9 h-9 rounded-full cursor-pointer
+flex justify-center items-center w-9 h-9 rounded-full cursor-pointer text-sm
 ${(props: Cells) =>
   isSameDay(props.startpicked, props.thisdate)
     ? isSameDay(props.startpicked, props.thisdate) && "bg-main text-white"

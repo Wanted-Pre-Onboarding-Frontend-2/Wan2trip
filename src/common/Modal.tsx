@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import tw from "tailwind-styled-components";
 import { DayState } from "../store/global";
 import { useRecoilState } from "recoil";
+import { ReactComponent as CloseIcon } from "../static/image/Close.svg";
 
 export interface ModalProps {
   isShown: boolean;
@@ -28,7 +29,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
             <HeaderText onClick={() => setToday(new Date())}>
               {headerText}
             </HeaderText>
-            <CloseButton onClick={hide}>X</CloseButton>
+            <CloseButton onClick={hide}>
+              <CloseIcon />
+            </CloseButton>
           </Header>
           <Content>{modalContent}</Content>
         </StyledModal>
@@ -62,7 +65,7 @@ export const StyledModal = tw.div`
 `;
 
 export const Header = tw.div`
-flex justify-between p-1 bg-white md:bg-transparent
+flex justify-between py-3 px-3 md:px-1 md:py-1 bg-white md:bg-transparent
 `;
 
 export const HeaderText = tw.div`
@@ -77,4 +80,5 @@ rounded-sm ml-2 md:hidden
 export const Content = tw.div`
   overflow-y-auto w-full
   h-full
+  px-3 md:px-0
 `;

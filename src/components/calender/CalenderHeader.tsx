@@ -10,15 +10,15 @@ type TableType = {
 const CalenderHeader = (props: TableType) => {
   return (
     <>
-      <button className="font-redHat text-2xl font-extrabold pb-4">
+      <button className="font-redHat text-xl font-extrabold pb-5">
         {getYear(props.today)} {months[getMonth(props.today)]}
       </button>
 
-      <div className="text-center mx-auto w-full font-redHat bg-main">
-        <div className="flex w-full mx-auto justify-center gap-[1.16rem]">
+      <div className="text-center mx-auto w-full font-redHat ">
+        <div className="flex w-full mx-auto justify-evenly ">
           {daysShort.map((day, i) => (
             <div key={uid(i)}>
-              <div className="p-1.5 -ml-1.5">{day}</div>
+              <div className="py-1 text-sm w-11 text-gray-400">{day}</div>
             </div>
           ))}
         </div>
