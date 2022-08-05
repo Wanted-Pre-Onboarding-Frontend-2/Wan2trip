@@ -8,6 +8,7 @@ import { changeInfiniteScrollDataToArray } from "../utils/changeInfiniteScrollDa
 import { useGetHotelList } from "api/queries";
 
 const HotelList = () => {
+  const observationTarget = React.useRef<HTMLImageElement>(null);
   const {
     data: hotels,
     isFetchingNextPage,
@@ -18,7 +19,6 @@ const HotelList = () => {
 
   const hotelList = changeInfiniteScrollDataToArray(hotels) as Hotel[];
 
-  const observationTarget = React.useRef<HTMLImageElement>(null);
   const handleObserver = React.useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const [target] = entries;

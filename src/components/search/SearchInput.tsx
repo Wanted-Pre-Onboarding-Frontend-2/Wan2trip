@@ -33,9 +33,7 @@ const SearchInput = ({
   const handleInputFocused = () => {
     setIsInputFocused((current) => !current);
   };
-  React.useEffect(() => {
-    console.log(isInputFocused);
-  }, [isInputFocused]);
+  React.useEffect(() => {}, [isInputFocused]);
 
   return (
     <>

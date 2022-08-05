@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import VirtualScroll from "common/VirtualScroll";
 import Tag from "./Tag";
 import Sort from "./Sort";
-import Card from "../../common/Card";
 import ResultList from "./ResultList";
 
 const ResultMobile = () => {
