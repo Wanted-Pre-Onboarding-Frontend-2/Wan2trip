@@ -1,0 +1,7 @@
+.left-gradient {
+  background: linear-gradient(to right, transparent 50%, #fee2e2 50%);
+}
+
+.right-gradient {
+  background: linear-gradient(to right, #fee2e2 50%, transparent 50%);
+}
