@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import VirtualScroll from "common/VirtualScroll";
 import Tag from "./Tag";
 import Checkbox from "./Checkbox";
 import Sort from "./Sort";
-import Card from "../../common/Card";
 import ResultList from "./ResultList";
 import { ReactComponent as Location } from "../../static/image/Location.svg";
 import { ReactComponent as LeftArrow } from "../../static/image/LeftArrow.svg";

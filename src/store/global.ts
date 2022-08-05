@@ -33,3 +33,13 @@ export const HideCard = atom<boolean>({
   key: "hideCard",
   default: false,
 });
+
+export const IsBooked = atom<boolean>({
+  key: "isBookedHotel",
+  default: false,
+});
+
+export const IsBookingButton = atom<boolean>({
+  key: "IsBookingButton",
+  default: false,
+});
