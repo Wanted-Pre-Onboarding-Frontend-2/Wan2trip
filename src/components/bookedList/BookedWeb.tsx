@@ -1,3 +1,4 @@
+import tw from "tailwind-styled-components";
 import { Hotel } from "types/types";
 import Card from "common/Card";
 import Noreserve from "../../static/image/Noreserve.png";
@@ -12,22 +13,28 @@ type Props = {
 
 const BookedWeb = ({ hotel, isLoading }: Props) => {
   return (
-    <>
-      <div className="flex h-full">
-        <div className="flex flex-col w-1/4 h-40 py-2 bg-white rounded cursor-pointer">
-          <div className="flex items-center w-full h-1/3 border-l-4 border-[#FF375C] bg-[#FEEEF1] pl-6 ">
-            예정된 예약
-          </div>
-          <div className="flex items-center w-full h-1/3 bl-[#FF375C] pl-6">
-            취소된 예약
-          </div>
-          <div className="flex items-center w-full h-1/3 bl-[#FF375C] pl-6">
-            투숙 완료
-          </div>
-        </div>
-        <BookedWebContent hotel={hotel} isLoading={isLoading} />
+    <BookedWebContainer>
+      <BookedWebAside />
+      <BookedWebContent hotel={hotel} isLoading={isLoading} />
+    </BookedWebContainer>
+  );
+};
+
+const BookedWebContainer = tw.div`flex h-full`;
+
+const BookedWebAside = () => {
+  return (
+    <div className="flex flex-col w-1/4 h-40 py-2 bg-white rounded cursor-pointer">
+      <div className="flex items-center w-full h-1/3 border-l-4 border-[#FF375C] bg-[#FEEEF1] pl-6 ">
+        예정된 예약
       </div>
-    </>
+      <div className="flex items-center w-full h-1/3 bl-[#FF375C] pl-6">
+        취소된 예약
+      </div>
+      <div className="flex items-center w-full h-1/3 bl-[#FF375C] pl-6">
+        투숙 완료
+      </div>
+    </div>
   );
 };
 
@@ -46,7 +53,7 @@ const BookedWebContent = ({ hotel, isLoading }: Props) => {
     <>
       {!!hotel.length && (
         <div className="flex items-center justify-center py-2 ml-4 w-full bg-white">
-          <VirtualScroll itemHeight={20} columnGap={0.625}>
+          <VirtualScroll itemHeight={20} columnGap={0.625} renderAhead={5}>
             {hotel.map((hotel, index) => (
               <Card key={uid(index)} data={hotel} isBooked={true} />
             ))}
