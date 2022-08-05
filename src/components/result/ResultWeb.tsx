@@ -11,10 +11,10 @@ import { ReactComponent as LeftArrow } from "../../static/image/LeftArrow.svg";
 const ResultTablet = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className="flex bg-white">
+    <div className="flex">
       <div className="flex-col w-4/12">
         <div
-          className="flex h-16 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200"
+          className="flex h-16 text-base font-medium text-center border rounded cursor-pointer w-72 border-slate-300 bg-zinc-200 "
           onClick={() => {
             setIsMapActive(!isMapActive);
           }}
@@ -32,7 +32,6 @@ const ResultTablet = () => {
           )}
         </div>
         <Tag />
-
         <div className="my-6 text-lg font-medium">가격 범위</div>
         <div className="pb-10 border-b-2 border-slate-200">
           <input
@@ -55,7 +54,7 @@ const ResultTablet = () => {
         </div>
         {isMapActive ? (
           <div className="">
-            <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
+            <div className="flex-col items-center justify-center gap-10 pt-10">
               <ResultList />
             </div>
           </div>

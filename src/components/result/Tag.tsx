@@ -32,12 +32,20 @@ const Tag = () => {
   return (
     <>
       {/* web */}
-      <div className="hidden md:hidden lg:block w-92">
+      <div className="hidden md:hidden lg:block lg:pr-4">
         <div className="mt-5 mb-5 text-xl font-semibold ">관련태그</div>
-        <div className="flex flex-wrap w-full pb-10 font-semibold border-b-2 justify-evenly text-slate-300 border-slate-200">
+        <div className="flex flex-wrap justify-between w-full pb-10 font-semibold border-b-2 text-slate-300 border-slate-200">
           {tags.map((tag, index) => (
             <div key={index}>
-              <input type="checkbox" className="hidden" id="tagActive" />
+              <input
+                type="checkbox"
+                className="hidden"
+                id="tagActive"
+                checked={isTagActive}
+                onChange={() => {
+                  setIsTagActive(!isTagActive);
+                }}
+              />
               <label
                 htmlFor="tagActive"
                 className="checked:border-[#FF375C] checked:text-[#FF375C] checked:bg-[#FEEEF1] 
@@ -50,14 +58,22 @@ const Tag = () => {
         </div>
       </div>
       {/* mobile */}
-      <div className="flex flex-wrap">
+      <div className="flex lg:hidden">
         <div className="flex w-full pb-2 overflow-x-auto text-sm font-semibold text-black abolute flex-nowrap">
           {tags.map((tag, index) => (
             <div key={index}>
-              <input type="checkbox" className="hidden" id="tagActive" />
+              <input
+                type="checkbox"
+                className="hidden"
+                id="tagActive"
+                onChange={() => {
+                  setIsTagActive(!isTagActive);
+                  console.log(isTagActive);
+                }}
+              />
               <label
                 htmlFor="tagActive"
-                className="checked:bg-[#686888] 
+                className="checked:bg-[#686888] checked:text-white
                 flex items-center justify-center h-7 m-1 border cursor-pointer py-4 w-24 rounded-3xl bg-[#EEEEEE]"
               >
                 {tag}

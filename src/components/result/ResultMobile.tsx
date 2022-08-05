@@ -5,22 +5,6 @@ import Sort from "./Sort";
 import Card from "../../common/Card";
 import ResultList from "./ResultList";
 
-// TODO: fetch 데이터로 변경
-const DUMMY_DATA = [
-  {
-    hotel_name: "에코랜드 호텔",
-    occupancy: {
-      base: 2,
-      max: 3,
-    },
-    image: "https://source.unsplash.com/random",
-    address: "중구 동호로 249 서울특별시",
-    price: 320337,
-    review: 1807,
-    rating: 1,
-  },
-];
-
 const ResultMobile = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
@@ -30,14 +14,10 @@ const ResultMobile = () => {
         <Sort />
       </div>
       {isMapActive ? (
-        <div className="">
-          <div className="flex-col items-center justify-center max-w-3xl gap-10 pt-10 mx-auto">
-            <ResultList />
-          </div>
+        <div className="flex-col items-center justify-center w-[100vw] gap-10 pt-10">
+          <ResultList />
         </div>
-      ) : (
-        <div className="">지도API?</div>
-      )}
+      ) : null}
     </div>
   );
 };
