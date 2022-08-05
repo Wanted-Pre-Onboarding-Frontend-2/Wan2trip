@@ -12,29 +12,26 @@ import {
   SearchValue,
   SearchListOpen,
 } from "../../store/search";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useGetHotels, useSearchResults } from "../../api/queries";
 import { ReactComponent as SearchWhiteIcon } from "../../static/image/SearchWhite.svg";
-import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "hooks/useSearch";
 
 const SearchBar = () => {
-  const queryClient = useQueryClient();
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [searchData, setSearchData] = useRecoilState(SearchData);
-  const [searchKeyword, setSearchKeyword] = useRecoilState(SearchKeyword);
+  const setSearchKeyword = useSetRecoilState(SearchKeyword);
   const [keyword, setKeyword] = useRecoilState(SearchValue);
 
   const adultOfNum: number = useRecoilValue(AdultNumber);
   const childrenOfNum: number = useRecoilValue(ChildrenNumber);
-  const [, setPeopleNumber] = useRecoilState(PeopleNumber);
+  const setPeopleNumber = useSetRecoilState(PeopleNumber);
   const peopleNum = Math.floor(adultOfNum + childrenOfNum);
 
-  const { data } = useSearchResults(keyword, peopleNum);
   const { data: hotels } = useGetHotels();
+  const { refetch: refetchSearchResult } = useSearchResults(keyword, peopleNum);
   const { createFuzzyMatcher } = useSearch();
   const [searchList, setSearchList] = useState();
   const [searchListOpen, setSearchListOpen] = useRecoilState(SearchListOpen);
@@ -61,6 +58,7 @@ const SearchBar = () => {
         }
       }
 
+      refetchSearchResult();
       setSearchList(strList);
     } else {
       setSearchListOpen(false);
@@ -72,7 +70,6 @@ const SearchBar = () => {
 
     setSearchKeyword(keyword);
     setPeopleNumber(peopleNum);
-    setSearchData(data);
 
     if (location.pathname === "/") {
       navigate("/result");
@@ -135,5 +132,5 @@ const SearchInner = tw.div`
 flex flex-row items-center relative h-16 z-20  box-border`;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5 z-30
+ fixed top-17 left-0 bg-white z-10 w-full md:hidden px-3 py-5
 `;
