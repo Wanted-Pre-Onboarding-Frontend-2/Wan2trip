@@ -33,13 +33,14 @@ export const useSearchResults = (keyword: string, peopleNum: number) => {
       const { data } = await axios.get(
         `${BASE_URL}/hotels?_page=${pageParam}&_limit=10&q=${keyword}&occupancyMax_gte=${peopleNum}`
       );
+      if (data.length < 10) return { result: data, nextPage: undefined };
       return {
         result: data,
         nextPage: pageParam + 1,
       };
     },
     {
-      getNextPageParam: (lastPage, pages) => lastPage.nextPage,
+      getNextPageParam: (lastPage, pages) => lastPage.nextPage ?? undefined,
     }
   );
 };
