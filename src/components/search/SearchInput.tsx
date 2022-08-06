@@ -50,7 +50,7 @@ const SearchInput = ({
             id="hotel_name"
             type="text"
             placeholder="호텔명"
-            className="flex-1 h-full pl-2 text-sm bg-gray-200 border-0 md:bg-white focus:outline-none md:text-md dark:bg-gray-300"
+            className="flex-1 h-full pl-2 text-sm bg-gray-200 border-0 md:bg-white focus:outline-none md:text-md dark:bg-gray-200"
             onChange={onChangeHandler}
             onFocus={handleInputFocused}
             // onBlur={handleInputFocused}
@@ -61,7 +61,7 @@ const SearchInput = ({
 
           <button
             type="submit"
-            className="absolute right-0 w-10 h-full bg-gray-200 md:hidden dark:bg-gray-300"
+            className="absolute right-0 w-10 h-full bg-gray-200 md:hidden dark:bg-gray-200"
           >
             <SearchBlackIcon className="w-5 h-5 ml-2 " />
           </button>
@@ -87,10 +87,10 @@ const SearchInput = ({
 export default SearchInput;
 
 const SearchInputBox = tw.div`
-w-2/3  md:w-1/3 relative h-12 md:h-full  md:bg-white md:border-r md:border-solid md:border-gray-300  md:rounded-l-md dark:bg-gray-300
+w-2/3  md:w-1/3 relative h-12 md:h-full  md:bg-white md:border-r md:border-solid md:border-gray-300  md:rounded-l-md dark:bg-gray-200
 `;
 
 const SearchListBox = tw.div`
-absolute top-18 left-0 p-4 w-80 bg-white shadow-lg rounded`;
+absolute top-18 left-0 p-4 w-80 bg-white shadow-lg rounded `;
 
 const SearchItem = tw.li``;
