@@ -35,7 +35,7 @@ const BookedWebAside = () => {
 const BookedWebContent = ({ hotel, isLoading }: Props) => {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh]">
+      <div className="flex items-center justify-center w-3/4 py-2 ml-4 bg-white h-[60vh] dark:bg-gray-400">
         <div className="flex flex-col items-center text-center">
           <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
         </div>

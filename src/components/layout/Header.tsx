@@ -34,7 +34,7 @@ const Header = (props: any) => {
           to="/booked"
           className={
             location.pathname === "/"
-              ? "text-gray-600 md:text-white rounded-md border-slate-200 border px-4 py-2 hover:font-bold dark:text-white"
+              ? "text-gray-600 md:text-white rounded-md border-slate-200 border px-4 py-[0.57rem] mt-[0.3rem] hover:font-bold dark:text-white "
               : null
           }
         >

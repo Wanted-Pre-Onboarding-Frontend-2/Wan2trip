@@ -117,7 +117,7 @@ const GuestInput = ({ peopleNum }: GuestProps) => {
 export default GuestInput;
 
 const GuestBox = tw.div`
- flex flex-row items-center md:w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100 dark:bg-gray-600 dark:hover:bg-gray-400`;
+ flex flex-row items-center md:w-1/4 relative h-full bg-white transition-all  cursor-pointer hover:bg-gray-100 dark:bg-gray-200 dark:hover:bg-gray-400`;
 
 const GuestNumberBox = tw.div`
 fixed top-0 md:left-0 right-0 z-20 w-full h-full md:h-auto md:absolute md:top-18 px-5  bg-white md:shadow-lg md:rounded`;
