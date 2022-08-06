@@ -3,8 +3,8 @@ import { Hotel } from "types/types";
 import { useConfirm } from "../../hooks/useConfirm";
 import ConfirmContent from "../../components/result/ConfirmContent";
 import { Confirm } from "../../common/Confirm";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { IsBookingButton, HideCard } from "store/global";
+import { useSetRecoilState } from "recoil";
+import { IsBookingButton } from "store/global";
 
 interface PropsType {
   newData: Hotel;

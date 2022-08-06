@@ -29,31 +29,25 @@ const Card = ({ data, isBooked }: PropsType) => {
   return (
     <div
       key={hotelName}
-      className="flex justify-between w-full h-80 bg-white mt-5 mb-5 rounded-lg max-w-7xl  border-slate-300 drop-shadow-md "
+      className="flex justify-between w-full mt-5 mb-5 bg-white rounded-lg h-80 max-w-7xl border-slate-300 drop-shadow-md "
     >
       <div className="w-1/3 h-full">
         <img
           src={IMAGE_URL}
           alt="hotel_image"
-          className="bg-cover rounded-l-lg w-full h-full"
+          className="w-full h-full bg-cover rounded-l-lg"
         />
       </div>
-      <section className="flex flex-col flex-1  justify-between p-5">
-        <div>
-          <h2 className="text-lg font-bold">{hotelName}</h2>
-          <p className="text-slate-600 text-sm">{address}</p>
-          <div className="mb-5">
-            <span className="font-bold text-slate-600 text-xs ">
-              총 {review} 건의 리뷰{" "}
-            </span>
-            <span className="ml-2">
-              <Rating rating={rating} />
-            </span>
-            {/* <span>평점: {rating} / 5 </span> */}
-          </div>
-
-          <p className="text-sm">기본 인원 {occupancyBase}</p>
-          <p className="text-sm">최대 인원 {occupancyMax}</p>
+      <section className="flex flex-col w-full ml-2 mr-6 mt-9 h-1/2">
+        <h2 className="text-2xl font-bold">{hotelName}</h2>
+        <p className="text-slate-600">{address}</p>
+        <div className="mt-3 mb-5 ">
+          <span className="font-bold text-slate-600 ">
+            총 {review} 건의 리뷰{" "}
+          </span>
+          <span>
+            <Rating rating={rating} />
+          </span>
         </div>
         <div className="self-end m-0 mt-3 text-2xl text-end">
           <p className="font-bold ">{priceToString(price)} 원</p>
