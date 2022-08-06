@@ -13,7 +13,7 @@
 | 김수빈 | 팀원 </br> Frontend |                                          - 검색 api, 조회</br> - 검색 UI</br>-검색창 연관검색어                                           |
 | 김민주 | 팀원 </br> Frontend |                         - 검색 결과 페이지,예약 확인 페이지 반응형 웹 구현 </br> - 무한스크롤에 옵저버 기능 추가                          |
 | 이상지 | 팀장 </br> Frontend | - 예약 (로컬스토리지 저장) 기능 및 예약취소(저장된 데이터 삭제) 구현 </br> - 전체 데이터 get api </br> - 호텔 카드 구현 - 기획 및 팀 리딩 |
-| 이혜림 | 팀원 </br> Frontend |                    - modal, responsive calenders </br> - custom hooks, global layout </br> - tailwindCSS 플러그인 설정                    |
+| 이혜림 | 팀원 </br> Frontend |                    - modal, responsive calenders </br> - custom hooks, global layout, darkmode </br> - tailwindCSS 플러그인 설정                    |
 | 홍승연 | 팀원 </br> Frontend |                                             - virtual scroll 구현</br> - 무한스크롤 api 구현                                              |
 
 </br>
@@ -190,6 +190,8 @@ wan2trip
 ## responsive
 
 - tailwind를 이용하여 반응형을 구현하였습니다.
+- tailwind를 이용하여 다크모드를 구현하였습니다.
+- purgecss를 이용하여 빌드시 번들 압축 작업을 하여 Utility-first CSS의 단점을 상쇄했습니다.
 
 </br>
 
@@ -294,4 +296,15 @@ wan2trip
 
 ### 호텔 예약, 취소 시의 모달창
 
-...
+### common/Confirm
+- isShown, hide, modalContent, headerText
+- 4개를 인자로 받아서 클릭시 모달 구조를 생성해주는 템플릿입니다.
+- isShown, hide는 useConfirm에서 들어갑니다.
+- modalContent에 실제 컴포넌트를 넣으면 백드랍과 close버튼이 있는 모달 안에 컨텐츠를 넣어 표시해줍니다.
+
+### useConfirm
+- useState값을 hook으로 분리하여 캘린더의 경우 전역으로 관리, 예약의 경우 지역으로 관리하고 있습니다.
+
+### ConfirmContent
+- 클릭시 데이터를 전달받아 실제 호텔의 정보가 같이 들어갑니다.
+
