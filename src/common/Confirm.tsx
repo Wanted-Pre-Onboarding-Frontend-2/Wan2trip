@@ -28,7 +28,7 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
           <Content>
             {modalContent}
             {isBookingButton ? (
-              <Footer>
+              <Button>
                 <Link to="/booked" className="">
                   <button className="flex items-center justify-center pr-10 font-bold text-center border-r h-14 w-36">
                     이동
@@ -40,9 +40,9 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
                 >
                   취소
                 </button>
-              </Footer>
+              </Button>
             ) : (
-              <Footer>
+              <Button>
                 <button
                   onClick={() => {
                     location.reload();
@@ -57,7 +57,7 @@ export const Confirm: FunctionComponent<ConfirmProps> = ({
                 >
                   <button>취소</button>
                 </div>
-              </Footer>
+              </Button>
             )}
           </Content>
         </StyledModal>
@@ -111,6 +111,6 @@ export const HotelData = tw.div`
 bg-white
 `;
 
-export const Footer = tw.div`
+export const Button = tw.div`
 bg-white flex justify-center gap-4 max-w-lg mx-auto
 `;
