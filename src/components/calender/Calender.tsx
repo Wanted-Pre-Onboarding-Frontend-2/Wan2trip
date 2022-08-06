@@ -131,7 +131,7 @@ flex flex-col mx-auto
 `;
 
 const DesktopCalender = tw.div`
-p-5 py-8 rounded-2xl drop-shadow-md shadow-xl bg-white dark:bg-gray-400
+p-5 py-8 rounded-2xl drop-shadow-md shadow-xl bg-white dark:bg-gray-200
 `;
 
 const ArrowBox = tw.div`

@@ -61,4 +61,4 @@ const CalendarInput = () => {
 export default CalendarInput;
 
 const CalendarBox = tw.div`
-flex flex-1 flex-col  md:flex-row items-center  relative h-full bg-white border-none md:border-r md:border-solid md:border-gray-300 transition-all  cursor-pointer dark:bg-gray-600 dark:hover:bg-gray-400 hover:bg-gray-100`;
+flex flex-1 flex-col  md:flex-row items-center  relative h-full bg-white border-none md:border-r md:border-solid md:border-gray-300 transition-all  cursor-pointer dark:bg-gray-200 dark:hover:bg-gray-400 hover:bg-gray-100`;
