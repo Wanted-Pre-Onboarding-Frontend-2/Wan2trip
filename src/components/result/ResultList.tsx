@@ -16,8 +16,8 @@ const ResultList = () => {
     data: searchHotels,
     isFetchingNextPage,
     isLoading,
-    hasNextPage,
     fetchNextPage,
+    hasNextPage,
     isRefetching,
   } = useSearchResults(searchKeyword, numberOfPeople);
   const searchList = changeInfiniteScrollDataToArray(searchHotels) as Hotel[];
@@ -54,6 +54,7 @@ const ResultList = () => {
         <ResultListContent
           target={observationTarget}
           searchList={searchList}
+          hasNextPage={hasNextPage}
           isRefetching={isRefetching}
         />
       )}
@@ -66,11 +67,13 @@ export default ResultList;
 const ResultListContent = ({
   target,
   searchList,
+  hasNextPage,
   isRefetching,
 }: {
   target: RefObject<HTMLImageElement>;
   searchList: Hotel[];
-  isRefetching: boolean;
+  hasNextPage: boolean | undefined;
+  isRefetching: boolean | undefined;
 }) => {
   return (
     <>
@@ -96,14 +99,16 @@ const ResultListContent = ({
               );
             })}
           </VirtualScroll>
-          <div className="w-full h-full flex justify-center item-center">
-            <img
-              src={Spinner}
-              ref={target}
-              alt="로딩중 스피너"
-              className="animate-spin"
-            />
-          </div>
+          {hasNextPage && (
+            <div className="w-full h-full flex justify-center item-center">
+              <img
+                src={Spinner}
+                ref={target}
+                alt="로딩중 스피너"
+                className="animate-spin"
+              />
+            </div>
+          )}
         </>
       )}
     </>
