@@ -52,10 +52,7 @@ const SearchBar = () => {
       for (const key in hotels) {
         const hotelName: string = hotels[key].hotel_name;
 
-        if (
-          fuzzyRegex.test(hotelName.toLowerCase()) ||
-          fuzzyRegex.test(hotelName)
-        ) {
+        if (fuzzyRegex.test(hotelName.toLowerCase())) {
           if (hotelName.includes(value)) {
             strList.push(hotelName);
           }
