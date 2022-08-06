@@ -130,8 +130,8 @@ z-20 mx-3 lg:mx-0 lg:px-0 border-gray-300 border rounded-md mt-12
 `;
 
 const SearchInner = tw.div`
-flex flex-row items-center relative h-16 z-20  box-border`;
+flex flex-row items-center relative h-16 z-20 box-border `;
 
 const MobileSearch = tw.div`
- fixed top-17 left-0 bg-white z-30 w-full md:hidden px-3 py-5 dark:bg-gray-600
+ fixed top-17 left-0 bg-white z-30 w-full md:hidden px-3 py-5 dark:bg-gray-200
 `;
