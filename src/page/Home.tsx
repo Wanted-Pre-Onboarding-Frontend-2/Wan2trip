@@ -12,9 +12,9 @@ const Home = () => {
         Play, Share, Stay, 트립비토즈
       </div>
       <SearchBar />
-      <div className="flex flex-col items-center justify-center w-full gap-10 mx-auto md:pt-16 md:mt-44">
+      {/* <div className="flex flex-col items-center justify-center w-full gap-10 mx-auto md:pt-16 md:mt-44">
         <HotelList />
-      </div>
+      </div> */}
     </Layout>
   );
 };

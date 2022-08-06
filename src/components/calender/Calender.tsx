@@ -73,8 +73,8 @@ export const Calender = () => {
                   <Left
                     className={
                       !isBefore(new Date(), today)
-                        ? "w-14 fill-gray-300"
-                        : "w-14 fill-gray-700"
+                        ? "w-14 fill-gray-300 dark:fill-gray-400"
+                        : "w-14 fill-gray-700 dark:fill-gray-50"
                     }
                   />
                 </button>
@@ -82,8 +82,8 @@ export const Calender = () => {
                   <Right
                     className={
                       isSameMonth(add(new Date(), { months: 11 }), today)
-                        ? "w-14 fill-gray-300"
-                        : "w-14 fill-gray-700"
+                        ? "w-14 fill-gray-300 dark:fill-gray-400"
+                        : "w-14 fill-gray-700 dark:fill-gray-50"
                     }
                   />
                 </button>
@@ -105,7 +105,11 @@ export const Calender = () => {
         {!matches && (
           <>
             {date.map((day) => (
-              <div key={uid(day)} ref={setLastElement} className="bg-white">
+              <div
+                key={uid(day)}
+                ref={setLastElement}
+                className="bg-white dark:bg-gray-700"
+              >
                 <CalenderHeader today={day} />
                 <Table today={day} />
               </div>
@@ -127,7 +131,7 @@ flex flex-col mx-auto
 `;
 
 const DesktopCalender = tw.div`
-p-5 py-8 rounded-2xl drop-shadow-md shadow-xl bg-white
+p-5 py-8 rounded-2xl drop-shadow-md shadow-xl bg-white dark:bg-gray-400
 `;
 
 const ArrowBox = tw.div`

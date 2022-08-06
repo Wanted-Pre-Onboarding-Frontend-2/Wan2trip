@@ -6,7 +6,7 @@ import ResultList from "./ResultList";
 const ResultMobile = () => {
   const [isMapActive, setIsMapActive] = useState(true);
   return (
-    <div className=" bg-white">
+    <div className=" bg-white dark:bg-gray-800">
       <div className="relative z-20">
         <Tag />
         <div className="h-4">
