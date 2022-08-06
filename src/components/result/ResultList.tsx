@@ -72,16 +72,13 @@ const ResultListContent = ({
   searchList: Hotel[];
   isRefetching: boolean;
 }) => {
-  if (isRefetching) {
-    return (
-      <div className="w-full h-full flex justify-center item-center">
-        <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
-      </div>
-    );
-  }
-
   return (
     <>
+      {isRefetching && (
+        <div className="w-full h-full flex justify-center item-center">
+          <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
+        </div>
+      )}
       {searchList.length === 0 && (
         <div className="flex flex-col items-center justify-center py-10 text-center">
           <img src={Noreserve} alt="예약없음" className="mb-10 w-28" />
@@ -99,7 +96,14 @@ const ResultListContent = ({
               );
             })}
           </VirtualScroll>
-          <div ref={target} />
+          <div className="w-full h-full flex justify-center item-center">
+            <img
+              src={Spinner}
+              ref={target}
+              alt="로딩중 스피너"
+              className="animate-spin"
+            />
+          </div>
         </>
       )}
     </>
