@@ -60,12 +60,13 @@ export const Backdrop = tw.div`
 `;
 
 export const StyledModal = tw.div`
-  z-50  relative mx-auto rounded-md bg-white md:bg-transparent
-  w-full h-full max-w-[58.9rem] md:h-fit top-0 bottom-3
+  z-50  relative mx-auto rounded-md bg-white md:bg-transparent dark:md:bg-transparent
+  w-full h-full max-w-[58.9rem] md:h-fit top-0 bottom-3 dark:bg-gray-700
 `;
 
 export const Header = tw.div`
 flex justify-between py-3 px-3 md:px-1 md:py-1 bg-white md:bg-transparent
+ dark:bg-gray-700 dark:md:bg-transparent
 `;
 
 export const HeaderText = tw.div`

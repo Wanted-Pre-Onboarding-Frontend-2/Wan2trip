@@ -35,7 +35,7 @@ const Sort = () => {
           )}
         </ul>
         {open && (
-          <div className="absolute flex items-center justify-center w-1/5 h-24 text-sm font-semibold bg-white rounded shadow-lg left-[120px] top-[100px] z-10">
+          <div className="absolute flex items-center justify-center w-1/5 h-24 text-sm font-semibold bg-white rounded shadow-lg left-[120px] top-[100px] z-10 ">
             <div>
               <div className="block pb-2">높은 가격순</div>
               <div className="block pb-2">낮은 가격순</div>
@@ -44,7 +44,7 @@ const Sort = () => {
         )}
       </div>
       {/* mobile */}
-      <div className="fixed top-56 md:top-0 flex items-center px-5 justify-between md:relative lg:hidden border-b-2lg:hidden border-gray-200 w-[100vw] bg-white drop-shadow-xl">
+      <div className="fixed top-56 md:top-0 flex items-center px-5 justify-between md:relative lg:hidden border-b-2lg:hidden border-gray-200 w-[100vw] bg-white drop-shadow-xl dark:bg-gray-300">
         <div className="flex items-center font-medium text-sm h-14">
           1,691개 호텔 중 예약가능 호텔 419개
         </div>

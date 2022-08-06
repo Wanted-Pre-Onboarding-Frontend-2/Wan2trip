@@ -27,10 +27,10 @@ flex flex-col w-full h-full
 const BookedMobileAside = () => {
   return (
     <>
-      <div className="flex items-center justify-center w-full h-16 py-2 bg-white border-b-4 border-slate-200">
+      <div className="flex items-center justify-center w-full h-16 py-2 bg-white border-b-4 border-slate-200 ">
         예약된 내역
       </div>
-      <div className="flex w-full h-16 py-2 bg-white rounded cursor-pointer text-slate-500">
+      <div className="flex w-full h-16 py-2 bg-white rounded cursor-pointer text-slate-500 dark:bg-gray-800 dark:text-white">
         <div className="flex items-center justify-center w-1/3 border-b-2 border-black">
           예정된 예약
         </div>
@@ -42,7 +42,7 @@ const BookedMobileAside = () => {
 const BookedMobileContent = ({ hotel, isLoading }: Props) => {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center w-full py-2 bg-white h-[60vh]">
+      <div className="flex items-center justify-center w-full py-2 bg-white h-[60vh] dark:bg-gray-500">
         <div className="flex flex-col items-center text-center">
           <img src={Spinner} alt="로딩중 스피너" className="animate-spin" />
         </div>
@@ -53,7 +53,7 @@ const BookedMobileContent = ({ hotel, isLoading }: Props) => {
   return (
     <>
       {!!hotel.length && (
-        <div className="flex items-center justify-center w-full py-2 bg-white">
+        <div className="flex items-center justify-center w-full py-2 bg-white dark:bg-gray-500">
           <VirtualScroll itemHeight={20} columnGap={1.25} renderAhead={5}>
             {hotel.map((hotel, index) => (
               <Card key={uid(index)} data={hotel} isBooked={true} />
@@ -62,7 +62,7 @@ const BookedMobileContent = ({ hotel, isLoading }: Props) => {
         </div>
       )}
       {!!hotel.length || (
-        <div className="flex items-center justify-center w-full py-2 bg-white h-[60vh]">
+        <div className="flex items-center justify-center w-full py-2 bg-white h-[60vh] ">
           <div className="flex flex-col items-center text-center">
             <img src={Noreserve} className="w-20 mb-5" />
             아직 준비된 예약이 없어요. <br />

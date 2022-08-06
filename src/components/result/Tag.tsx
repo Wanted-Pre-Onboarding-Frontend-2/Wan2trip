@@ -34,7 +34,7 @@ const Tag = () => {
       {/* web */}
       <div className="hidden lg:block lg:pr-4">
         <div className="mt-5 mb-5 text-xl font-semibold ">관련태그</div>
-        <div className="flex flex-wrap justify-between w-full pb-10 font-semibold border-b-2 text-slate-300 border-slate-200">
+        <div className="flex flex-wrap justify-between w-full pb-10 font-semibold border-b-2 text-slate-300 border-slate-200 ">
           {tags.map((tag, index) => (
             <div key={index}>
               <input
@@ -49,7 +49,7 @@ const Tag = () => {
               <label
                 htmlFor="tagActive"
                 className="checked:border-[#FF375C] checked:text-[#FF375C] checked:bg-[#FEEEF1] 
-                flex flex-col items-center justify-center h-12 m-1 border cursor-pointer w-[8.75rem] rounded-3xl border-slate-300"
+                flex flex-col items-center justify-center h-12 m-1 border cursor-pointer w-[8.75rem] rounded-3xl border-slate-300 "
               >
                 {tag}
               </label>
@@ -59,7 +59,7 @@ const Tag = () => {
       </div>
       {/* mobile */}
       <div className="flex lg:hidden">
-        <div className="fixed top-46 md:top-0 flex w-full pl-2 pb-2 pt-0 md:pt-6 bg-white overflow-x-auto text-sm font-semibold text-black flex-nowrap md:relative ">
+        <div className="fixed top-46 md:top-0 flex w-full pl-2 pb-2 pt-0 md:pt-6 bg-white overflow-x-auto text-sm font-semibold text-black flex-nowrap md:relative dark:bg-gray-600">
           {tags.map((tag, index) => (
             <div key={index}>
               <input

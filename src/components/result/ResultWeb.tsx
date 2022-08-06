@@ -47,7 +47,7 @@ const ResultTablet = () => {
         <Checkbox title="리뷰 평가" />
       </div>
       <div className="w-9/12 border-black px-50">
-        <div className="relative bg-white border border-solid border-gray-200 rounded ">
+        <div className="relative bg-white border border-solid border-gray-200 rounded dark:bg-gray-600">
           <Sort />
         </div>
         {isMapActive ? (
