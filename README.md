@@ -198,7 +198,10 @@ wan2trip
 ## modal
 
 - 개별 컴포넌트와 모달 템플릿(backdrop과 display 구성요소 등), 로직을 각각 분리하여 재사용성을 높였습니다.
-  ❓모달 구조 Confirm, ConfirmContent, useModal ...
+
+- 템플릿 - common/modal, confirm
+- 컨트롤러 - useModal, useConfirm
+- 컨텐츠 - Calender, ConfirmContent
 
 </br>
 
@@ -251,7 +254,7 @@ wan2trip
 - 데스크탑의 경우: today, today month+1 로 2개의 달을 세팅합니다.
 - 모바일의 경우: `today`(Date객체)를 배열로 만든 후 초기값으로 today ~ today month+3 까지 세팅해놓습니다.
 
-- 또한 캘린더에서 사용자가 선택한 값을 다른 컴포넌트(다른 어떤 컴포넌트?!)로 전달하기 위해 `pickedDate`도 전역 객체로 관리하고 있습니다.
+- 또한 캘린더에서 사용자가 선택한 값을 서버에 전달하기 위해 `pickedDate`도 전역 객체로 관리하고 있습니다.
 - `pickedDate`의 구성요소는 startDate, endDate입니다. (각각 checkIn, checkOut 날짜에 해당합니다.)
 
 ### useObserver
