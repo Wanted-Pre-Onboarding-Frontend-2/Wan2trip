@@ -46,6 +46,19 @@
 
 </br>
 
+# 실행 방법
+```
+mac일 경우 : yarn start
+하면 json-server가 같이 실행됩니다.
+
+window일 경우
+1. 터미널을 2개로 분할
+2. yarn start
+3. 다른 터미널에서 yarn server
+json-server를 따로 켜주셔야 합니다.
+
+```
+
 # 폴더 구조
 
 ```text
